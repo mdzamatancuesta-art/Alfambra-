@@ -19,12 +19,14 @@
     .nav-link { position: relative; color: var(--ivory); opacity: 0.5; transition: all 0.3s; cursor: pointer; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
     .nav-link:hover, .nav-link.active { opacity: 1; color: var(--gold); }
     .hero-title-line { overflow: hidden; }
-    .hero-title-line > * { display: block; transform: translateY(110%); opacity: 0; animation: heroMask 1.3s cubic-bezier(0.16,1,0.3,1) forwards; }
-    .hero-title-line:nth-child(1) > * { animation-delay: 0.25s; }
-    .hero-title-line:nth-child(2) > * { animation-delay: 0.42s; }
-    .hero-title-line:nth-child(3) > * { animation-delay: 0.59s; }
-    .hero-title-line:nth-child(4) > * { animation-delay: 0.85s; }
-    .hero-title-line:nth-child(5) > * { animation-delay: 1s; }
+    .hero-title-line > * { display: block; transform: translateY(110%); opacity: 0; }
+    /* Animation plays only when #hero-content gets .hero-in (triggered when Home is revealed) */
+    #hero-content.hero-in .hero-title-line > * { animation: heroMask 1.3s cubic-bezier(0.16,1,0.3,1) forwards; }
+    #hero-content.hero-in .hero-title-line:nth-child(1) > * { animation-delay: 0.15s; }
+    #hero-content.hero-in .hero-title-line:nth-child(2) > * { animation-delay: 0.32s; }
+    #hero-content.hero-in .hero-title-line:nth-child(3) > * { animation-delay: 0.49s; }
+    #hero-content.hero-in .hero-title-line:nth-child(4) > * { animation-delay: 0.75s; }
+    #hero-content.hero-in .hero-title-line:nth-child(5) > * { animation-delay: 0.9s; }
     @keyframes heroMask { to { transform: translateY(0); opacity: 1; } }
     .detail-overlay { position: fixed; inset: 0; z-index: 200; background: #F8F6F2; overflow-y: auto; display: none; opacity: 0; transition: opacity 0.6s; }
     .detail-overlay.show { display: block; opacity: 1; }
@@ -186,13 +188,13 @@
       </div>
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/70 via-[#0D0D0D]/30 to-[#0D0D0D]"></div>
       <div class="hero-dots" id="hero-dots"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-24 md:pb-32">
-        <div class="max-w-5xl">
-          <div class="hero-title-line"><h1 class="font-serif leading-[0.85]" style="color: rgb(248, 246, 242); font-size: 72px;">Tradición</h1></div>
-          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.85]" style="color: rgb(248, 246, 242); font-size: 72px;">Artesanía</h1></div>
-          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.85]" style="color: rgb(245, 183, 40); font-size: 72px;">Excelencia</h1></div>
-          <div class="hero-title-line mt-12"><p class="max-w-xl leading-relaxed opacity-70" style="color: rgb(248, 246, 242); font-size: 16px;">Puros artesanales elaborados con las mejores hojas seleccionadas a mano. Desde nuestra fábrica hasta su humidor.</p></div>
-          <div class="hero-title-line mt-8"><p id="hero-quote" class="hero-quote max-w-2xl leading-relaxed italic opacity-60 text-lg" style="color: rgb(245, 183, 40); font-size: 16px;">Quien quiere hacer algo encuentra un medio. Quien no quiere hacer nada encuentra una excusa</p></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-8 md:px-20">
+        <div id="hero-content" class="max-w-5xl mx-auto">
+          <div class="hero-title-line"><h1 class="font-serif leading-[0.9]" style="color: rgb(248, 246, 242); font-size: 72px;">Tradición</h1></div>
+          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.9]" style="color: rgb(248, 246, 242); font-size: 72px;">Artesanía</h1></div>
+          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.9]" style="color: rgb(245, 183, 40); font-size: 72px;">Excelencia</h1></div>
+          <div class="hero-title-line mt-10"><p class="max-w-xl mx-auto leading-relaxed opacity-70" style="color: rgb(248, 246, 242); font-size: 16px;">Puros artesanales elaborados con las mejores hojas seleccionadas a mano. Desde nuestra fábrica hasta su humidor.</p></div>
+          <div class="hero-title-line mt-8"><p id="hero-quote" class="hero-quote max-w-2xl mx-auto leading-relaxed italic opacity-60 text-lg" style="color: rgb(245, 183, 40); font-size: 16px;">Quien quiere hacer algo encuentra un medio. Quien no quiere hacer nada encuentra una excusa</p></div>
         </div>
       </div>
     </section>
@@ -588,6 +590,15 @@
       document.getElementById('age-gate').classList.add('fade-out');
       setTimeout(() => { document.getElementById('age-gate').style.display = 'none'; }, 800);
       revealInPage(document.querySelector('.page.active'));
+      playHero();
+    }
+    // Restart the centered hero entrance animation each time Home is revealed
+    function playHero() {
+      const hc = document.getElementById('hero-content');
+      if (!hc) return;
+      hc.classList.remove('hero-in');
+      void hc.offsetWidth; // force reflow so the animation replays
+      hc.classList.add('hero-in');
     }
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -595,7 +606,7 @@
       if (target) target.classList.add('active');
       document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.page === id));
       window.scrollTo(0, 0);
-      if (id === 'home') observeHomeSections();
+      if (id === 'home') { observeHomeSections(); playHero(); }
       if (id === 'finder') updateFinderResults();
       if (target) { resetReveals(target); requestAnimationFrame(() => revealInPage(target)); }
     }
