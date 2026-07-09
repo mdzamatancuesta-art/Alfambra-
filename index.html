@@ -896,6 +896,7 @@
     });
 
     // ---- Productos: banner por marca (línea) + rejilla de vitolas ----
+    const PURO_DEFAULT = 'assets/img/puro-default.webp';
     const brandLines = [
       { id:'brujito', name:'El Brujito', procedencia:'Nicaragua', fortaleza:'Media-Fuerte', envase:'Caja de madera',
         img:{ main:'https://lh3.googleusercontent.com/d/1iAy31bkJC5n1Gek94WrEMvGVzDxPO_eu=w1200', thumb:'https://drive.google.com/thumbnail?id=1iAy31bkJC5n1Gek94WrEMvGVzDxPO_eu&sz=w1200', fallback:'https://images.pexels.com/photos/34323703/pexels-photo-34323703.jpeg?auto=compress&cs=tinysrgb&w=800' },
@@ -966,7 +967,7 @@
         const c = cigars[b.id] || {};
         const cards = b.vitolas.map((v, i) => `
           <button onclick="showVitola('${b.id}',${i})" class="group text-left">
-            <div class="aspect-square overflow-hidden rounded-lg bg-[#1a1a1a] border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all">${lineImg(b.img, 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105', v.name)}</div>
+            <div class="aspect-square overflow-hidden rounded-lg bg-[#efece5] border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${PURO_DEFAULT}" alt="${v.name}"></div>
             <h4 class="font-serif text-[#F8F6F2] mt-3 group-hover:text-[#f5b728] transition" style="font-size:19px;">${v.name}</h4>
             <p class="text-[#f5b728]/80 mt-1" style="font-size:12px;">${v.formato} · Cepo ${v.cepo} · ${v.largo}</p>
           </button>`).join('');
@@ -1014,13 +1015,8 @@
       if (!b) return;
       const v = b.vitolas[index];
       const c = cigars[brandId] || {};
-      const m = b.img;
-      const toLogo = "this.onerror=null;this.src='assets/img/logos/alfambra-gold.png';this.className='w-1/2 opacity-40 mx-auto'";
-      const chain = m.thumb
-        ? ` onerror="this.onerror=function(){this.onerror=function(){${toLogo}};this.src='${m.fallback}'};this.src='${m.thumb}'"`
-        : ` onerror="${toLogo}"`;
-      const mainImg = `<img class="w-full h-auto object-contain max-h-[520px] mx-auto" loading="lazy" src="${m.main}" alt="${v.name}"${chain}>`;
-      const gallery = [b.img.main, null, null, null].map(s => galleryTile(s, v.name)).join('');
+      const mainImg = `<img class="w-full h-auto object-contain max-h-[520px] mx-auto" loading="lazy" src="${PURO_DEFAULT}" alt="${v.name}">`;
+      const gallery = [PURO_DEFAULT, PURO_DEFAULT, PURO_DEFAULT, PURO_DEFAULT].map(s => galleryTile(s, v.name)).join('');
       document.getElementById('page-vitola').innerHTML = `
         <div class="min-h-screen bg-[#F8F6F2] pt-28 pb-24 px-8 md:px-20">
           <div class="max-w-6xl mx-auto">
