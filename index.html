@@ -432,55 +432,30 @@
     </div>
   </section>
 
-  <!-- PRODUCTOS (nueva: filtros + rejilla por líneas) -->
+  <!-- PRODUCTOS: banner por marca (línea) + rejilla de vitolas -->
   <section id="page-tienda" class="page">
     <div class="relative w-full h-64 md:h-80 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="assets/img/lineup-puros-alfambra.jpg" alt="Gama de productos Alfambra">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/90"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Productos</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Nuestras Marcas</h2></div>
     </div>
-    <div class="w-full bg-[#0D0D0D] pb-24 pt-16">
+    <div class="w-full bg-[#0D0D0D] pb-24 pt-14">
       <div class="max-w-7xl mx-auto px-8 md:px-20">
-        <div class="grid md:grid-cols-4 gap-12">
-          <!-- Filtros (izquierda) -->
-          <aside class="md:col-span-1">
-            <div class="md:sticky md:top-28">
-              <p class="section-label reveal mb-8" style="color: rgb(245, 183, 40); font-size: 11px;">FILTRAR</p>
-              <div class="mb-10">
-                <label class="text-xs uppercase tracking-wider mb-4 block" style="color: rgb(245, 183, 40); font-size: 11px;">Línea</label>
-                <div class="flex flex-col gap-2">
-                  <button type="button" class="prod-line text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="clasica">Línea Clásica</button>
-                  <button type="button" class="prod-line text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="premium">Línea Premium</button>
-                </div>
-              </div>
-              <div class="mb-10">
-                <label class="text-xs uppercase tracking-wider mb-4 block" style="color: rgb(245, 183, 40); font-size: 11px;">Fortaleza</label>
-                <div class="flex flex-wrap gap-2">
-                  <button type="button" class="prod-strength px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="suave">Suave</button>
-                  <button type="button" class="prod-strength px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="media">Media</button>
-                  <button type="button" class="prod-strength px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="fuerte">Fuerte</button>
-                </div>
-              </div>
-              <div class="mb-10">
-                <label class="text-xs uppercase tracking-wider mb-4 block" style="color: rgb(245, 183, 40); font-size: 11px;">Marca</label>
-                <div class="flex flex-col gap-2">
-                  <button type="button" class="prod-brand text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="brujito">El Brujito</button>
-                  <button type="button" class="prod-brand text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="verde">Alfambra Verde</button>
-                  <button type="button" class="prod-brand text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="naranja">Alfambra Naranja</button>
-                  <button type="button" class="prod-brand text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="seleccion">Alfambra Selección</button>
-                  <button type="button" class="prod-brand text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="gener">José Gener</button>
-                  <button type="button" class="prod-brand text-left px-4 py-2.5 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-val="mata">Alejandro Mata</button>
-                </div>
-              </div>
-              <button type="button" id="prod-clear" class="text-xs uppercase tracking-widest text-[#f5b728]/70 hover:text-[#f5b728] transition" style="font-size:11px;">Limpiar filtros</button>
-            </div>
-          </aside>
-          <!-- Rejilla de productos (derecha) -->
-          <div class="md:col-span-3">
-            <div id="prod-grid" class="space-y-16"></div>
-            <div id="prod-no-results" class="hidden text-center py-20"><p class="text-[#f8f6f2] opacity-60" style="font-size:16px;">No hay productos con esos filtros. Prueba otra combinación.</p></div>
-          </div>
+        <!-- Filtro superior: líneas -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-14 pb-8 border-b border-[#f5b728]/15">
+          <label for="line-filter" class="text-xs uppercase tracking-[0.18em]" style="color: rgb(245, 183, 40); font-size: 11px;">Ver línea</label>
+          <select id="line-filter" onchange="filterLine(this.value)" class="cat-lang px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 14px;">
+            <option value="all">Todas las líneas</option>
+            <option value="brujito">El Brujito</option>
+            <option value="verde">Alfambra Verde</option>
+            <option value="naranja">Alfambra Naranja</option>
+            <option value="seleccion">Alfambra Selección</option>
+            <option value="gener">José Gener</option>
+            <option value="mata">Alejandro Mata</option>
+          </select>
         </div>
+        <!-- Bloques por línea (render dinámico) -->
+        <div id="lines-container" class="space-y-20"></div>
       </div>
     </div>
   </section>
@@ -664,7 +639,7 @@
       window.scrollTo(0, 0);
       if (id === 'home') { observeHomeSections(); playHero(); }
       if (id === 'finder') updateFinderResults();
-      if (id === 'tienda') renderProducts();
+      if (id === 'tienda') renderLines();
       if (target) { resetReveals(target); requestAnimationFrame(() => revealInPage(target)); }
     }
     function observeHomeSections() {
@@ -928,69 +903,136 @@
     document.querySelectorAll('.gauge-btn').forEach(btn => { btn.addEventListener('click', () => { btn.classList.toggle('active'); btn.classList.toggle('bg-[#f5b728]'); btn.classList.toggle('text-[#0d0d0d]'); updateFinderResults(); }); });
     document.querySelectorAll('.size-btn').forEach(btn => { btn.addEventListener('click', () => { btn.classList.toggle('active'); btn.classList.toggle('bg-[#f5b728]'); btn.classList.toggle('text-[#0d0d0d]'); updateFinderResults(); }); });
 
-    // ---- Productos: rejilla por líneas comerciales + filtros ----
-    const productLines = [
-      { id: 'clasica', name: 'Línea Clásica', items: ['verde','naranja','seleccion','gener'] },
-      { id: 'premium', name: 'Línea Premium', items: ['brujito','mata'] }
+    // ---- Productos: banner por marca (línea) + rejilla de vitolas ----
+    const brandLines = [
+      { id:'brujito', name:'El Brujito', procedencia:'Nicaragua', fortaleza:'Media-Fuerte', envase:'Caja de madera',
+        img:{ main:'https://lh3.googleusercontent.com/d/1iAy31bkJC5n1Gek94WrEMvGVzDxPO_eu=w1200', thumb:'https://drive.google.com/thumbnail?id=1iAy31bkJC5n1Gek94WrEMvGVzDxPO_eu&sz=w1200', fallback:'https://images.pexels.com/photos/34323703/pexels-photo-34323703.jpeg?auto=compress&cs=tinysrgb&w=800' },
+        vitolas:[
+          {name:'El Brujito F1', formato:'Robusto (F1)', largo:'130 mm', uds:25},
+          {name:'El Brujito F2', formato:'Toro (F2)', largo:'150 mm', uds:25},
+          {name:'El Brujito F3', formato:'Churchill (F3)', largo:'160 mm', uds:25},
+          {name:'El Brujito F7 Toro', formato:'Toro (F7)', largo:'150 mm', uds:25},
+          {name:'El Brujito F8 Coronita', formato:'Coronita (F8)', largo:'115 mm', uds:50},
+          {name:'F9 10º Aniversario', formato:'Robusto (F9)', largo:'130 mm', uds:25},
+          {name:'Serie Oro Pelo de Oro E.L.', formato:'Toro', largo:'152 mm', uds:24},
+          {name:'Year of The Dragon', formato:'Toro', largo:'152 mm', uds:24},
+          {name:'10º Aniversario Torito', formato:'Torito', largo:'117 mm', uds:25},
+          {name:'Año de la Culebra', formato:'Culebra', largo:'178 mm', uds:24}
+        ] },
+      { id:'verde', name:'Alfambra Verde', procedencia:'Nicaragua', fortaleza:'Media', envase:'Mazo',
+        img:{ main:'https://images.pexels.com/photos/10343915/pexels-photo-10343915.jpeg?auto=compress&cs=tinysrgb&w=1200' },
+        vitolas:[
+          {name:'Gran Toro', formato:'Gran Toro', largo:'140 mm', uds:25},
+          {name:'Petit Toro', formato:'Petit Toro', largo:'110 mm', uds:25},
+          {name:'Robusto', formato:'Robusto', largo:'127 mm', uds:25},
+          {name:'Half Corona', formato:'Half Corona', largo:'90 mm', uds:25},
+          {name:'Magníficos', formato:'Magníficos', largo:'152 mm', uds:25}
+        ] },
+      { id:'naranja', name:'Alfambra Naranja', procedencia:'Nicaragua', fortaleza:'Media', envase:'Mazo',
+        img:{ main:'https://images.pexels.com/photos/27127660/pexels-photo-27127660.jpeg?auto=compress&cs=tinysrgb&w=1200' },
+        vitolas:[
+          {name:'Serie I Toro Gigante', formato:'Toro Gigante', largo:'152 mm', uds:10},
+          {name:'Serie IV Torpedo', formato:'Torpedo', largo:'152 mm', uds:10},
+          {name:'Serie V Robusto', formato:'Robusto', largo:'127 mm', uds:10},
+          {name:'Serie VIII Robusto Gordo', formato:'Robusto Gordo', largo:'127 mm', uds:10}
+        ] },
+      { id:'seleccion', name:'Alfambra Selección', procedencia:'Nicaragua', fortaleza:'Media', envase:'Caja de madera',
+        img:{ main:'https://images.pexels.com/photos/1637114/pexels-photo-1637114.jpeg?auto=compress&cs=tinysrgb&w=1200' },
+        vitolas:[
+          {name:'Selección Petit 52', formato:'Petit 52', largo:'102 mm', uds:25},
+          {name:'Selección Petit 56', formato:'Petit 56', largo:'102 mm', uds:25},
+          {name:'Selección Petit 60', formato:'Petit 60', largo:'102 mm', uds:25},
+          {name:'Selección Pirámide', formato:'Pirámide', largo:'152 mm', uds:25},
+          {name:'Selección Robusto', formato:'Robusto', largo:'127 mm', uds:25},
+          {name:'Selección Robusto Gordo', formato:'Robusto Gordo', largo:'127 mm', uds:25}
+        ] },
+      { id:'gener', name:'José Gener', procedencia:'Nicaragua', fortaleza:'Media', envase:'Caja de madera',
+        img:{ main:'https://lh3.googleusercontent.com/d/1dJHw0p8A_P8GDvahzU_GFw30sPNPBdvh=w1200', thumb:'https://drive.google.com/thumbnail?id=1dJHw0p8A_P8GDvahzU_GFw30sPNPBdvh&sz=w1200', fallback:'https://images.pexels.com/photos/11725476/pexels-photo-11725476.jpeg?auto=compress&cs=tinysrgb&w=800' },
+        vitolas:[
+          {name:'JG Robusto', formato:'Robusto', largo:'124 mm', uds:24},
+          {name:'JG Fantásticos', formato:'Fantásticos', largo:'127 mm', uds:24},
+          {name:'JG Pirámide', formato:'Pirámide', largo:'152 mm', uds:24},
+          {name:'JG Toro', formato:'Toro', largo:'152 mm', uds:24},
+          {name:'JG Maravillas', formato:'Maravillas', largo:'150 mm', uds:24},
+          {name:'JG Lancero', formato:'Lancero', largo:'192 mm', uds:24}
+        ] },
+      { id:'mata', name:'Alejandro Mata', procedencia:'Nicaragua', fortaleza:'Media', envase:'Caja de madera de lujo',
+        img:{ main:'https://images.pexels.com/photos/12874936/pexels-photo-12874936.jpeg?auto=compress&cs=tinysrgb&w=1200' },
+        vitolas:[
+          {name:'Boutique Magnifico', formato:'Magnifico', largo:'—', uds:25}
+        ] }
     ];
-    const productMeta = {
-      brujito:   { name:'El Brujito', strength:'fuerte', img:'https://lh3.googleusercontent.com/d/1iAy31bkJC5n1Gek94WrEMvGVzDxPO_eu=w800', thumb:'https://drive.google.com/thumbnail?id=1iAy31bkJC5n1Gek94WrEMvGVzDxPO_eu&sz=w800', fallback:'https://images.pexels.com/photos/34323703/pexels-photo-34323703.jpeg?auto=compress&cs=tinysrgb&w=600' },
-      verde:     { name:'Alfambra Verde', strength:'media', img:'https://images.pexels.com/photos/10343915/pexels-photo-10343915.jpeg?auto=compress&cs=tinysrgb&w=600' },
-      naranja:   { name:'Alfambra Naranja', strength:'media', img:'https://images.pexels.com/photos/27127660/pexels-photo-27127660.jpeg?auto=compress&cs=tinysrgb&w=600' },
-      seleccion: { name:'Alfambra Selección', strength:'media', img:'https://images.pexels.com/photos/1637114/pexels-photo-1637114.jpeg?auto=compress&cs=tinysrgb&w=600' },
-      gener:     { name:'José Gener', strength:'media', img:'https://lh3.googleusercontent.com/d/1dJHw0p8A_P8GDvahzU_GFw30sPNPBdvh=w800', thumb:'https://drive.google.com/thumbnail?id=1dJHw0p8A_P8GDvahzU_GFw30sPNPBdvh&sz=w800', fallback:'https://images.pexels.com/photos/11725476/pexels-photo-11725476.jpeg?auto=compress&cs=tinysrgb&w=600' },
-      mata:      { name:'Alejandro Mata', strength:'media', img:'https://images.pexels.com/photos/12874936/pexels-photo-12874936.jpeg?auto=compress&cs=tinysrgb&w=600' }
-    };
-    function prodImgHTML(id) {
-      const m = productMeta[id];
+    function lineImg(cfg, cls, alt) {
       let onerr = '';
-      if (m.thumb) onerr = ` onerror="this.onerror=function(){this.onerror=null;this.src='${m.fallback}'};this.src='${m.thumb}'"`;
-      return `<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${m.img}" alt="${m.name}"${onerr}>`;
+      if (cfg.thumb) onerr = ` onerror="this.onerror=function(){this.onerror=null;this.src='${cfg.fallback}'};this.src='${cfg.thumb}'"`;
+      return `<img class="${cls}" loading="lazy" src="${cfg.main}" alt="${alt}"${onerr}>`;
     }
-    function renderProducts() {
-      const grid = document.getElementById('prod-grid');
-      if (!grid) return;
-      const fLines = Array.from(document.querySelectorAll('.prod-line.active')).map(b => b.dataset.val);
-      const fStr   = Array.from(document.querySelectorAll('.prod-strength.active')).map(b => b.dataset.val);
-      const fBrand = Array.from(document.querySelectorAll('.prod-brand.active')).map(b => b.dataset.val);
-      const none = document.getElementById('prod-no-results');
-      let html = '', total = 0;
-      productLines.forEach(line => {
-        if (fLines.length && !fLines.includes(line.id)) return;
-        const items = line.items.filter(id => {
-          const m = productMeta[id];
-          if (fStr.length && !fStr.includes(m.strength)) return false;
-          if (fBrand.length && !fBrand.includes(id)) return false;
-          return true;
-        });
-        if (!items.length) return;
-        total += items.length;
-        const cards = items.map(id => {
-          const m = productMeta[id]; const c = cigars[id];
-          return `<button onclick="openDetail('${id}')" class="group text-left">
-            <div class="aspect-square overflow-hidden rounded-lg bg-[#1a1a1a] border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all">${prodImgHTML(id)}</div>
-            <h4 class="font-serif text-[#F8F6F2] mt-4 group-hover:text-[#f5b728] transition" style="font-size:22px;">${m.name}</h4>
-            <p class="text-[#f5b728]/80 mt-1" style="font-size:12px;letter-spacing:0.04em;">${c ? c.tasting : ''}</p>
-          </button>`;
-        }).join('');
-        html += `<div class="reveal"><h3 class="font-serif text-center mb-8" style="color:#F8F6F2;font-size:30px;">${line.name}</h3><div class="grid grid-cols-1 sm:grid-cols-2 gap-8">${cards}</div></div>`;
-      });
-      grid.innerHTML = html;
-      none.classList.toggle('hidden', total > 0);
+    function renderLines() {
+      const cont = document.getElementById('lines-container');
+      if (!cont) return;
+      cont.innerHTML = brandLines.map(b => {
+        const c = cigars[b.id] || {};
+        const cards = b.vitolas.map((v, i) => `
+          <button onclick="openVitola('${b.id}',${i})" class="group text-left">
+            <div class="aspect-square overflow-hidden rounded-lg bg-[#1a1a1a] border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all">${lineImg(b.img, 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105', v.name)}</div>
+            <h4 class="font-serif text-[#F8F6F2] mt-3 group-hover:text-[#f5b728] transition" style="font-size:19px;">${v.name}</h4>
+            <p class="text-[#f5b728]/80 mt-1" style="font-size:12px;">${v.formato} · ${v.largo}</p>
+          </button>`).join('');
+        return `<div class="line-block reveal" data-line="${b.id}">
+          <button onclick="openDetail('${b.id}')" class="group relative block w-full h-48 md:h-60 rounded-xl overflow-hidden mb-8">
+            ${lineImg(b.img, 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105', b.name)}
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/55 to-[#0D0D0D]/15"></div>
+            <div class="absolute inset-0 flex items-center justify-between px-8 md:px-12">
+              <div class="text-left">
+                <h3 class="font-serif text-[#F8F6F2] leading-none" style="font-size:52px;">${b.name}</h3>
+                <p class="text-[#f5b728] mt-2" style="font-size:13px;">${c.tasting || ''}</p>
+              </div>
+              <span class="hidden sm:inline-flex items-center gap-2 text-[#f5b728] font-serif uppercase tracking-widest group-hover:gap-3 transition-all" style="font-size:12px;">Ver descripción <i data-lucide="arrow-right" style="width:16px;height:16px"></i></span>
+            </div>
+          </button>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">${cards}</div>
+        </div>`;
+      }).join('');
       if (window.lucide) lucide.createIcons();
+      const sel = document.getElementById('line-filter');
+      if (sel) filterLine(sel.value);
       requestAnimationFrame(() => revealInPage(document.getElementById('page-tienda')));
     }
-    document.querySelectorAll('.prod-line, .prod-strength, .prod-brand').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active'); btn.classList.toggle('bg-[#f5b728]'); btn.classList.toggle('text-[#0d0d0d]'); btn.classList.toggle('border-[#f5b728]');
-        renderProducts();
+    function filterLine(val) {
+      document.querySelectorAll('#lines-container .line-block').forEach(el => {
+        el.style.display = (val === 'all' || el.dataset.line === val) ? '' : 'none';
       });
-    });
-    document.getElementById('prod-clear').addEventListener('click', () => {
-      document.querySelectorAll('.prod-line, .prod-strength, .prod-brand').forEach(b => b.classList.remove('active','bg-[#f5b728]','text-[#0d0d0d]','border-[#f5b728]'));
-      renderProducts();
-    });
-    renderProducts();
+    }
+    function vitolaSpec(label, value) {
+      return `<div class="flex justify-between gap-4 border-b border-[#0d0d0d]/10 pb-3"><span class="text-[#0e4f2e] uppercase text-xs font-semibold tracking-wider">${label}</span><span class="text-[#0d0d0d]/80 text-sm text-right">${value}</span></div>`;
+    }
+    function openVitola(brandId, index) {
+      const b = brandLines.find(x => x.id === brandId);
+      if (!b) return;
+      const v = b.vitolas[index];
+      const c = cigars[brandId] || {};
+      document.getElementById('detail-content').innerHTML = `
+        <button onclick="closeDetail()" class="mb-8 inline-flex items-center gap-2 text-[#0e4f2e] font-serif uppercase tracking-widest hover:opacity-70 transition" style="font-size:12px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> ${b.name}</button>
+        <div class="mb-16">
+          <p class="text-[#f5b728] text-sm tracking-[0.2em] uppercase font-semibold mb-3">${b.name}</p>
+          <h2 class="font-serif text-5xl md:text-6xl text-[#0D0D0D] leading-[0.95] mb-8">${v.name}</h2>
+          <p class="text-[#0d0d0d]/70 text-base md:text-lg leading-[1.8] mb-12 max-w-3xl">${c.flavor_desc || ''}</p>
+          <div class="grid md:grid-cols-2 gap-x-12 gap-y-5 max-w-3xl">
+            ${vitolaSpec('Formato / Vitola', v.formato)}
+            ${vitolaSpec('Largo', v.largo)}
+            ${vitolaSpec('Unidades por caja', v.uds)}
+            ${vitolaSpec('Procedencia', b.procedencia)}
+            ${vitolaSpec('Fortaleza', b.fortaleza)}
+            ${vitolaSpec('Envase', b.envase)}
+            ${c.pairing ? '<div class="md:col-span-2">' + vitolaSpec('Maridaje recomendado', c.pairing) + '</div>' : ''}
+          </div>
+        </div>`;
+      const overlay = document.getElementById('detail-overlay');
+      overlay.style.display = 'block';
+      requestAnimationFrame(() => overlay.classList.add('show'));
+      if (window.lucide) lucide.createIcons();
+    }
+    renderLines();
     lucide.createIcons();
   </script>
 </body>
