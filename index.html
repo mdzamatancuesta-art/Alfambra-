@@ -389,8 +389,8 @@
       <div class="max-w-7xl mx-auto px-8 md:px-20">
         <!-- Filtro superior: líneas -->
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-14 pb-8 border-b border-[#f5b728]/15">
-          <label for="line-filter" class="text-xs uppercase tracking-[0.18em]" style="color: rgb(245, 183, 40); font-size: 11px;">Ver línea</label>
-          <select id="line-filter" onchange="filterLine(this.value)" class="cat-lang px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 14px;">
+          <label for="line-filter" class="text-xs uppercase tracking-[0.18em]" style="color: rgb(245, 183, 40); font-size: 11px;">Ir a la línea</label>
+          <select id="line-filter" onchange="scrollToLine(this.value)" class="cat-lang px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 14px;">
             <option value="all">Todas las líneas</option>
             <option value="brujito">El Brujito</option>
             <option value="verde">Alfambra Verde</option>
@@ -434,6 +434,9 @@
   <section id="page-news-n1" class="page"></section>
   <section id="page-news-n2" class="page"></section>
   <section id="page-news-n3" class="page"></section>
+
+  <!-- Página individual de PRODUCTO (vitola) -->
+  <section id="page-vitola" class="page"></section>
 
   <!-- CATALOGUE -->
   <section id="page-catalogue" class="page">
@@ -875,7 +878,7 @@
           {name:'Magníficos', formato:'Magníficos', largo:'152 mm', uds:25}
         ] },
       { id:'naranja', name:'Alfambra Naranja', procedencia:'Nicaragua', fortaleza:'Media', envase:'Mazo',
-        img:{ main:'https://images.pexels.com/photos/27127660/pexels-photo-27127660.jpeg?auto=compress&cs=tinysrgb&w=1200' },
+        img:{ main:'https://lh3.googleusercontent.com/d/1UBPBpGvALevojxW6We3QB8D35gE9iJmH=w1200', thumb:'https://drive.google.com/thumbnail?id=1UBPBpGvALevojxW6We3QB8D35gE9iJmH&sz=w1200', fallback:'https://images.pexels.com/photos/27127660/pexels-photo-27127660.jpeg?auto=compress&cs=tinysrgb&w=800' },
         vitolas:[
           {name:'Serie I Toro Gigante', formato:'Toro Gigante', largo:'152 mm', uds:10},
           {name:'Serie IV Torpedo', formato:'Torpedo', largo:'152 mm', uds:10},
@@ -919,64 +922,99 @@
       cont.innerHTML = brandLines.map(b => {
         const c = cigars[b.id] || {};
         const cards = b.vitolas.map((v, i) => `
-          <button onclick="openVitola('${b.id}',${i})" class="group text-left">
+          <button onclick="showVitola('${b.id}',${i})" class="group text-left">
             <div class="aspect-square overflow-hidden rounded-lg bg-[#1a1a1a] border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all">${lineImg(b.img, 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105', v.name)}</div>
             <h4 class="font-serif text-[#F8F6F2] mt-3 group-hover:text-[#f5b728] transition" style="font-size:19px;">${v.name}</h4>
             <p class="text-[#f5b728]/80 mt-1" style="font-size:12px;">${v.formato} · ${v.largo}</p>
           </button>`).join('');
-        return `<div class="line-block reveal" data-line="${b.id}">
-          <button onclick="openDetail('${b.id}')" class="group relative block w-full h-48 md:h-60 rounded-xl overflow-hidden mb-8">
-            ${lineImg(b.img, 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105', b.name)}
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/55 to-[#0D0D0D]/15"></div>
-            <div class="absolute inset-0 flex items-center justify-between px-8 md:px-12">
-              <div class="text-left">
-                <h3 class="font-serif text-[#F8F6F2] leading-none" style="font-size:52px;">${b.name}</h3>
-                <p class="text-[#f5b728] mt-2" style="font-size:13px;">${c.tasting || ''}</p>
-              </div>
-              <span class="hidden sm:inline-flex items-center gap-2 text-[#f5b728] font-serif uppercase tracking-widest group-hover:gap-3 transition-all" style="font-size:12px;">Ver descripción <i data-lucide="arrow-right" style="width:16px;height:16px"></i></span>
+        // Las marcas no tienen página: sólo su foto + descripción, y sus productos como botones.
+        return `<div id="linea-${b.id}" class="line-block reveal scroll-mt-28" data-line="${b.id}">
+          <div class="relative w-full h-52 md:h-64 rounded-xl overflow-hidden mb-6">
+            ${lineImg(b.img, 'absolute inset-0 w-full h-full object-cover', b.name)}
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/60 to-[#0D0D0D]/20"></div>
+            <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-12 max-w-2xl">
+              <h3 class="font-serif text-[#F8F6F2] leading-none" style="font-size:52px;">${b.name}</h3>
+              <p class="text-[#f5b728] mt-2" style="font-size:13px;">${c.tasting || ''} · ${b.fortaleza}</p>
             </div>
-          </button>
+          </div>
+          <p class="text-[#F8F6F2]/70 leading-[1.9] max-w-3xl mb-10" style="font-size:15px;">${c.flavor_desc || ''}</p>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">${cards}</div>
         </div>`;
       }).join('');
       if (window.lucide) lucide.createIcons();
-      const sel = document.getElementById('line-filter');
-      if (sel) filterLine(sel.value);
       requestAnimationFrame(() => revealInPage(document.getElementById('page-tienda')));
     }
-    function filterLine(val) {
-      document.querySelectorAll('#lines-container .line-block').forEach(el => {
-        el.style.display = (val === 'all' || el.dataset.line === val) ? '' : 'none';
-      });
+    function scrollToLine(val) {
+      if (val === 'all') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      const el = document.getElementById('linea-' + val);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     function vitolaSpec(label, value) {
       return `<div class="flex justify-between gap-4 border-b border-[#0d0d0d]/10 pb-3"><span class="text-[#0e4f2e] uppercase text-xs font-semibold tracking-wider">${label}</span><span class="text-[#0d0d0d]/80 text-sm text-right">${value}</span></div>`;
     }
-    function openVitola(brandId, index) {
+    function intensityBar(n) {
+      const pct = Math.round((n / 5) * 100);
+      return `<div><div class="flex items-center justify-between mb-2"><span class="text-[#0e4f2e] uppercase text-xs font-semibold tracking-wider">Fortaleza</span><span class="text-[#0d0d0d]/60 text-sm font-serif">${n} / 5</span></div><div class="h-3 rounded-full bg-[#0d0d0d]/10 overflow-hidden"><div class="h-full bg-gradient-to-r from-[#c9a24a] to-[#8a5a1a]" style="width:${pct}%"></div></div></div>`;
+    }
+    function galleryTile(src, alt) {
+      if (!src) return `<div class="aspect-square rounded-lg bg-[#F1EEE8] flex items-center justify-center"><img src="assets/img/logos/alfambra-gold.png" class="w-2/3 opacity-40" alt=""></div>`;
+      return `<div class="aspect-square rounded-lg overflow-hidden bg-[#F1EEE8] flex items-center justify-center"><img class="w-full h-full object-cover" loading="lazy" src="${src}" alt="${alt}" onerror="this.onerror=null;this.src='assets/img/logos/alfambra-gold.png';this.className='w-2/3 opacity-40'"></div>`;
+    }
+    function showVitola(brandId, index) {
       const b = brandLines.find(x => x.id === brandId);
       if (!b) return;
       const v = b.vitolas[index];
       const c = cigars[brandId] || {};
-      document.getElementById('detail-content').innerHTML = `
-        <button onclick="closeDetail()" class="mb-8 inline-flex items-center gap-2 text-[#0e4f2e] font-serif uppercase tracking-widest hover:opacity-70 transition" style="font-size:12px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> ${b.name}</button>
-        <div class="mb-16">
-          <p class="text-[#f5b728] text-sm tracking-[0.2em] uppercase font-semibold mb-3">${b.name}</p>
-          <h2 class="font-serif text-5xl md:text-6xl text-[#0D0D0D] leading-[0.95] mb-8">${v.name}</h2>
-          <p class="text-[#0d0d0d]/70 text-base md:text-lg leading-[1.8] mb-12 max-w-3xl">${c.flavor_desc || ''}</p>
-          <div class="grid md:grid-cols-2 gap-x-12 gap-y-5 max-w-3xl">
-            ${vitolaSpec('Formato / Vitola', v.formato)}
-            ${vitolaSpec('Largo', v.largo)}
-            ${vitolaSpec('Unidades por caja', v.uds)}
-            ${vitolaSpec('Procedencia', b.procedencia)}
-            ${vitolaSpec('Fortaleza', b.fortaleza)}
-            ${vitolaSpec('Envase', b.envase)}
-            ${c.pairing ? '<div class="md:col-span-2">' + vitolaSpec('Maridaje recomendado', c.pairing) + '</div>' : ''}
+      const m = b.img;
+      const toLogo = "this.onerror=null;this.src='assets/img/logos/alfambra-gold.png';this.className='w-1/2 opacity-40 mx-auto'";
+      const chain = m.thumb
+        ? ` onerror="this.onerror=function(){this.onerror=function(){${toLogo}};this.src='${m.fallback}'};this.src='${m.thumb}'"`
+        : ` onerror="${toLogo}"`;
+      const mainImg = `<img class="w-full h-auto object-contain max-h-[520px] mx-auto" loading="lazy" src="${m.main}" alt="${v.name}"${chain}>`;
+      const gallery = [b.img.main, null, null, null].map(s => galleryTile(s, v.name)).join('');
+      document.getElementById('page-vitola').innerHTML = `
+        <div class="min-h-screen bg-[#F8F6F2] pt-28 pb-24 px-8 md:px-20">
+          <div class="max-w-6xl mx-auto">
+            <button onclick="showPage('tienda');setTimeout(function(){scrollToLine('${b.id}')},60)" class="mb-10 inline-flex items-center gap-2 text-[#0e4f2e] font-serif uppercase tracking-widest hover:opacity-70 transition" style="font-size:12px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> ${b.name}</button>
+            <div class="grid md:grid-cols-2 gap-14 items-start">
+              <div class="reveal reveal-left bg-white rounded-2xl border border-[#0d0d0d]/8 p-8 flex items-center justify-center" style="min-height:360px;">${mainImg}</div>
+              <div class="reveal reveal-right relative">
+                ${c.awards ? `<div class="absolute -top-1 right-0 text-center"><div class="w-16 h-16 rounded-full border-2 border-[#f5b728] flex items-center justify-center"><i data-lucide="award" style="width:26px;height:26px;color:#0e4f2e"></i></div><p class="uppercase tracking-wider text-[#0e4f2e] mt-1" style="font-size:10px;">Premios</p></div>` : ''}
+                <h1 class="font-serif text-4xl md:text-5xl text-[#0D0D0D] leading-[0.95] mb-2 pr-20">${v.name}</h1>
+                <p class="text-[#0e4f2e] uppercase tracking-[0.18em] font-semibold mb-8" style="font-size:12px;">Línea ${b.name}</p>
+                <p class="text-[#0d0d0d]/70 leading-[1.85] mb-10" style="font-size:15px;">${c.flavor_desc || ''}</p>
+                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-5" style="font-size:12px;">Características</h3>
+                <div class="space-y-4 mb-10">
+                  ${intensityBar(c.intensity || 3)}
+                  ${vitolaSpec('Formato / Vitola', v.formato)}
+                  ${vitolaSpec('Longitud', v.largo)}
+                  ${vitolaSpec('Origen', b.procedencia)}
+                  ${vitolaSpec('Envase', b.envase)}
+                  ${vitolaSpec('Unidades por caja', v.uds)}
+                </div>
+                ${c.awards ? `<div class="mb-2 p-4 bg-white border-l-4 border-[#f5b728]"><p class="text-[#0e4f2e] uppercase tracking-[0.15em] font-semibold mb-2" style="font-size:11px;">Reconocimiento</p><p class="text-[#0d0d0d]/80 text-sm">${c.awards}</p></div>` : ''}
+              </div>
+            </div>
+            <div class="mt-20">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold" style="font-size:12px;">Galería</h3>
+                <button onclick="shareVitola('${b.id}',${index})" class="inline-flex items-center gap-2 text-[#0e4f2e] hover:text-[#f5b728] transition font-serif uppercase tracking-widest" style="font-size:12px;"><i data-lucide="share-2" style="width:16px;height:16px"></i> Compartir</button>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">${gallery}</div>
+            </div>
+            ${c.pairing ? `<div class="mt-16 pt-10 border-t border-[#0d0d0d]/10 max-w-3xl"><h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-3" style="font-size:12px;">Maridaje recomendado</h3><p class="text-[#0d0d0d]/75 leading-relaxed" style="font-size:16px;">${c.pairing}</p></div>` : ''}
           </div>
         </div>`;
-      const overlay = document.getElementById('detail-overlay');
-      overlay.style.display = 'block';
-      requestAnimationFrame(() => overlay.classList.add('show'));
+      showPage('vitola');
       if (window.lucide) lucide.createIcons();
+    }
+    function shareVitola(brandId, index) {
+      const b = brandLines.find(x => x.id === brandId);
+      const v = b ? b.vitolas[index] : null;
+      const url = location.origin + location.pathname + '#producto-' + brandId + '-' + index;
+      const title = v ? ('Tabacalera Alfambra — ' + v.name) : 'Tabacalera Alfambra';
+      if (navigator.share) { navigator.share({ title, url }).catch(() => {}); }
+      else if (navigator.clipboard) { navigator.clipboard.writeText(url).catch(() => {}); }
     }
     renderLines();
     lucide.createIcons();
