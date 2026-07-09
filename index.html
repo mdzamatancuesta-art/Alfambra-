@@ -25,6 +25,14 @@
     .nav-prod-inner { display: block; background: rgba(10,58,32,0.97); backdrop-filter: blur(10px); border: 1px solid rgba(245,183,40,0.22); border-radius: 10px; padding: 8px; box-shadow: 0 22px 55px -20px rgba(0,0,0,0.75); }
     .nav-prod-inner a { display: block; padding: 8px 18px; color: var(--ivory); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; border-radius: 6px; transition: background 0.2s, color 0.2s; white-space: nowrap; text-align: left; }
     .nav-prod-inner a:hover { background: rgba(245,183,40,0.14); color: var(--gold); }
+    /* Finder (Encuentra tu Puro) — tema claro */
+    .fnd-btn { padding: 8px 16px; font-family: 'Instrument Serif', serif; font-size: 14px; color: #0d0d0d; background: #fff; border: 1px solid rgba(14,79,46,0.25); border-radius: 9px; cursor: pointer; transition: all 0.2s; }
+    .fnd-btn:hover { border-color: #0e4f2e; }
+    .fnd-btn.active { background: #0e4f2e; color: #F8F6F2; border-color: #0e4f2e; }
+    .fnd-brand .logo-chip { display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: #fff; border: 1px solid rgba(14,79,46,0.2); border-radius: 12px; transition: all 0.2s; }
+    .fnd-brand .logo-chip img { width: 72%; height: auto; max-height: 72%; object-fit: contain; }
+    .fnd-brand:hover .logo-chip { border-color: #0e4f2e; }
+    .fnd-brand.active .logo-chip { border-color: #0e4f2e; box-shadow: 0 0 0 2px rgba(14,79,46,0.35); }
     .hero-title-line { overflow: hidden; }
     .hero-title-line > * { display: block; transform: translateY(110%); opacity: 0; }
     /* Animation plays only when #hero-content gets .hero-in (triggered when Home is revealed) */
@@ -311,57 +319,51 @@
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
       <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Encuentra tu Puro</h2></div>
     </div>
-    <div class="w-full bg-[#0D0D0D] pb-24">
+    <div class="w-full bg-[#F8F6F2] pb-24">
       <div class="max-w-6xl mx-auto px-8 md:px-20 pt-16">
-        <p class="section-label reveal mb-4" style="color: rgb(245, 183, 40); font-size: 11px;">EXPLORAR</p>
-        <h2 class="font-serif mb-16" style="color: rgb(248, 246, 242); font-size: 32px;">Filtra por tus preferencias</h2>
-        <div class="space-y-10 mb-16">
+        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">EXPLORAR</p>
+        <h2 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 32px;">Filtra por tus preferencias</h2>
+        <p class="mb-12 max-w-2xl leading-relaxed" style="color: rgb(13, 13, 13); opacity:0.6; font-size:15px;">Elige marca, fortaleza, cepo y tamaño para descubrir la vitola perfecta entre toda nuestra gama.</p>
+        <div class="space-y-9 mb-14">
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(245, 183, 40); font-size: 11px;">Intensidad</label>
-            <div class="flex items-center gap-4">
-              <input type="range" id="strength-slider" min="0" max="3" value="0" class="flex-1 h-2 rounded-lg appearance-none cursor-pointer" style="accent-color: #f5b728; background: linear-gradient(to right, #2d1810, #c27d3d);">
-              <div class="text-[#f8f6f2] text-xs font-serif px-3 py-2 rounded border border-[#f5b728]/30 min-w-[50px] text-center" id="strength-label">Todos</div>
-            </div>
-            <div class="flex justify-between text-[#f8f6f2]/50 text-xs mt-2"><span>Suave</span><span>Media</span><span>Fuerte</span></div>
-          </div>
-          <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(245, 183, 40); font-size: 11px;">Cepo (Ring Gauge)</label>
-            <div class="flex flex-wrap gap-2">
-              <button type="button" class="gauge-btn px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-gauge="42">42</button>
-              <button type="button" class="gauge-btn px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-gauge="50">50</button>
-              <button type="button" class="gauge-btn px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-gauge="52">52</button>
-              <button type="button" class="gauge-btn px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-gauge="54">54</button>
-              <button type="button" class="gauge-btn px-3 py-2 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-gauge="60">60</button>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Marca</label>
+            <div class="flex flex-wrap gap-4">
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="brujito"><span class="logo-chip"><img src="assets/img/logos/alfambra-gold.png" alt="El Brujito"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">El Brujito</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="verde"><span class="logo-chip"><img src="assets/img/logos/alfambra-gold.png" alt="Alfambra Verde"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">Verde</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="naranja"><span class="logo-chip"><img src="assets/img/logos/clasica-logo.png" alt="Alfambra Naranja"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">Naranja</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="seleccion"><span class="logo-chip"><img src="assets/img/logos/seleccion-logo.png" alt="Alfambra Selección"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">Selección</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="gener"><span class="logo-chip"><img src="assets/img/logos/jose-logo.png" alt="José Gener"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">José Gener</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="mata"><span class="logo-chip"><img src="assets/img/logos/alfambra-gold.png" alt="Alejandro Mata"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">A. Mata</span></button>
             </div>
           </div>
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(245, 183, 40); font-size: 11px;">Tamaño</label>
-            <div class="flex gap-4">
-              <button type="button" class="size-btn flex-1 px-4 py-3 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-size="corto">Corto</button>
-              <button type="button" class="size-btn flex-1 px-4 py-3 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-size="medio">Medio</button>
-              <button type="button" class="size-btn flex-1 px-4 py-3 text-[#f8f6f2] text-sm font-serif border border-[#f5b728]/30 rounded hover:border-[#f5b728] transition" data-size="largo">Largo</button>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Fortaleza</label>
+            <div class="flex flex-wrap gap-3">
+              <button type="button" class="fnd-btn fnd-str" data-str="Media">Media</button>
+              <button type="button" class="fnd-btn fnd-str" data-str="Media-Fuerte">Media-Fuerte</button>
             </div>
           </div>
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(245, 183, 40); font-size: 11px;">Marca</label>
-            <div class="flex gap-6">
-              <button type="button" class="brand-logo-btn group relative flex flex-col items-center cursor-pointer transition" data-brand="alfambra">
-                <div class="w-20 h-20 bg-gradient-to-br from-[#2d1810] to-[#0d0d0d] rounded-lg border-2 border-[#f5b728]/30 flex items-center justify-center text-2xl transition-all group-hover:border-[#f5b728] group-hover:scale-105">🅰️</div>
-                <span class="text-[#f8f6f2] text-xs mt-3 font-serif">Alfambra</span>
-              </button>
-              <button type="button" class="brand-logo-btn group relative flex flex-col items-center cursor-pointer transition" data-brand="brujito">
-                <div class="w-20 h-20 bg-gradient-to-br from-[#2d1810] to-[#0d0d0d] rounded-lg border-2 border-[#f5b728]/30 flex items-center justify-center text-2xl transition-all group-hover:border-[#f5b728] group-hover:scale-105">🪄</div>
-                <span class="text-[#f8f6f2] text-xs mt-3 font-serif">El Brujito</span>
-              </button>
-              <button type="button" class="brand-logo-btn group relative flex flex-col items-center cursor-pointer transition" data-brand="special">
-                <div class="w-20 h-20 bg-gradient-to-br from-[#2d1810] to-[#0d0d0d] rounded-lg border-2 border-[#f5b728]/30 flex items-center justify-center text-2xl transition-all group-hover:border-[#f5b728] group-hover:scale-105">⭐</div>
-                <span class="text-[#f8f6f2] text-xs mt-3 font-serif">Especiales</span>
-              </button>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Cepo (Ring Gauge)</label>
+            <div class="flex flex-wrap gap-3">
+              <button type="button" class="fnd-btn fnd-cepo" data-cepo="fino">Fino · 38–46</button>
+              <button type="button" class="fnd-btn fnd-cepo" data-cepo="medio">Medio · 48–52</button>
+              <button type="button" class="fnd-btn fnd-cepo" data-cepo="grueso">Grueso · 54–60</button>
             </div>
           </div>
+          <div class="flex flex-col">
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Tamaño</label>
+            <div class="flex flex-wrap gap-3">
+              <button type="button" class="fnd-btn fnd-size" data-size="corto">Corto · &lt;120 mm</button>
+              <button type="button" class="fnd-btn fnd-size" data-size="medio">Medio · 120–150 mm</button>
+              <button type="button" class="fnd-btn fnd-size" data-size="largo">Largo · &gt;150 mm</button>
+            </div>
+          </div>
+          <button type="button" id="finder-clear" class="text-xs uppercase tracking-widest text-[#0e4f2e]/70 hover:text-[#0e4f2e] transition" style="font-size:11px;">Limpiar filtros</button>
         </div>
-        <div id="finder-results" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-        <div id="finder-no-results" class="text-center py-16 hidden"><p class="text-[#f8f6f2] opacity-60" style="font-size: 16px;">No se encontraron puros con esos filtros. Prueba otra combinación.</p></div>
+        <p id="finder-count" class="mb-6" style="color:#0e4f2e;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;"></p>
+        <div id="finder-results" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="finder-no-results" class="text-center py-16 hidden"><p style="color:#0d0d0d;opacity:0.6;font-size: 16px;">No se encontraron puros con esos filtros. Prueba otra combinación.</p></div>
       </div>
     </div>
   </section>
@@ -844,36 +846,54 @@
       else { navigator.clipboard.writeText(url).catch(() => {}); }
     }
 
-    const finderDatabase = [
-      { id: 'brujito', name: 'El Brujito', strength: 'fuerte', gauge: '50', size: 'medio', brand: 'brujito' },
-      { id: 'verde', name: 'Alfambra Verde', strength: 'media', gauge: '42', size: 'medio', brand: 'alfambra' },
-      { id: 'naranja', name: 'Alfambra Naranja', strength: 'media', gauge: '50', size: 'medio', brand: 'alfambra' },
-      { id: 'seleccion', name: 'Alfambra Selección', strength: 'media', gauge: '60', size: 'largo', brand: 'alfambra' },
-      { id: 'gener', name: 'José Gener', strength: 'media', gauge: '52', size: 'corto', brand: 'special' },
-      { id: 'mata', name: 'Alejandro Mata', strength: 'media', gauge: '52', size: 'medio', brand: 'special' }
-    ];
-    function updateFinderResults() {
-      const strengthSlider = document.getElementById('strength-slider').value;
-      const selectedGauges = Array.from(document.querySelectorAll('.gauge-btn.active')).map(el => el.dataset.gauge);
-      const selectedSizes = Array.from(document.querySelectorAll('.size-btn.active')).map(el => el.dataset.size);
-      const brandFilters = Array.from(document.querySelectorAll('.brand-logo-btn.active')).map(el => el.dataset.brand);
-      let filtered = finderDatabase;
-      if (strengthSlider !== '0') { const strengthMap = { '1': 'suave', '2': 'media', '3': 'fuerte' }; filtered = filtered.filter(c => c.strength === strengthMap[strengthSlider]); }
-      if (selectedGauges.length > 0) filtered = filtered.filter(c => selectedGauges.includes(c.gauge));
-      if (selectedSizes.length > 0) filtered = filtered.filter(c => selectedSizes.includes(c.size));
-      if (brandFilters.length > 0) filtered = filtered.filter(c => brandFilters.includes(c.brand));
-      const resultsContainer = document.getElementById('finder-results');
-      const noResultsDiv = document.getElementById('finder-no-results');
-      if (filtered.length === 0) { resultsContainer.innerHTML = ''; noResultsDiv.classList.remove('hidden'); }
-      else {
-        noResultsDiv.classList.add('hidden');
-        resultsContainer.innerHTML = filtered.map((cigar, i) => `<button onclick="openDetail('${cigar.id}')" class="finder-card group cursor-pointer text-left" style="animation-delay:${i*0.08}s"><div class="bg-[#1a1a1a] rounded-lg overflow-hidden border border-[#f5b728]/20 hover:border-[#f5b728]/60 transition-all h-full flex flex-col"><div class="aspect-square bg-gradient-to-br from-[#2d1810] to-[#0d0d0d] flex items-center justify-center"><div class="text-5xl opacity-20 group-hover:scale-110 transition-transform">🚬</div></div><div class="p-6 flex flex-col flex-1"><h3 class="font-serif text-xl text-[#f8f6f2] mb-2 group-hover:text-[#f5b728] transition">${cigar.name}</h3><p class="text-[#f5b728] text-xs uppercase tracking-wider">Descubrir</p></div></div></button>`).join('');
-      }
+    const brandLogo = {
+      brujito:'assets/img/logos/alfambra-gold.png', verde:'assets/img/logos/alfambra-gold.png',
+      naranja:'assets/img/logos/clasica-logo.png', seleccion:'assets/img/logos/seleccion-logo.png',
+      gener:'assets/img/logos/jose-logo.png', mata:'assets/img/logos/alfambra-gold.png'
+    };
+    function cepoBand(c){ return c <= 46 ? 'fino' : (c <= 52 ? 'medio' : 'grueso'); }
+    function sizeBand(mm){ return !mm ? null : (mm < 120 ? 'corto' : (mm <= 150 ? 'medio' : 'largo')); }
+    function finderVitolas(){
+      const out = [];
+      brandLines.forEach(b => b.vitolas.forEach((v, vi) => out.push({
+        brand:b.id, brandName:b.name, vi, name:v.name, formato:v.formato, cepo:v.cepo,
+        largo: parseInt(v.largo) || null, fortaleza: b.fortaleza
+      })));
+      return out;
     }
-    document.querySelectorAll('.brand-logo-btn').forEach(btn => { btn.addEventListener('click', () => { btn.classList.toggle('active'); btn.querySelector('div').classList.toggle('border-[#f5b728]'); updateFinderResults(); }); });
-    document.getElementById('strength-slider').addEventListener('input', (e) => { const m = { '0': 'Todos', '1': 'Suave', '2': 'Media', '3': 'Fuerte' }; document.getElementById('strength-label').textContent = m[e.target.value]; updateFinderResults(); });
-    document.querySelectorAll('.gauge-btn').forEach(btn => { btn.addEventListener('click', () => { btn.classList.toggle('active'); btn.classList.toggle('bg-[#f5b728]'); btn.classList.toggle('text-[#0d0d0d]'); updateFinderResults(); }); });
-    document.querySelectorAll('.size-btn').forEach(btn => { btn.addEventListener('click', () => { btn.classList.toggle('active'); btn.classList.toggle('bg-[#f5b728]'); btn.classList.toggle('text-[#0d0d0d]'); updateFinderResults(); }); });
+    function updateFinderResults(){
+      const brands = Array.from(document.querySelectorAll('.fnd-brand.active')).map(e => e.dataset.brand);
+      const strs   = Array.from(document.querySelectorAll('.fnd-str.active')).map(e => e.dataset.str);
+      const cepos  = Array.from(document.querySelectorAll('.fnd-cepo.active')).map(e => e.dataset.cepo);
+      const sizes  = Array.from(document.querySelectorAll('.fnd-size.active')).map(e => e.dataset.size);
+      let list = finderVitolas();
+      if (brands.length) list = list.filter(x => brands.includes(x.brand));
+      if (strs.length)   list = list.filter(x => strs.includes(x.fortaleza));
+      if (cepos.length)  list = list.filter(x => cepos.includes(cepoBand(x.cepo)));
+      if (sizes.length)  list = list.filter(x => sizes.includes(sizeBand(x.largo)));
+      const cont = document.getElementById('finder-results');
+      const none = document.getElementById('finder-no-results');
+      const count = document.getElementById('finder-count');
+      if (count) count.textContent = list.length + (list.length === 1 ? ' puro encontrado' : ' puros encontrados');
+      if (!list.length){ cont.innerHTML = ''; none.classList.remove('hidden'); return; }
+      none.classList.add('hidden');
+      cont.innerHTML = list.map((x, i) => `<button onclick="showVitola('${x.brand}',${x.vi})" class="finder-card group text-left bg-white rounded-xl border border-[#0e4f2e]/12 hover:border-[#0e4f2e]/40 hover:shadow-lg transition p-6 flex flex-col" style="animation-delay:${i*0.05}s">
+        <div class="h-14 flex items-center mb-4"><img src="${brandLogo[x.brand]}" class="h-11 w-auto" alt="${x.brandName}"></div>
+        <h3 class="font-serif text-[#0d0d0d] group-hover:text-[#0e4f2e] transition leading-tight" style="font-size:21px;">${x.name}</h3>
+        <p class="text-[#0e4f2e] mt-1" style="font-size:12px;">${x.brandName}</p>
+        <div class="mt-4 pt-4 border-t border-[#0d0d0d]/8 flex flex-wrap gap-x-4 gap-y-1" style="color:#0d0d0d;opacity:0.7;font-size:12px;">
+          <span>${x.formato}</span><span>Cepo ${x.cepo}</span>${x.largo ? `<span>${x.largo} mm</span>` : ''}<span>${x.fortaleza}</span>
+        </div>
+        <span class="mt-4 inline-flex items-center gap-1 text-[#0e4f2e] uppercase tracking-wider" style="font-size:11px;">Ver ficha \u2192</span>
+      </button>`).join('');
+    }
+    document.querySelectorAll('.fnd-brand, .fnd-str, .fnd-cepo, .fnd-size').forEach(btn => {
+      btn.addEventListener('click', () => { btn.classList.toggle('active'); updateFinderResults(); });
+    });
+    document.getElementById('finder-clear').addEventListener('click', () => {
+      document.querySelectorAll('.fnd-brand, .fnd-str, .fnd-cepo, .fnd-size').forEach(b => b.classList.remove('active'));
+      updateFinderResults();
+    });
 
     // ---- Productos: banner por marca (línea) + rejilla de vitolas ----
     const brandLines = [
