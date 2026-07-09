@@ -18,6 +18,13 @@
     .nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,58,32,0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(245,183,40,0.12); }
     .nav-link { position: relative; color: var(--ivory); opacity: 0.5; transition: all 0.3s; cursor: pointer; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
     .nav-link:hover, .nav-link.active { opacity: 1; color: var(--gold); }
+    /* Menú desplegable de Productos con las marcas ancladas */
+    .nav-prod { display: inline-block; }
+    .nav-prod-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 16px; opacity: 0; visibility: hidden; transition: opacity 0.25s ease; z-index: 120; }
+    .nav-prod:hover .nav-prod-menu, .nav-prod:focus-within .nav-prod-menu { opacity: 1; visibility: visible; }
+    .nav-prod-inner { display: block; background: rgba(10,58,32,0.97); backdrop-filter: blur(10px); border: 1px solid rgba(245,183,40,0.22); border-radius: 10px; padding: 8px; box-shadow: 0 22px 55px -20px rgba(0,0,0,0.75); }
+    .nav-prod-inner a { display: block; padding: 8px 18px; color: var(--ivory); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; border-radius: 6px; transition: background 0.2s, color 0.2s; white-space: nowrap; text-align: left; }
+    .nav-prod-inner a:hover { background: rgba(245,183,40,0.14); color: var(--gold); }
     .hero-title-line { overflow: hidden; }
     .hero-title-line > * { display: block; transform: translateY(110%); opacity: 0; }
     /* Animation plays only when #hero-content gets .hero-in (triggered when Home is revealed) */
@@ -110,13 +117,13 @@
 
     /* Hero auto slideshow (video-like) */
     .hero-slides { position: absolute; inset: 0; overflow: hidden; }
-    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease-in-out; will-change: opacity; }
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2.4s ease-in-out; will-change: opacity; }
     .hero-slide.active { opacity: 1; }
-    .hero-slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); }
-    .hero-slide.active img { animation: kenburns 8s ease-out forwards; }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); }
+    .hero-slide.active img { animation: kenburns 12s linear forwards; }
     @keyframes kenburns {
-      from { transform: scale(1.15) translate(0, 0); }
-      to   { transform: scale(1.28) translate(-2%, -2%); }
+      from { transform: scale(1.1) translate(0, 0); }
+      to   { transform: scale(1.24) translate(-2.5%, -2%); }
     }
     .hero-dots { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 5; }
     .hero-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(248,246,242,0.35); cursor: pointer; transition: background 0.4s, width 0.4s; }
@@ -167,7 +174,17 @@
 
   <!-- Navigation -->
   <nav class="nav-bar px-8 md:px-16 py-4 flex items-center justify-center gap-4 md:gap-8 flex-wrap">
-    <span class="nav-link" data-page="tienda" onclick="showPage('tienda')">Productos</span>
+    <span class="nav-prod relative">
+      <span class="nav-link" data-page="tienda" onclick="showPage('tienda')">Productos ▾</span>
+      <span class="nav-prod-menu"><span class="nav-prod-inner">
+        <a onclick="gotoLinea('brujito')">El Brujito</a>
+        <a onclick="gotoLinea('verde')">Alfambra Verde</a>
+        <a onclick="gotoLinea('naranja')">Alfambra Naranja</a>
+        <a onclick="gotoLinea('seleccion')">Alfambra Selección</a>
+        <a onclick="gotoLinea('gener')">José Gener</a>
+        <a onclick="gotoLinea('mata')">Alejandro Mata</a>
+      </span></span>
+    </span>
     <span class="nav-link" data-page="finder" onclick="showPage('finder')">Encuentra tu Puro</span>
     <span class="nav-link" data-page="productos" onclick="showPage('productos')">Humidor</span>
     <button onclick="showPage('home')" class="px-2 cursor-pointer hover:opacity-80 transition flex items-center" aria-label="Inicio"><img src="assets/img/logos/alfambra-gold.png" alt="Alfambra" class="h-8 md:h-10 w-auto"></button>
@@ -183,8 +200,10 @@
       <div class="hero-slides" id="hero-slides">
         <div class="hero-slide active"><img loading="eager" src="assets/img/hero-mujer-fumando.jpg" alt="Alfambra Boutique Cigar"></div>
         <div class="hero-slide"><img loading="lazy" src="assets/img/vida/patio-mujer.webp" alt="Momento Alfambra en un patio andaluz"></div>
-        <div class="hero-slide"><img loading="lazy" src="assets/img/vida/patio-hombre.webp" alt="Caballero disfrutando un puro Alfambra"></div>
+        <div class="hero-slide"><img loading="lazy" src="https://lh3.googleusercontent.com/d/1x2i_EpKdQmUYgmnxxZIRqZvomT40hJ3m=w1920" alt="Tabacalera Alfambra" onerror="this.onerror=function(){this.onerror=null;this.src='assets/img/vida/patio-hombre.webp'};this.src='https://drive.google.com/thumbnail?id=1x2i_EpKdQmUYgmnxxZIRqZvomT40hJ3m&amp;sz=w1920'"></div>
         <div class="hero-slide"><img loading="lazy" src="assets/img/vida/plantacion-mujer.webp" alt="Entre las plantaciones de tabaco"></div>
+        <div class="hero-slide"><img loading="lazy" src="https://lh3.googleusercontent.com/d/1JpDfo2HGdu0NkKQ0O5Omi_5c3jislCTq=w1920" alt="Tabacalera Alfambra" onerror="this.onerror=function(){this.onerror=null;this.src='assets/img/vida/lounge-mujer.webp'};this.src='https://drive.google.com/thumbnail?id=1JpDfo2HGdu0NkKQ0O5Omi_5c3jislCTq&amp;sz=w1920'"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/img/vida/patio-hombre.webp" alt="Caballero disfrutando un puro Alfambra"></div>
       </div>
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/70 via-[#0D0D0D]/30 to-[#0D0D0D]"></div>
       <div class="hero-dots" id="hero-dots"></div>
@@ -226,10 +245,14 @@
 
   <!-- ABOUT -->
   <section id="page-about" class="page">
-    <div class="min-h-screen bg-[#F8F6F2] pt-40 pb-24 px-8 md:px-20">
+    <div class="relative w-full h-64 md:h-80 overflow-hidden">
+      <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://lh3.googleusercontent.com/d/16GQuTSdrwAt0pdt_ZXQBBDvOMKmncbwl=w1920" alt="Nuestra Historia" onerror="this.onerror=function(){this.onerror=null;this.src='assets/img/vida/plantacion-mujer.webp'};this.src='https://drive.google.com/thumbnail?id=16GQuTSdrwAt0pdt_ZXQBBDvOMKmncbwl&amp;sz=w1920'">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/50 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Nuestra Historia</h2></div>
+    </div>
+    <div class="min-h-screen bg-[#F8F6F2] pt-24 pb-24 px-8 md:px-20">
       <div class="max-w-7xl mx-auto">
-        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">UNA HERENCIA GRABADA EN LA TIERRA</p>
-        <h2 class="font-serif mb-24" style="color: rgb(13, 13, 13); font-size: 44px;">Nuestra Historia</h2>
+        <p class="section-label reveal mb-16" style="color: rgb(14, 79, 46); font-size: 11px;">UNA HERENCIA GRABADA EN LA TIERRA</p>
         <div class="grid md:grid-cols-12 gap-8 items-start">
           <div class="md:col-span-5 reveal reveal-left img-reveal"><img class="w-full aspect-[3/4] object-cover" loading="lazy" src="https://images.pexels.com/photos/33761497/pexels-photo-33761497.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hojas de tabaco secándose"></div>
           <div class="md:col-span-5 md:col-start-7 pt-0 md:pt-32 reveal reveal-right reveal-delay-1">
@@ -679,7 +702,7 @@
         restart();
       }
       function next(){ go(idx + 1); }
-      function restart(){ clearInterval(timer); timer = setInterval(next, 5000); }
+      function restart(){ clearInterval(timer); timer = setInterval(next, 4500); }
       restart();
     })();
 
@@ -948,6 +971,12 @@
       if (val === 'all') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
       const el = document.getElementById('linea-' + val);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function gotoLinea(id) {
+      showPage('tienda');
+      const sel = document.getElementById('line-filter');
+      if (sel) sel.value = id;
+      setTimeout(function () { scrollToLine(id); }, 90);
     }
     function vitolaSpec(label, value) {
       return `<div class="flex justify-between gap-4 border-b border-[#0d0d0d]/10 pb-3"><span class="text-[#0e4f2e] uppercase text-xs font-semibold tracking-wider">${label}</span><span class="text-[#0d0d0d]/80 text-sm text-right">${value}</span></div>`;
