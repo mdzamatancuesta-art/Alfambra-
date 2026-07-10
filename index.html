@@ -30,11 +30,12 @@
     .gate-btn { font-family: 'Instrument Serif', serif; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; padding: 13px 46px; background: var(--gold); color: #0D0D0D; border: 1px solid var(--gold); border-radius: 4px; cursor: pointer; transition: background 0.3s; }
     .gate-btn:hover { background: #e5a720; }
     /* Exit: text/logo/center fade, panels open like doors revealing the site */
-    #age-gate.gate-open .gate-bg { opacity: 0; transition: opacity 0.9s ease 0.15s; }
-    #age-gate.gate-open .gate-content { animation: none; opacity: 0; transform: translateY(-8px) scale(0.97); transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
-    #age-gate.gate-open .gate-logo { animation: none; opacity: 0; transform: scale(1.45); }
-    #age-gate.gate-open .gate-left { transform: translateX(-101%); transition: transform 1.4s cubic-bezier(0.83,0,0.17,1) 0.25s; }
-    #age-gate.gate-open .gate-right { transform: translateX(101%); transition: transform 1.4s cubic-bezier(0.83,0,0.17,1) 0.25s; }
+    #age-gate.gate-open { pointer-events: none; }
+    #age-gate.gate-open .gate-bg { opacity: 0; transition: opacity 0.7s ease; }
+    #age-gate.gate-open .gate-content { animation: none; opacity: 0; transform: translateY(-8px) scale(0.97); transition: opacity 0.45s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    #age-gate.gate-open .gate-logo { animation: none !important; opacity: 0; transform: scale(1.4); transition: opacity 0.55s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    #age-gate.gate-open .gate-left { transform: translateX(-101%); transition: transform 1.05s cubic-bezier(0.22,1,0.36,1) 0.05s; }
+    #age-gate.gate-open .gate-right { transform: translateX(101%); transition: transform 1.05s cubic-bezier(0.22,1,0.36,1) 0.05s; }
     /* Intro curtain reveal */
     #home-intro { position: fixed; inset: 0; z-index: 9500; display: none; pointer-events: none; background: #0B3E23; }
     #home-intro.active { display: block; }
@@ -708,7 +709,7 @@
     function dismissAgeGate() {
       const g = document.getElementById('age-gate');
       g.classList.add('gate-open');
-      setTimeout(() => { g.style.display = 'none'; }, 1750);
+      setTimeout(() => { g.style.display = 'none'; }, 1250);
       revealInPage(document.querySelector('.page.active'));
       playHero();
     }
