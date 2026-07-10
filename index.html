@@ -417,19 +417,6 @@
     </div>
     <div class="w-full bg-[#F8F6F2] pb-24 pt-14">
       <div class="max-w-7xl mx-auto px-8 md:px-20">
-        <!-- Filtro superior: líneas -->
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-14 pb-8 border-b border-[#0d0d0d]/12">
-          <label for="line-filter" class="text-xs uppercase tracking-[0.18em]" style="color: rgb(14, 79, 46); font-size: 11px;">Ir a la línea</label>
-          <select id="line-filter" onchange="scrollToLine(this.value)" class="px-4 py-2.5 border border-[#0e4f2e]/30 rounded-lg text-[#0d0d0d] bg-white font-serif cursor-pointer hover:border-[#0e4f2e]/70 focus:border-[#0e4f2e] focus:outline-none transition" style="font-size: 14px;">
-            <option value="all">Todas las líneas</option>
-            <option value="brujito">El Brujito</option>
-            <option value="verde">Alfambra Verde</option>
-            <option value="naranja">Alfambra Naranja</option>
-            <option value="seleccion">Alfambra Selección</option>
-            <option value="gener">José Gener</option>
-            <option value="mata">Alejandro Mata</option>
-          </select>
-        </div>
         <!-- Bloques por línea (render dinámico) -->
         <div id="lines-container" class="space-y-20"></div>
       </div>
