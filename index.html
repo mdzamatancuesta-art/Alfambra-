@@ -196,21 +196,27 @@
     .hero-quote.fading { opacity: 0 !important; }
 
     /* Catalogue cards — editorial premium */
-    .cat-card { position: relative; border-radius: 14px; overflow: hidden; background: linear-gradient(180deg,#141210 0%,#0D0D0D 100%); border: 1px solid rgba(245,183,40,0.14); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16,1,0.3,1), border-color 0.6s; }
-    .cat-card:hover { transform: translateY(-14px); box-shadow: 0 30px 70px -24px rgba(0,0,0,0.85), 0 0 0 1px rgba(245,183,40,0.35); border-color: rgba(245,183,40,0.4); }
-    .cat-media { position: relative; height: 260px; overflow: hidden; }
-    .cat-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
-    .cat-card:hover .cat-media img { transform: scale(1.08); }
-    .cat-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,13,13,0) 30%, rgba(13,13,13,0.55) 70%, #0D0D0D 100%); }
-    .cat-index { position: absolute; top: 18px; left: 20px; z-index: 2; font-family: 'Instrument Serif', serif; font-size: 53px; line-height: 1; color: rgba(248,246,242,0.9); text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
-    .cat-tag { position: absolute; top: 24px; right: 20px; z-index: 2; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(245,183,40,0.45); border-radius: 999px; padding: 5px 12px; background: rgba(13,13,13,0.4); backdrop-filter: blur(4px); }
-    .cat-title-over { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 2; }
-    .cat-hairline { height: 1px; width: 34px; background: var(--gold); margin: 0 0 14px; transition: width 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .cat-card:hover .cat-hairline { width: 64px; }
-    .cat-lang { appearance: none; -webkit-appearance: none; background: rgba(255,255,255,0.03); }
-    .cat-btn-primary { position: relative; overflow: hidden; }
-    .cat-btn-primary::after { content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent); transition: left 0.7s ease; }
-    .cat-card:hover .cat-btn-primary::after { left: 130%; }
+    .cat-card { position: relative; border-radius: 20px; overflow: hidden; background: radial-gradient(130% 90% at 50% 0%, #1b1711 0%, #100E0B 55%, #0A0908 100%); border: 1px solid rgba(245,183,40,0.16); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16,1,0.3,1), border-color 0.6s; }
+    .cat-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.7s cubic-bezier(0.16,1,0.3,1); z-index: 4; }
+    .cat-card:hover::before { width: 72%; }
+    .cat-card:hover { transform: translateY(-14px); box-shadow: 0 44px 84px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(245,183,40,0.42); border-color: rgba(245,183,40,0.5); }
+    .cat-media { position: relative; height: 300px; overflow: hidden; }
+    .cat-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.3s cubic-bezier(0.16,1,0.3,1); }
+    .cat-card:hover .cat-media img { transform: scale(1.09); }
+    .cat-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,13,13,0.18) 0%, rgba(13,13,13,0) 34%, rgba(10,9,8,0.62) 72%, #0A0908 100%); }
+    .cat-index { position: absolute; top: 14px; left: 24px; z-index: 2; font-family: 'Instrument Serif', serif; font-size: 58px; line-height: 1; color: var(--gold); opacity: 0.9; text-shadow: 0 3px 26px rgba(0,0,0,0.75); }
+    .cat-tag { position: absolute; top: 22px; right: 22px; z-index: 2; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(245,183,40,0.5); border-radius: 999px; padding: 6px 14px; background: rgba(13,13,13,0.5); backdrop-filter: blur(6px); }
+    .cat-title-over { position: absolute; left: 24px; right: 24px; bottom: 20px; z-index: 2; }
+    .cat-hairline { height: 2px; width: 40px; background: var(--gold); border-radius: 2px; margin: 0 0 16px; transition: width 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .cat-card:hover .cat-hairline { width: 76px; }
+    .cat-lang { appearance: none; -webkit-appearance: none; background-color: rgba(255,255,255,0.04); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5b728' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 15px; transition: border-color 0.3s, background-color 0.3s; }
+    .cat-lang:hover { background-color: rgba(255,255,255,0.07); }
+    .cat-btn-dl { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 9px; flex: 1; height: 50px; font-family: 'Instrument Serif', serif; font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase; color: #0D0D0D; border: none; border-radius: 12px; cursor: pointer; background: linear-gradient(135deg, #f9c944 0%, #f5b728 48%, #d9990f 100%); box-shadow: 0 12px 28px -12px rgba(245,183,40,0.75); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s; }
+    .cat-btn-dl:hover { transform: translateY(-2px); box-shadow: 0 18px 38px -12px rgba(245,183,40,0.9); }
+    .cat-btn-dl::after { content: ''; position: absolute; top: 0; left: -120%; width: 55%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent); transition: left 0.7s ease; }
+    .cat-card:hover .cat-btn-dl::after { left: 130%; }
+    .cat-icon-btn { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; flex-shrink: 0; border: 1px solid rgba(245,183,40,0.35); color: var(--gold); border-radius: 12px; cursor: pointer; background: rgba(245,183,40,0.05); transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .cat-icon-btn:hover { background: var(--gold); border-color: var(--gold); color: #0D0D0D; transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(245,183,40,0.75); }
 
     /* News cards — clickable */
     .news-card { cursor: pointer; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16,1,0.3,1); }
@@ -562,18 +568,18 @@
               <span class="cat-tag">Tradición</span>
               <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">El Brujito</h3></div>
             </div>
-            <div class="p-7 flex flex-col flex-1">
+            <div class="p-8 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 15px;">La línea El Brujito, de carácter medio-fuerte y hecha a mano en Estelí. Catálogo completo con todas sus vitolas.</p>
+              <p class="text-[#F8F6F2]/75 mb-8 flex-1 leading-relaxed" style="font-size: 15px;">La línea El Brujito, de carácter medio-fuerte y hecha a mano en Estelí. Catálogo completo con todas sus vitolas.</p>
               <div class="space-y-4">
                 <div>
                   <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
-                  <select id="lang1" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <select id="lang1" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line1')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
-                  <button onclick="previewPDF('line1')" aria-label="Ver catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
-                  <button onclick="sharePDF('line1')" aria-label="Compartir catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
+                  <button onclick="downloadPDF('line1')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="previewPDF('line1')" aria-label="Ver catálogo" class="cat-icon-btn"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
+                  <button onclick="sharePDF('line1')" aria-label="Compartir catálogo" class="cat-icon-btn"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
               </div>
             </div>
@@ -585,18 +591,18 @@
               <span class="cat-tag">Serie</span>
               <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Alfambra Serie Clásica</h3></div>
             </div>
-            <div class="p-7 flex flex-col flex-1">
+            <div class="p-8 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 15px;">La Serie Clásica de Alfambra: perfil equilibrado y especiado. Catálogo por línea con todas las vitolas y cepos.</p>
+              <p class="text-[#F8F6F2]/75 mb-8 flex-1 leading-relaxed" style="font-size: 15px;">La Serie Clásica de Alfambra: perfil equilibrado y especiado. Catálogo por línea con todas las vitolas y cepos.</p>
               <div class="space-y-4">
                 <div>
                   <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
-                  <select id="lang2" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <select id="lang2" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line2')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
-                  <button onclick="previewPDF('line2')" aria-label="Ver catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
-                  <button onclick="sharePDF('line2')" aria-label="Compartir catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
+                  <button onclick="downloadPDF('line2')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="previewPDF('line2')" aria-label="Ver catálogo" class="cat-icon-btn"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
+                  <button onclick="sharePDF('line2')" aria-label="Compartir catálogo" class="cat-icon-btn"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
               </div>
             </div>
@@ -608,18 +614,18 @@
               <span class="cat-tag">Colección 1964</span>
               <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Alejandro Mata</h3></div>
             </div>
-            <div class="p-7 flex flex-col flex-1">
+            <div class="p-8 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 15px;">Alejandro Mata · Colección 1964. Selección Carmelita y Maduro, la joya de la casa en caja de madera de lujo.</p>
+              <p class="text-[#F8F6F2]/75 mb-8 flex-1 leading-relaxed" style="font-size: 15px;">Alejandro Mata · Colección 1964. Selección Carmelita y Maduro, la joya de la casa en caja de madera de lujo.</p>
               <div class="space-y-4">
                 <div>
                   <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
-                  <select id="lang3" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <select id="lang3" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line3')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
-                  <button onclick="previewPDF('line3')" aria-label="Ver catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
-                  <button onclick="sharePDF('line3')" aria-label="Compartir catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
+                  <button onclick="downloadPDF('line3')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="previewPDF('line3')" aria-label="Ver catálogo" class="cat-icon-btn"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
+                  <button onclick="sharePDF('line3')" aria-label="Compartir catálogo" class="cat-icon-btn"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
               </div>
             </div>
