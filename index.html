@@ -16,7 +16,7 @@
     .page { display: none; opacity: 0; transition: opacity 0.8s ease; }
     .page.active { display: block; opacity: 1; }
     .nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,58,32,0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(245,183,40,0.12); }
-    .nav-link { position: relative; color: var(--ivory); opacity: 0.5; transition: all 0.3s; cursor: pointer; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .nav-link { position: relative; color: var(--ivory); opacity: 0.5; transition: all 0.3s; cursor: pointer; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; }
     .nav-link:hover, .nav-link.active { opacity: 1; color: var(--gold); }
     /* Menú desplegable de Productos con las marcas ancladas */
     .nav-prod { display: inline-block; }
@@ -24,19 +24,31 @@
     .nav-prod:hover .nav-prod-menu, .nav-prod:focus-within .nav-prod-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
     .nav-prod-inner { position: relative; display: block; min-width: 244px; background: linear-gradient(180deg, rgba(11,62,35,0.98), rgba(7,42,24,0.98)); backdrop-filter: blur(14px); border: 1px solid rgba(245,183,40,0.28); border-radius: 14px; padding: 12px 10px; box-shadow: 0 30px 64px -24px rgba(0,0,0,0.88), inset 0 1px 0 rgba(245,183,40,0.08); }
     .nav-prod-inner::before { content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 12px; height: 12px; background: rgba(11,62,35,0.98); border-left: 1px solid rgba(245,183,40,0.28); border-top: 1px solid rgba(245,183,40,0.28); }
-    .nav-prod-title { display: block; font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,183,40,0.7); padding: 4px 20px 11px; border-bottom: 1px solid rgba(245,183,40,0.14); margin-bottom: 6px; }
-    .nav-prod-inner a { position: relative; display: block; padding: 9px 20px 9px 20px; color: rgba(248,246,242,0.82); font-family: 'Instrument Serif', serif; font-size: 0.98rem; letter-spacing: 0.03em; cursor: pointer; border-radius: 9px; transition: color 0.28s ease, background 0.28s ease, padding-left 0.28s cubic-bezier(0.22,1,0.36,1); white-space: nowrap; }
+    .nav-prod-title { display: block; font-size: 0.64rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,183,40,0.7); padding: 4px 20px 11px; border-bottom: 1px solid rgba(245,183,40,0.14); margin-bottom: 6px; }
+    .nav-prod-inner a { position: relative; display: block; padding: 9px 20px 9px 20px; color: rgba(248,246,242,0.82); font-family: 'Instrument Serif', serif; font-size: 1.12rem; letter-spacing: 0.03em; cursor: pointer; border-radius: 9px; transition: color 0.28s ease, background 0.28s ease, padding-left 0.28s cubic-bezier(0.22,1,0.36,1); white-space: nowrap; }
     .nav-prod-inner a::before { content: ''; position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 0; height: 1.5px; background: var(--gold); transition: width 0.3s cubic-bezier(0.22,1,0.36,1); }
     .nav-prod-inner a:hover { color: var(--gold); background: rgba(245,183,40,0.08); padding-left: 28px; }
     .nav-prod-inner a:hover::before { width: 14px; }
     /* Finder (Encuentra tu Puro) — tema claro */
-    .fnd-btn { padding: 8px 16px; font-family: 'Instrument Serif', serif; font-size: 14px; color: #0d0d0d; background: #fff; border: 1px solid rgba(14,79,46,0.25); border-radius: 9px; cursor: pointer; transition: all 0.2s; }
+    .fnd-btn { padding: 8px 16px; font-family: 'Instrument Serif', serif; font-size: 16px; color: #0d0d0d; background: #fff; border: 1px solid rgba(14,79,46,0.25); border-radius: 9px; cursor: pointer; transition: all 0.2s; }
     .fnd-btn:hover { border-color: #0e4f2e; }
     .fnd-btn.active { background: #0e4f2e; color: #F8F6F2; border-color: #0e4f2e; }
-    .fnd-brand .logo-chip { display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: #fff; border: 1px solid rgba(14,79,46,0.2); border-radius: 12px; transition: all 0.2s; }
-    .fnd-brand .logo-chip img { width: 72%; height: auto; max-height: 72%; object-fit: contain; }
-    .fnd-brand:hover .logo-chip { border-color: #0e4f2e; }
-    .fnd-brand.active .logo-chip { border-color: #0e4f2e; box-shadow: 0 0 0 2px rgba(14,79,46,0.35); }
+    .fnd-brand .fnd-logo { display: flex; align-items: center; justify-content: center; width: 68px; height: 68px; transition: transform 0.2s ease, filter 0.2s ease; filter: grayscale(0.15); opacity: 0.85; }
+    .fnd-brand .fnd-logo img { width: 100%; height: auto; max-height: 64px; object-fit: contain; }
+    .fnd-brand .fnd-brand-name { margin-top: 8px; font-size: 13px; color: #0d0d0d; transition: color 0.2s; }
+    .fnd-brand:hover .fnd-logo { transform: scale(1.06); filter: none; opacity: 1; }
+    .fnd-brand.active .fnd-logo { transform: scale(1.08); filter: none; opacity: 1; }
+    .fnd-brand.active .fnd-brand-name { color: #0e4f2e; font-weight: 600; }
+    .fnd-brand.active::after { content: ''; }
+    /* Fortaleza como barra (igual que la ficha) */
+    .fnd-range { -webkit-appearance: none; appearance: none; width: 100%; max-width: 320px; height: 10px; border-radius: 999px; background: linear-gradient(90deg, #e7dfce, #c9a24a, #8a5a1a); outline: none; cursor: pointer; }
+    .fnd-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #0e4f2e; border: 3px solid #F8F6F2; box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: pointer; }
+    .fnd-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #0e4f2e; border: 3px solid #F8F6F2; box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: pointer; }
+    .fnd-select { padding: 10px 16px; font-family: 'Instrument Serif', serif; font-size: 17px; color: #0d0d0d; background: #fff; border: 1px solid rgba(14,79,46,0.28); border-radius: 9px; cursor: pointer; max-width: 320px; }
+    .fnd-select:hover, .fnd-select:focus { border-color: #0e4f2e; outline: none; }
+    .fnd-cepo-badge { position: absolute; top: 12px; right: 12px; z-index: 2; width: 46px; height: 46px; border-radius: 50%; background: #0e4f2e; color: #F8F6F2; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; box-shadow: 0 5px 14px rgba(14,79,46,0.35); }
+    .fnd-cepo-badge b { font-family: 'Instrument Serif', serif; font-size: 18px; }
+    .fnd-cepo-badge span { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-top: 1px; }
     .hero-title-line { overflow: hidden; }
     .hero-title-line > * { display: block; transform: translateY(110%); opacity: 0; }
     /* Animation plays only when #hero-content gets .hero-in (triggered when Home is revealed) */
@@ -50,9 +62,9 @@
     .detail-overlay { position: fixed; inset: 0; z-index: 200; background: #F8F6F2; overflow-y: auto; display: none; opacity: 0; transition: opacity 0.6s; }
     .detail-overlay.show { display: block; opacity: 1; }
     .field-group { position: relative; margin-bottom: 3rem; }
-    .field-group input, .field-group textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(14,79,46,0.3); padding: 1.5rem 0 0.8rem; color: #0d0d0d; font-size: 1rem; outline: none; transition: border-color 0.4s; }
+    .field-group input, .field-group textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(14,79,46,0.3); padding: 1.5rem 0 0.8rem; color: #0d0d0d; font-size: 1.12rem; outline: none; transition: border-color 0.4s; }
     .field-group input:focus, .field-group textarea:focus { border-bottom-color: var(--gold); }
-    .field-group label { position: absolute; top: 1.5rem; left: 0; color: rgba(13,13,13,0.4); font-size: 0.9rem; transition: all 0.3s ease; pointer-events: none; }
+    .field-group label { position: absolute; top: 1.5rem; left: 0; color: rgba(13,13,13,0.4); font-size: 1rem; transition: all 0.3s ease; pointer-events: none; }
     .field-group input:focus ~ label, .field-group input:not(:placeholder-shown) ~ label,
     .field-group textarea:focus ~ label, .field-group textarea:not(:placeholder-shown) ~ label { top: -0.6rem; font-size: 0.6rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; }
     .masonry-card { break-inside: avoid; margin-bottom: 1.5rem; transition: transform 0.4s; }
@@ -150,8 +162,8 @@
     .cat-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
     .cat-card:hover .cat-media img { transform: scale(1.08); }
     .cat-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,13,13,0) 30%, rgba(13,13,13,0.55) 70%, #0D0D0D 100%); }
-    .cat-index { position: absolute; top: 18px; left: 20px; z-index: 2; font-family: 'Instrument Serif', serif; font-size: 46px; line-height: 1; color: rgba(248,246,242,0.9); text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
-    .cat-tag { position: absolute; top: 24px; right: 20px; z-index: 2; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(245,183,40,0.45); border-radius: 999px; padding: 5px 12px; background: rgba(13,13,13,0.4); backdrop-filter: blur(4px); }
+    .cat-index { position: absolute; top: 18px; left: 20px; z-index: 2; font-family: 'Instrument Serif', serif; font-size: 53px; line-height: 1; color: rgba(248,246,242,0.9); text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
+    .cat-tag { position: absolute; top: 24px; right: 20px; z-index: 2; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(245,183,40,0.45); border-radius: 999px; padding: 5px 12px; background: rgba(13,13,13,0.4); backdrop-filter: blur(4px); }
     .cat-title-over { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 2; }
     .cat-hairline { height: 1px; width: 34px; background: var(--gold); margin: 0 0 14px; transition: width 0.6s cubic-bezier(0.16,1,0.3,1); }
     .cat-card:hover .cat-hairline { width: 64px; }
@@ -167,7 +179,7 @@
     .news-media { overflow: hidden; }
     .news-media img { transition: transform 1.1s cubic-bezier(0.16,1,0.3,1); }
     .news-card:hover .news-media img { transform: scale(1.07); }
-    .news-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-family: 'Instrument Serif', serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: #0e4f2e; opacity: 0; transform: translateX(-6px); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .news-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-family: 'Instrument Serif', serif; font-size: 15px; text-transform: uppercase; letter-spacing: 0.14em; color: #0e4f2e; opacity: 0; transform: translateX(-6px); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1); }
     .news-card:hover .news-more { opacity: 1; transform: translateX(0); }
   </style>
 </head>
@@ -178,8 +190,8 @@
     <div class="max-w-lg mx-auto text-center px-8">
       <img src="assets/img/logos/alfambra-gold.png" alt="Tabacalera Alfambra" class="h-20 w-auto mx-auto mb-8">
       <div class="w-full h-px bg-[#f5b728]/40 mb-8"></div>
-      <p class="text-sm leading-relaxed mb-10" style="color: rgba(248, 246, 242, 0.8); font-size: 14px;">Tabacalera Alfambra importa y distribuye los mejores puros del mundo y esta página web contiene información relacionada con productos del tabaco. Está destinada exclusivamente a personas en edad legal para fumar. Al acceder a este sitio, usted confirma que tiene la edad legal para fumar en el país desde el que accede y que consiente ver información relacionada con productos del tabaco.</p>
-      <p class="font-serif text-lg mb-8" style="color: rgb(248, 246, 242); font-weight: 700; font-size: 20px;">Por favor, confirme que es mayor de 18 años</p>
+      <p class="text-sm leading-relaxed mb-10" style="color: rgba(248, 246, 242, 0.8); font-size: 16px;">Tabacalera Alfambra importa y distribuye los mejores puros del mundo y esta página web contiene información relacionada con productos del tabaco. Está destinada exclusivamente a personas en edad legal para fumar. Al acceder a este sitio, usted confirma que tiene la edad legal para fumar en el país desde el que accede y que consiente ver información relacionada con productos del tabaco.</p>
+      <p class="font-serif text-lg mb-8" style="color: rgb(248, 246, 242); font-weight: 700; font-size: 23px;">Por favor, confirme que es mayor de 18 años</p>
       <button onclick="dismissAgeGate()" class="btn-anim px-10 py-3 border border-[#f5b728] text-[#f5b728] font-serif text-sm tracking-[0.2em] uppercase hover:bg-[#f5b728] hover:text-[#0D0D0D] transition-all duration-300">Confirmar</button>
     </div>
   </div>
@@ -222,11 +234,11 @@
       <div class="hero-dots" id="hero-dots"></div>
       <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-20 text-center">
         <div id="hero-content" class="w-full max-w-5xl mx-auto">
-          <div class="hero-title-line"><h1 class="font-serif leading-[0.9]" style="color: rgb(248, 246, 242); font-size: 72px;">Tradición</h1></div>
-          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.9]" style="color: rgb(248, 246, 242); font-size: 72px;">Artesanía</h1></div>
-          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.9]" style="color: rgb(245, 183, 40); font-size: 72px;">Excelencia</h1></div>
-          <div class="hero-title-line mt-10"><p class="max-w-xl mx-auto leading-relaxed opacity-70" style="color: rgb(248, 246, 242); font-size: 16px;">Puros artesanales elaborados con las mejores hojas seleccionadas a mano. Desde nuestra fábrica hasta su humidor.</p></div>
-          <div class="hero-title-line mt-8"><p id="hero-quote" class="hero-quote max-w-2xl mx-auto leading-relaxed italic opacity-60 text-lg" style="color: rgb(245, 183, 40); font-size: 16px;">Quien quiere hacer algo encuentra un medio. Quien no quiere hacer nada encuentra una excusa</p></div>
+          <div class="hero-title-line"><h1 class="font-serif leading-[0.9]" style="color: rgb(248, 246, 242); font-size: 83px;">Tradición</h1></div>
+          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.9]" style="color: rgb(248, 246, 242); font-size: 83px;">Artesanía</h1></div>
+          <div class="hero-title-line mt-2"><h1 class="font-serif leading-[0.9]" style="color: rgb(245, 183, 40); font-size: 83px;">Excelencia</h1></div>
+          <div class="hero-title-line mt-10"><p class="max-w-xl mx-auto leading-relaxed opacity-70" style="color: rgb(248, 246, 242); font-size: 18px;">Puros artesanales elaborados con las mejores hojas seleccionadas a mano. Desde nuestra fábrica hasta su humidor.</p></div>
+          <div class="hero-title-line mt-8"><p id="hero-quote" class="hero-quote max-w-2xl mx-auto leading-relaxed italic opacity-60 text-lg" style="color: rgb(245, 183, 40); font-size: 18px;">Quien quiere hacer algo encuentra un medio. Quien no quiere hacer nada encuentra una excusa</p></div>
         </div>
       </div>
     </section>
@@ -234,10 +246,10 @@
     <section class="home-section py-32 px-8 md:px-20 bg-[#F8F6F2]">
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div class="reveal reveal-left">
-          <p class="section-label mb-6" style="color: rgb(14, 79, 46); font-size: 11px;">NUESTRA FILOSOFÍA</p>
-          <h2 class="font-serif mb-10" style="color: rgb(13, 13, 13); font-size: 36px;">Cada hoja cuenta una historia</h2>
-          <p class="leading-[2] opacity-80" style="color: rgb(13, 13, 13); font-size: 16px;">Desde la minuciosa selección de las mejores semillas hasta el último toque de prensado, cada puro que sale de nuestra fábrica es una obra maestra. Creemos firmemente que el tiempo es el ingrediente esencial en nuestra ligada, permitiendo que los sabores y aromas alcancen su madurez óptima antes de llegar a su paladar.</p>
-          <div class="mt-12 pt-8 border-t border-[#0d0d0d]/10"><p class="italic opacity-70 text-base leading-relaxed" style="color: rgb(13, 13, 13); font-size: 15px;">Madurado por el tiempo, perfeccionado por las manos</p></div>
+          <p class="section-label mb-6" style="color: rgb(14, 79, 46); font-size: 13px;">NUESTRA FILOSOFÍA</p>
+          <h2 class="font-serif mb-10" style="color: rgb(13, 13, 13); font-size: 41px;">Cada hoja cuenta una historia</h2>
+          <p class="leading-[2] opacity-80" style="color: rgb(13, 13, 13); font-size: 18px;">Desde la minuciosa selección de las mejores semillas hasta el último toque de prensado, cada puro que sale de nuestra fábrica es una obra maestra. Creemos firmemente que el tiempo es el ingrediente esencial en nuestra ligada, permitiendo que los sabores y aromas alcancen su madurez óptima antes de llegar a su paladar.</p>
+          <div class="mt-12 pt-8 border-t border-[#0d0d0d]/10"><p class="italic opacity-70 text-base leading-relaxed" style="color: rgb(13, 13, 13); font-size: 17px;">Madurado por el tiempo, perfeccionado por las manos</p></div>
         </div>
         <div class="reveal reveal-right img-reveal"><img class="w-full aspect-[4/3] object-cover" loading="lazy" src="assets/img/vida/retrato-hombre.jpg" alt="El ritual de un buen puro"></div>
       </div>
@@ -247,10 +259,10 @@
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div class="reveal reveal-left img-reveal"><img class="w-full aspect-[3/4] object-cover" loading="lazy" src="assets/img/vida/lounge-mujer.webp" alt="Salón de fumadores Alfambra"></div>
         <div class="reveal reveal-right">
-          <p class="section-label mb-6" style="color: rgb(14, 79, 46); font-size: 11px;">DESTACADO</p>
-          <h2 class="font-serif mb-10" style="color: rgb(13, 13, 13); font-size: 36px;">Colección Selección Premium</h2>
-          <p class="leading-[2] opacity-80" style="color: rgb(13, 13, 13); font-size: 16px;">Nuestra línea insignia representa lo mejor de la tabacalera. Hojas envejecidas cinco años, triple fermentación y una ligada secreta que define el carácter inconfundible de Alfambra.</p>
-          <div class="mt-12 pt-8 border-t border-[#0d0d0d]/10"><p class="italic opacity-70 text-base leading-relaxed" style="color: rgb(13, 13, 13); font-size: 15px;">Creado con esmero, custodiado por el tiempo</p></div>
+          <p class="section-label mb-6" style="color: rgb(14, 79, 46); font-size: 13px;">DESTACADO</p>
+          <h2 class="font-serif mb-10" style="color: rgb(13, 13, 13); font-size: 41px;">Colección Selección Premium</h2>
+          <p class="leading-[2] opacity-80" style="color: rgb(13, 13, 13); font-size: 18px;">Nuestra línea insignia representa lo mejor de la tabacalera. Hojas envejecidas cinco años, triple fermentación y una ligada secreta que define el carácter inconfundible de Alfambra.</p>
+          <div class="mt-12 pt-8 border-t border-[#0d0d0d]/10"><p class="italic opacity-70 text-base leading-relaxed" style="color: rgb(13, 13, 13); font-size: 17px;">Creado con esmero, custodiado por el tiempo</p></div>
         </div>
       </div>
     </section>
@@ -261,55 +273,55 @@
     <div class="relative w-full h-64 md:h-80 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://lh3.googleusercontent.com/d/16GQuTSdrwAt0pdt_ZXQBBDvOMKmncbwl=w1920" alt="Nuestra Historia" onerror="this.onerror=function(){this.onerror=null;this.src='assets/img/vida/plantacion-mujer.webp'};this.src='https://drive.google.com/thumbnail?id=16GQuTSdrwAt0pdt_ZXQBBDvOMKmncbwl&amp;sz=w1920'">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/50 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Nuestra Historia</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Nuestra Historia</h2></div>
     </div>
     <div class="min-h-screen bg-[#F8F6F2] pt-24 pb-24 px-8 md:px-20">
       <div class="max-w-7xl mx-auto">
-        <p class="section-label reveal mb-16" style="color: rgb(14, 79, 46); font-size: 11px;">UNA HERENCIA GRABADA EN LA TIERRA</p>
+        <p class="section-label reveal mb-16" style="color: rgb(14, 79, 46); font-size: 13px;">UNA HERENCIA GRABADA EN LA TIERRA</p>
         <div class="grid md:grid-cols-12 gap-8 items-start">
           <div class="md:col-span-5 reveal reveal-left img-reveal"><img class="w-full aspect-[3/4] object-cover" loading="lazy" src="https://lh3.googleusercontent.com/d/1IclZWxnfT3kycJ5LAcydjmPbpL7Kl1aj=w900" alt="Maestro torcedor elaborando un puro a mano" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.pexels.com/photos/33761497/pexels-photo-33761497.jpeg?auto=compress&cs=tinysrgb&w=800'};this.src='https://drive.google.com/thumbnail?id=1IclZWxnfT3kycJ5LAcydjmPbpL7Kl1aj&amp;sz=w900'"></div>
           <div class="md:col-span-5 md:col-start-7 pt-0 md:pt-32 reveal reveal-right reveal-delay-1">
-            <p class="leading-[2] mb-10" style="color: rgb(13, 13, 13); font-size: 16px;">En Tabacalera Alfambra, cada cigarro constituye el capítulo de una historia configurada a lo largo de generaciones. Nuestra filosofía se cimienta en el respeto absoluto a los tiempos de la naturaleza: desde la cuidadosa selección de la semilla hasta el minucioso añejamiento en galera.</p>
-            <p class="leading-[2] mb-16" style="color: rgb(13, 13, 13); font-size: 16px;">La totalidad de nuestra producción se concentra en Estelí, Nicaragua, una de las regiones tabacaleras más fértiles y de mayor prestigio a nivel internacional. Al sembrar de forma directa la mayor parte del tabaco que compone nuestras ligadas, aseguramos una trazabilidad absoluta y una consistencia óptima en el producto final.</p>
+            <p class="leading-[2] mb-10" style="color: rgb(13, 13, 13); font-size: 18px;">En Tabacalera Alfambra, cada cigarro constituye el capítulo de una historia configurada a lo largo de generaciones. Nuestra filosofía se cimienta en el respeto absoluto a los tiempos de la naturaleza: desde la cuidadosa selección de la semilla hasta el minucioso añejamiento en galera.</p>
+            <p class="leading-[2] mb-16" style="color: rgb(13, 13, 13); font-size: 18px;">La totalidad de nuestra producción se concentra en Estelí, Nicaragua, una de las regiones tabacaleras más fértiles y de mayor prestigio a nivel internacional. Al sembrar de forma directa la mayor parte del tabaco que compone nuestras ligadas, aseguramos una trazabilidad absoluta y una consistencia óptima en el producto final.</p>
             <div class="img-reveal reveal"><img class="w-full aspect-[4/3] object-cover" loading="lazy" src="https://lh3.googleusercontent.com/d/1kgW4S2S-9cvTNw-AHSNbQNwVwQifNqn-=w1200" alt="Atardecer sobre la tierra del tabaco" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.pexels.com/photos/27793719/pexels-photo-27793719.jpeg?auto=compress&cs=tinysrgb&w=800'};this.src='https://drive.google.com/thumbnail?id=1kgW4S2S-9cvTNw-AHSNbQNwVwQifNqn-&amp;sz=w1200'"></div>
-            <div class="mt-12 pt-8 border-t border-[#0d0d0d]/10"><p class="italic text-[#0d0d0d]/70 text-base leading-relaxed" style="font-size: 15px;">La mano del maestro transforma la naturaleza en legado</p></div>
+            <div class="mt-12 pt-8 border-t border-[#0d0d0d]/10"><p class="italic text-[#0d0d0d]/70 text-base leading-relaxed" style="font-size: 17px;">La mano del maestro transforma la naturaleza en legado</p></div>
           </div>
         </div>
 
         <div class="mt-32 pt-20 border-t border-[#0d0d0d]/10">
-          <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">CRONOLOGÍA DE LA EXCELENCIA</p>
-          <h2 class="font-serif mb-6 reveal" style="color: rgb(13, 13, 13); font-size: 40px;">El Ciclo de Producción</h2>
-          <p class="reveal reveal-delay-1 mb-16 max-w-3xl leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.75;">Desde la introducción de la semilla en el suelo nicaragüense hasta la culminación del producto, transcurre un periodo estimado de dos años y medio (30 meses), estructurado en cinco etapas fundamentales.</p>
+          <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">CRONOLOGÍA DE LA EXCELENCIA</p>
+          <h2 class="font-serif mb-6 reveal" style="color: rgb(13, 13, 13); font-size: 46px;">El Ciclo de Producción</h2>
+          <p class="reveal reveal-delay-1 mb-16 max-w-3xl leading-relaxed" style="color: rgb(13, 13, 13); font-size: 18px; opacity:0.75;">Desde la introducción de la semilla en el suelo nicaragüense hasta la culminación del producto, transcurre un periodo estimado de dos años y medio (30 meses), estructurado en cinco etapas fundamentales.</p>
           <div class="grid md:grid-cols-5 gap-8">
             <div class="reveal">
-              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 40px;">01</div>
-              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 20px;">Semillero</h3>
+              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 46px;">01</div>
+              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 23px;">Semillero</h3>
               <p class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46);">45 días</p>
-              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 14px; opacity:0.7;">Las semillas reciben un cuidado riguroso y monitorización constante hasta que la plántula alcanza la fortaleza idónea para su transferencia.</p>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.7;">Las semillas reciben un cuidado riguroso y monitorización constante hasta que la plántula alcanza la fortaleza idónea para su transferencia.</p>
             </div>
             <div class="reveal reveal-delay-1">
-              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 40px;">02</div>
-              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 20px;">Trasplante y Cultivo</h3>
+              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 46px;">02</div>
+              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 23px;">Trasplante y Cultivo</h3>
               <p class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46);">45 – 90 días</p>
-              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 14px; opacity:0.7;">La planta se trasplanta de manera manual al campo, donde absorbe los nutrientes característicos del suelo de Estelí.</p>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.7;">La planta se trasplanta de manera manual al campo, donde absorbe los nutrientes característicos del suelo de Estelí.</p>
             </div>
             <div class="reveal reveal-delay-2">
-              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 40px;">03</div>
-              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 20px;">Secado</h3>
+              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 46px;">03</div>
+              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 23px;">Secado</h3>
               <p class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46);">45 días</p>
-              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 14px; opacity:0.7;">Tras la recolección manual, las hojas pierden la humedad de forma homogénea en los tradicionales ranchos de tabaco.</p>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.7;">Tras la recolección manual, las hojas pierden la humedad de forma homogénea en los tradicionales ranchos de tabaco.</p>
             </div>
             <div class="reveal reveal-delay-3">
-              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 40px;">04</div>
-              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 20px;">Curación y Añejamiento</h3>
+              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 46px;">04</div>
+              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 23px;">Curación y Añejamiento</h3>
               <p class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46);">18 – 24 meses</p>
-              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 14px; opacity:0.7;">Según la clasificación de la hoja (capa, capote o tripa), el tabaco madura en galera consolidando aromas y matices.</p>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.7;">Según la clasificación de la hoja (capa, capote o tripa), el tabaco madura en galera consolidando aromas y matices.</p>
             </div>
             <div class="reveal reveal-delay-3">
-              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 40px;">05</div>
-              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 20px;">Elaboración Artesanal</h3>
+              <div class="font-serif mb-4" style="color: rgb(245, 183, 40); font-size: 46px;">05</div>
+              <h3 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 23px;">Elaboración Artesanal</h3>
               <p class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46);">Método cubano</p>
-              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 14px; opacity:0.7;">Nuestros maestros torcedores aplican estrictamente el método tradicional cubano, un proceso enteramente manual.</p>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.7;">Nuestros maestros torcedores aplican estrictamente el método tradicional cubano, un proceso enteramente manual.</p>
             </div>
           </div>
         </div>
@@ -322,34 +334,32 @@
     <div class="relative w-full h-80 md:h-96 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="assets/img/bodegon.webp" alt="Bodegón Alfambra con puro y humidor">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Encuentra tu Puro</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Encuentra tu Puro</h2></div>
     </div>
     <div class="w-full bg-[#F8F6F2] pb-24">
       <div class="max-w-6xl mx-auto px-8 md:px-20 pt-16">
-        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">EXPLORAR</p>
-        <h2 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 32px;">Filtra por tus preferencias</h2>
-        <p class="mb-12 max-w-2xl leading-relaxed" style="color: rgb(13, 13, 13); opacity:0.6; font-size:15px;">Elige marca, fortaleza, cepo y tamaño para descubrir la vitola perfecta entre toda nuestra gama.</p>
-        <div class="space-y-9 mb-14">
+        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">EXPLORAR</p>
+        <h2 class="font-serif mb-3" style="color: rgb(13, 13, 13); font-size: 37px;">Filtra por tus preferencias</h2>
+        <p class="mb-12 max-w-2xl leading-relaxed" style="color: rgb(13, 13, 13); opacity:0.6; font-size:17px;">Elige marca, fortaleza, cepo y tamaño para descubrir la vitola perfecta entre toda nuestra gama.</p>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-9 mb-12">
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Marca</label>
-            <div class="flex flex-wrap gap-4">
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="brujito"><span class="logo-chip"><img src="assets/img/logos/alfambra-gold.png" alt="El Brujito"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">El Brujito</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="verde"><span class="logo-chip"><img src="assets/img/logos/alfambra-gold.png" alt="Alfambra Verde"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">Verde</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="naranja"><span class="logo-chip"><img src="assets/img/logos/clasica-logo.png" alt="Alfambra Naranja"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">Naranja</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="seleccion"><span class="logo-chip"><img src="assets/img/logos/seleccion-logo.png" alt="Alfambra Selección"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">Selección</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="gener"><span class="logo-chip"><img src="assets/img/logos/jose-logo.png" alt="José Gener"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">José Gener</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="mata"><span class="logo-chip"><img src="assets/img/logos/alfambra-gold.png" alt="Alejandro Mata"></span><span class="mt-2" style="color:#0d0d0d;font-size:11px;">A. Mata</span></button>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">Marca</label>
+            <div class="flex flex-wrap gap-5">
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="brujito"><span class="fnd-logo"><img src="assets/img/logos/alfambra-gold.png" alt="El Brujito"></span><span class="fnd-brand-name">El Brujito</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="verde"><span class="fnd-logo"><img src="assets/img/logos/alfambra-gold.png" alt="Alfambra Verde"></span><span class="fnd-brand-name">Verde</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="naranja"><span class="fnd-logo"><img src="assets/img/logos/clasica-logo.png" alt="Alfambra Naranja"></span><span class="fnd-brand-name">Naranja</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="seleccion"><span class="fnd-logo"><img src="assets/img/logos/seleccion-logo.png" alt="Alfambra Selección"></span><span class="fnd-brand-name">Selección</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="gener"><span class="fnd-logo"><img src="assets/img/logos/jose-logo.png" alt="José Gener"></span><span class="fnd-brand-name">José Gener</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="mata"><span class="fnd-logo"><img src="assets/img/logos/alfambra-gold.png" alt="Alejandro Mata"></span><span class="fnd-brand-name">A. Mata</span></button>
             </div>
           </div>
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Fortaleza</label>
-            <div class="flex flex-wrap gap-3">
-              <button type="button" class="fnd-btn fnd-str" data-str="Media">Media</button>
-              <button type="button" class="fnd-btn fnd-str" data-str="Media-Fuerte">Media-Fuerte</button>
-            </div>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">Fortaleza</label>
+            <input type="range" id="fnd-strength" class="fnd-range" min="0" max="2" step="1" value="0" oninput="updateFinderResults()">
+            <div class="flex justify-between mt-3" style="max-width:320px;font-size:13px;color:#0d0d0d;opacity:0.55;"><span>Todas</span><span>Media</span><span>Media-Fuerte</span></div>
           </div>
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Cepo (Ring Gauge)</label>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">Cepo (Ring Gauge)</label>
             <div class="flex flex-wrap gap-3">
               <button type="button" class="fnd-btn fnd-cepo" data-cepo="fino">Fino · 38–46</button>
               <button type="button" class="fnd-btn fnd-cepo" data-cepo="medio">Medio · 48–52</button>
@@ -357,18 +367,19 @@
             </div>
           </div>
           <div class="flex flex-col">
-            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">Tamaño</label>
-            <div class="flex flex-wrap gap-3">
-              <button type="button" class="fnd-btn fnd-size" data-size="corto">Corto · &lt;120 mm</button>
-              <button type="button" class="fnd-btn fnd-size" data-size="medio">Medio · 120–150 mm</button>
-              <button type="button" class="fnd-btn fnd-size" data-size="largo">Largo · &gt;150 mm</button>
-            </div>
+            <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">Tamaño</label>
+            <select id="fnd-size-select" class="fnd-select" onchange="updateFinderResults()">
+              <option value="">Todos los tamaños</option>
+              <option value="corto">Corto · &lt;120 mm</option>
+              <option value="medio">Medio · 120–150 mm</option>
+              <option value="largo">Largo · &gt;150 mm</option>
+            </select>
           </div>
-          <button type="button" id="finder-clear" class="text-xs uppercase tracking-widest text-[#0e4f2e]/70 hover:text-[#0e4f2e] transition" style="font-size:11px;">Limpiar filtros</button>
         </div>
-        <p id="finder-count" class="mb-6" style="color:#0e4f2e;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;"></p>
+        <button type="button" id="finder-clear" class="mb-12 text-xs uppercase tracking-widest text-[#0e4f2e]/70 hover:text-[#0e4f2e] transition" style="font-size:13px;">Limpiar filtros</button>
+        <p id="finder-count" class="mb-6" style="color:#0e4f2e;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;"></p>
         <div id="finder-results" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        <div id="finder-no-results" class="text-center py-16 hidden"><p style="color:#0d0d0d;opacity:0.6;font-size: 16px;">No se encontraron puros con esos filtros. Prueba otra combinación.</p></div>
+        <div id="finder-no-results" class="text-center py-16 hidden"><p style="color:#0d0d0d;opacity:0.6;font-size: 18px;">No se encontraron puros con esos filtros. Prueba otra combinación.</p></div>
       </div>
     </div>
   </section>
@@ -378,31 +389,31 @@
     <div class="relative w-full h-80 md:h-96 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="assets/img/bodegon.webp" alt="Humidor Alfambra con puro">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Humidores Alfambra</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Humidores Alfambra</h2></div>
     </div>
     <div class="w-full bg-[#F8F6F2] pb-24 pt-32">
       <div class="max-w-7xl mx-auto px-8 md:px-20">
-        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">PRODUCTOS</p>
+        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">PRODUCTOS</p>
         <div class="mb-32 py-16 grid md:grid-cols-2 gap-16 items-center">
           <div class="flex justify-center reveal reveal-left img-reveal"><img class="w-full max-w-md h-auto object-contain rounded-lg" loading="lazy" src="https://images.pexels.com/photos/2933243/pexels-photo-2933243.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Humidor profesional Alfambra"></div>
           <div>
-            <div class="reveal reveal-right"><span class="section-label text-xs uppercase tracking-widest mb-6 font-semibold block" style="color: rgb(14, 79, 46); font-size: 11px;">HUMIDOR PROFESIONAL</span>
-            <h3 class="font-serif text-4xl md:text-5xl mb-6" style="color: rgb(13, 13, 13); font-size: 40px;">Humidor Simple</h3>
-            <p class="text-[#0d0d0d]/70 mb-8 leading-relaxed" style="font-size: 15px;">Diseñado para conservar puros en condiciones óptimas de humedad, temperatura y luz. Tecnología, elegancia y precisión en cada detalle.</p>
+            <div class="reveal reveal-right"><span class="section-label text-xs uppercase tracking-widest mb-6 font-semibold block" style="color: rgb(14, 79, 46); font-size: 13px;">HUMIDOR PROFESIONAL</span>
+            <h3 class="font-serif text-4xl md:text-5xl mb-6" style="color: rgb(13, 13, 13); font-size: 46px;">Humidor Simple</h3>
+            <p class="text-[#0d0d0d]/70 mb-8 leading-relaxed" style="font-size: 17px;">Diseñado para conservar puros en condiciones óptimas de humedad, temperatura y luz. Tecnología, elegancia y precisión en cada detalle.</p>
             <div class="space-y-4 mb-8">
-              <div class="flex items-start gap-4"><i data-lucide="maximize" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 11px;">Dimensiones</p><p class="text-[#0d0d0d]" style="font-size: 14px;">60 × 60 × 185 cm</p></div></div>
-              <div class="flex items-start gap-4"><i data-lucide="layers" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 11px;">Capacidad</p><p class="text-[#0d0d0d]" style="font-size: 14px;">800 – 1000 puros</p></div></div>
-              <div class="flex items-start gap-4"><i data-lucide="droplets" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 11px;">Rango Humedad</p><p class="text-[#0d0d0d]" style="font-size: 14px;">65% – 72% RH</p></div></div>
-              <div class="flex items-start gap-4"><i data-lucide="lightbulb" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 11px;">Iluminación LED</p><p class="text-[#0d0d0d]" style="font-size: 14px;">3500K luz cálida</p></div></div>
-              <div class="flex items-start gap-4"><i data-lucide="zap" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 11px;">Consumo</p><p class="text-[#0d0d0d]" style="font-size: 14px;">110–240V/50–60Hz · &lt;15W</p></div></div>
+              <div class="flex items-start gap-4"><i data-lucide="maximize" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 13px;">Dimensiones</p><p class="text-[#0d0d0d]" style="font-size: 16px;">60 × 60 × 185 cm</p></div></div>
+              <div class="flex items-start gap-4"><i data-lucide="layers" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 13px;">Capacidad</p><p class="text-[#0d0d0d]" style="font-size: 16px;">800 – 1000 puros</p></div></div>
+              <div class="flex items-start gap-4"><i data-lucide="droplets" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 13px;">Rango Humedad</p><p class="text-[#0d0d0d]" style="font-size: 16px;">65% – 72% RH</p></div></div>
+              <div class="flex items-start gap-4"><i data-lucide="lightbulb" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 13px;">Iluminación LED</p><p class="text-[#0d0d0d]" style="font-size: 16px;">3500K luz cálida</p></div></div>
+              <div class="flex items-start gap-4"><i data-lucide="zap" style="width:24px;height:24px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><div><p class="text-xs uppercase tracking-wider font-semibold text-[#0e4f2e] mb-1" style="font-size: 13px;">Consumo</p><p class="text-[#0d0d0d]" style="font-size: 16px;">110–240V/50–60Hz · &lt;15W</p></div></div>
             </div>
-            <button class="btn-anim px-8 py-3 bg-[#0e4f2e] text-[#F8F6F2] font-serif uppercase tracking-widest hover:bg-[#0d3d24] transition-all duration-300 rounded" style="font-size: 13px;">Descargar ficha</button>
+            <button class="btn-anim px-8 py-3 bg-[#0e4f2e] text-[#F8F6F2] font-serif uppercase tracking-widest hover:bg-[#0d3d24] transition-all duration-300 rounded" style="font-size: 15px;">Descargar ficha</button>
           </div></div>
         </div>
         <div class="pt-16 border-t border-[#0d0d0d]/10 text-center py-16 reveal">
-          <span class="text-xs uppercase tracking-widest mb-6 font-semibold block" style="color: rgb(14, 79, 46); font-size: 11px;">HUMIDOR PROFESIONAL XL</span>
-          <h3 class="font-serif text-4xl md:text-5xl mb-8" style="color: rgb(13, 13, 13); font-size: 40px;">Humidor Doble</h3>
-          <button class="btn-anim px-8 py-3 bg-[#0e4f2e] text-[#F8F6F2] font-serif uppercase tracking-widest hover:bg-[#0d3d24] transition-all duration-300 rounded" style="font-size: 13px;">Descargar ficha</button>
+          <span class="text-xs uppercase tracking-widest mb-6 font-semibold block" style="color: rgb(14, 79, 46); font-size: 13px;">HUMIDOR PROFESIONAL XL</span>
+          <h3 class="font-serif text-4xl md:text-5xl mb-8" style="color: rgb(13, 13, 13); font-size: 46px;">Humidor Doble</h3>
+          <button class="btn-anim px-8 py-3 bg-[#0e4f2e] text-[#F8F6F2] font-serif uppercase tracking-widest hover:bg-[#0d3d24] transition-all duration-300 rounded" style="font-size: 15px;">Descargar ficha</button>
         </div>
       </div>
     </div>
@@ -413,7 +424,7 @@
     <div class="relative w-full h-64 md:h-80 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="assets/img/lineup-puros-alfambra.jpg" alt="Gama de productos Alfambra">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/90"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Nuestras Marcas</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Nuestras Marcas</h2></div>
     </div>
     <div class="w-full bg-[#F8F6F2] pb-24 pt-14">
       <div class="max-w-7xl mx-auto px-8 md:px-20">
@@ -434,15 +445,15 @@
     <div class="relative w-full h-80 md:h-96 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/2257524/pexels-photo-2257524.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Campo de tabaco al amanecer">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Noticias</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Noticias</h2></div>
     </div>
     <div class="min-h-screen bg-[#F8F6F2] pt-24 pb-24 px-8 md:px-20">
-      <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">ÚLTIMAS NOVEDADES</p>
-      <p class="mb-20 max-w-3xl" style="color: rgb(13, 13, 13); font-size: 18px;">Eventos, reconocimientos y novedades del mundo Alfambra.</p>
+      <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">ÚLTIMAS NOVEDADES</p>
+      <p class="mb-20 max-w-3xl" style="color: rgb(13, 13, 13); font-size: 21px;">Eventos, reconocimientos y novedades del mundo Alfambra.</p>
       <div class="columns-1 md:columns-2 lg:columns-3 gap-6">
-        <article onclick="showNews('n1')" class="news-card masonry-card reveal bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('n1')"><div class="news-media"><img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/28697855/pexels-photo-28697855.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cata de puros"></div><div class="p-8"><p class="mb-3" style="color: rgb(14, 79, 46); font-size: 11px;">Junio 2026</p><h3 class="font-serif" style="color: rgb(13, 13, 13); font-size: 22px;">Evento de Cata Exclusiva en Madrid</h3><p class="mt-4" style="color: rgb(13, 13, 13); font-size: 14px;">Reunimos a los mejores aficionados para descubrir nuestra nueva línea Selección Premium en una velada inolvidable.</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>
-        <article onclick="showNews('n2')" class="news-card masonry-card reveal reveal-delay-1 bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('n2')"><div class="news-media"><img class="w-full h-72 object-cover" loading="lazy" src="https://images.pexels.com/photos/30733461/pexels-photo-30733461.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cosecha de tabaco"></div><div class="p-8"><p class="mb-3" style="color: rgb(14, 79, 46); font-size: 11px;">Mayo 2026</p><h3 class="font-serif" style="color: rgb(13, 13, 13); font-size: 22px;">Cosecha Excepcional 2026</h3><p class="mt-4" style="color: rgb(13, 13, 13); font-size: 14px;">Las condiciones climáticas de este año han producido hojas de calidad extraordinaria que marcarán nuestras próximas ediciones.</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>
-        <article onclick="showNews('n3')" class="news-card masonry-card reveal reveal-delay-2 bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('n3')"><div class="news-media"><img class="w-full h-60 object-cover" loading="lazy" src="https://images.pexels.com/photos/10343915/pexels-photo-10343915.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Puros premium"></div><div class="p-8"><p class="mb-3" style="color: rgb(14, 79, 46); font-size: 11px;">Abril 2026</p><h3 class="font-serif" style="color: rgb(13, 13, 13); font-size: 22px;">Reconocimiento Internacional</h3><p class="mt-4" style="color: rgb(13, 13, 13); font-size: 14px;">Alfambra Selección entra en el Top 25 de Cigar Aficionado, consolidando nuestra posición entre las mejores marcas del mundo.</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>
+        <article onclick="showNews('n1')" class="news-card masonry-card reveal bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('n1')"><div class="news-media"><img class="w-full h-56 object-cover" loading="lazy" src="https://images.pexels.com/photos/28697855/pexels-photo-28697855.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cata de puros"></div><div class="p-8"><p class="mb-3" style="color: rgb(14, 79, 46); font-size: 13px;">Junio 2026</p><h3 class="font-serif" style="color: rgb(13, 13, 13); font-size: 25px;">Evento de Cata Exclusiva en Madrid</h3><p class="mt-4" style="color: rgb(13, 13, 13); font-size: 16px;">Reunimos a los mejores aficionados para descubrir nuestra nueva línea Selección Premium en una velada inolvidable.</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>
+        <article onclick="showNews('n2')" class="news-card masonry-card reveal reveal-delay-1 bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('n2')"><div class="news-media"><img class="w-full h-72 object-cover" loading="lazy" src="https://images.pexels.com/photos/30733461/pexels-photo-30733461.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cosecha de tabaco"></div><div class="p-8"><p class="mb-3" style="color: rgb(14, 79, 46); font-size: 13px;">Mayo 2026</p><h3 class="font-serif" style="color: rgb(13, 13, 13); font-size: 25px;">Cosecha Excepcional 2026</h3><p class="mt-4" style="color: rgb(13, 13, 13); font-size: 16px;">Las condiciones climáticas de este año han producido hojas de calidad extraordinaria que marcarán nuestras próximas ediciones.</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>
+        <article onclick="showNews('n3')" class="news-card masonry-card reveal reveal-delay-2 bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('n3')"><div class="news-media"><img class="w-full h-60 object-cover" loading="lazy" src="https://images.pexels.com/photos/10343915/pexels-photo-10343915.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Puros premium"></div><div class="p-8"><p class="mb-3" style="color: rgb(14, 79, 46); font-size: 13px;">Abril 2026</p><h3 class="font-serif" style="color: rgb(13, 13, 13); font-size: 25px;">Reconocimiento Internacional</h3><p class="mt-4" style="color: rgb(13, 13, 13); font-size: 16px;">Alfambra Selección entra en el Top 25 de Cigar Aficionado, consolidando nuestra posición entre las mejores marcas del mundo.</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>
       </div>
     </div>
   </section>
@@ -460,32 +471,32 @@
     <div class="relative w-full h-80 md:h-96 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/11725476/pexels-photo-11725476.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Puros en caja de madera">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Catálogo</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Catálogo</h2></div>
     </div>
     <div class="w-full bg-[#F8F6F2] pb-24 pt-16 relative overflow-hidden">
       <img src="assets/img/logos/trama-amarillo.png" alt="" class="absolute top-0 right-0 w-[560px] max-w-[70vw] h-auto opacity-[0.06] pointer-events-none select-none" style="transform: translate(15%, -10%);">
       <div class="max-w-7xl mx-auto px-8 md:px-20 relative">
-        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 11px;">DESCARGAS</p>
-        <h2 class="font-serif mb-6 reveal" style="color: rgb(13, 13, 13); font-size: 40px; line-height:1.1;">Catálogos por Línea</h2>
-        <p class="italic opacity-60 mb-14 max-w-2xl leading-relaxed reveal reveal-delay-1" style="color: rgb(13, 13, 13); font-size: 17px;">La excelencia nace cuando la paciencia se encuentra con la pasión. Elija su línea y descargue el catálogo en el idioma que prefiera.</p>
+        <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">DESCARGAS</p>
+        <h2 class="font-serif mb-6 reveal" style="color: rgb(13, 13, 13); font-size: 46px; line-height:1.1;">Catálogos por Línea</h2>
+        <p class="italic opacity-60 mb-14 max-w-2xl leading-relaxed reveal reveal-delay-1" style="color: rgb(13, 13, 13); font-size: 20px;">La excelencia nace cuando la paciencia se encuentra con la pasión. Elija su línea y descargue el catálogo en el idioma que prefiera.</p>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="cat-card reveal  flex flex-col">
             <div class="cat-media">
               <img loading="lazy" src="https://images.pexels.com/photos/31009957/pexels-photo-31009957.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Selección Alfambra">
               <span class="cat-index">01</span>
               <span class="cat-tag">Insignia</span>
-              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 26px; line-height:1.05;">Selección Alfambra</h3></div>
+              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Selección Alfambra</h3></div>
             </div>
             <div class="p-7 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 13px;">Nuestra línea insignia, Alfambra Selección. Tabacos sometidos a un añejamiento superior en Estelí, Nicaragua.</p>
+              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 15px;">Nuestra línea insignia, Alfambra Selección. Tabacos sometidos a un añejamiento superior en Estelí, Nicaragua.</p>
               <div class="space-y-4">
                 <div>
-                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 10px;">Idioma del catálogo</label>
-                  <select id="lang1" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 14px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
+                  <select id="lang1" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line1')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 11px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="downloadPDF('line1')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
                   <button onclick="previewPDF('line1')" aria-label="Ver catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
                   <button onclick="sharePDF('line1')" aria-label="Compartir catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
@@ -497,18 +508,18 @@
               <img loading="lazy" src="https://images.pexels.com/photos/1637114/pexels-photo-1637114.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Clásicos de Casa">
               <span class="cat-index">02</span>
               <span class="cat-tag">Tradición</span>
-              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 26px; line-height:1.05;">Clásicos de Casa</h3></div>
+              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Clásicos de Casa</h3></div>
             </div>
             <div class="p-7 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 13px;">El Brujito, Alfambra Verde, Alfambra Naranja y José Gener: los puros que definen nuestra tradición nicaragüense.</p>
+              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 15px;">El Brujito, Alfambra Verde, Alfambra Naranja y José Gener: los puros que definen nuestra tradición nicaragüense.</p>
               <div class="space-y-4">
                 <div>
-                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 10px;">Idioma del catálogo</label>
-                  <select id="lang2" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 14px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
+                  <select id="lang2" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line2')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 11px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="downloadPDF('line2')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
                   <button onclick="previewPDF('line2')" aria-label="Ver catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
                   <button onclick="sharePDF('line2')" aria-label="Compartir catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
@@ -520,18 +531,18 @@
               <img loading="lazy" src="https://images.pexels.com/photos/11725476/pexels-photo-11725476.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ediciones Limitadas">
               <span class="cat-index">03</span>
               <span class="cat-tag">Coleccionista</span>
-              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 26px; line-height:1.05;">Ediciones Limitadas</h3></div>
+              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Ediciones Limitadas</h3></div>
             </div>
             <div class="p-7 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 13px;">Alejandro Mata: la joya de nuestra corona. Producción cuidada al detalle en caja de madera de lujo.</p>
+              <p class="text-[#F8F6F2] opacity-70 mb-7 flex-1 leading-relaxed" style="font-size: 15px;">Alejandro Mata: la joya de nuestra corona. Producción cuidada al detalle en caja de madera de lujo.</p>
               <div class="space-y-4">
                 <div>
-                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 10px;">Idioma del catálogo</label>
-                  <select id="lang3" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 14px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
+                  <select id="lang3" class="cat-lang w-full px-4 py-2.5 border border-[#f5b728]/30 rounded-lg text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line3')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 11px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="downloadPDF('line3')" class="cat-btn-primary flex-1 px-4 py-2.5 bg-[#f5b728] text-[#0d0d0d] font-serif uppercase tracking-[0.14em] rounded-lg hover:bg-[#e5a720] transition flex items-center justify-center gap-2" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
                   <button onclick="previewPDF('line3')" aria-label="Ver catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
                   <button onclick="sharePDF('line3')" aria-label="Compartir catálogo" class="w-11 h-11 shrink-0 border border-[#f5b728]/40 text-[#f5b728] rounded-lg hover:bg-[#f5b728]/10 hover:border-[#f5b728] transition flex items-center justify-center"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
@@ -548,23 +559,23 @@
     <div class="relative w-full h-80 md:h-96 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/27793719/pexels-photo-27793719.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Hojas de tabaco secas">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 44px;">Contacto</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-12"><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: 51px;">Contacto</h2></div>
     </div>
     <div class="bg-[#F8F6F2] pb-24 px-8 md:px-20 pt-24">
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-start">
         <div class="reveal reveal-left">
-          <h2 class="font-serif mb-16 section-label" style="color: rgb(13, 13, 13); font-size: 36px;">Hablemos</h2>
+          <h2 class="font-serif mb-16 section-label" style="color: rgb(13, 13, 13); font-size: 41px;">Hablemos</h2>
           <div class="space-y-6">
-            <p style="color: rgb(13, 13, 13); font-size: 15px;">Producción en Estelí, Nicaragua</p>
-            <p style="color: rgb(13, 13, 13); font-size: 15px;">+34 900 000 000</p>
-            <p style="color: rgb(14, 79, 46); font-size: 15px;">contacto@alfambra.com</p>
+            <p style="color: rgb(13, 13, 13); font-size: 17px;">Producción en Estelí, Nicaragua</p>
+            <p style="color: rgb(13, 13, 13); font-size: 17px;">+34 900 000 000</p>
+            <p style="color: rgb(14, 79, 46); font-size: 17px;">contacto@alfambra.com</p>
           </div>
         </div>
         <form id="contact-form" class="reveal reveal-right" onsubmit="handleContact(event)">
           <div class="field-group"><input type="text" id="c-name" placeholder=" " required><label for="c-name">Nombre</label></div>
           <div class="field-group"><input type="email" id="c-email" placeholder=" " required><label for="c-email">Email</label></div>
           <div class="field-group"><textarea id="c-msg" rows="3" placeholder=" " required></textarea><label for="c-msg">Mensaje</label></div>
-          <button type="submit" class="btn-anim px-12 py-4 border border-[#0e4f2e] text-[#0e4f2e] font-serif text-lg tracking-[0.15em] hover:bg-[#0e4f2e] hover:text-[#F8F6F2] transition-all duration-500" style="font-size: 16px;">Enviar Mensaje</button>
+          <button type="submit" class="btn-anim px-12 py-4 border border-[#0e4f2e] text-[#0e4f2e] font-serif text-lg tracking-[0.15em] hover:bg-[#0e4f2e] hover:text-[#F8F6F2] transition-all duration-500" style="font-size: 18px;">Enviar Mensaje</button>
           <p id="contact-success" class="text-[#0e4f2e] mt-8 hidden font-serif text-lg opacity-80">Mensaje enviado. Gracias.</p>
         </form>
       </div>
@@ -576,8 +587,8 @@
       <img src="assets/img/logos/alfambra-gold.png" alt="Tabacalera Alfambra" class="h-16 w-auto opacity-95">
       <div class="w-24 h-px bg-[#f5b728]/40"></div>
       <div class="flex flex-col md:flex-row justify-between items-center gap-6 w-full">
-        <p style="color: rgb(248, 246, 242); font-size: 12px;">© 2026 Tabacalera Alfambra. Todos los derechos reservados.</p>
-        <p style="color: rgba(248, 246, 242, 0.6); font-size: 11px;">El consumo de tabaco es perjudicial para la salud. Este sitio web está dirigido exclusivamente a adultos mayores de la edad legal establecida en su país.</p>
+        <p style="color: rgb(248, 246, 242); font-size: 14px;">© 2026 Tabacalera Alfambra. Todos los derechos reservados.</p>
+        <p style="color: rgba(248, 246, 242, 0.6); font-size: 13px;">El consumo de tabaco es perjudicial para la salud. Este sitio web está dirigido exclusivamente a adultos mayores de la edad legal establecida en su país.</p>
       </div>
     </div>
   </footer>
@@ -773,7 +784,7 @@
     function newsCard(id, small) {
       const n = newsData[id];
       const h = small ? 'h-48' : 'h-56';
-      return `<article onclick="showNews('${id}')" class="news-card masonry-card reveal bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('${id}')"><div class="news-media"><img class="w-full ${h} object-cover" loading="lazy" src="${n.img}" alt="${n.title}"></div><div class="p-8"><p class="mb-3" style="color:#0e4f2e;font-size:11px;">${n.tag} · ${n.date}</p><h3 class="font-serif" style="color:#0d0d0d;font-size:22px;">${n.title}</h3><p class="mt-4" style="color:#0d0d0d;font-size:14px;">${n.lead}</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>`;
+      return `<article onclick="showNews('${id}')" class="news-card masonry-card reveal bg-white overflow-hidden shadow-lg rounded-lg" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showNews('${id}')"><div class="news-media"><img class="w-full ${h} object-cover" loading="lazy" src="${n.img}" alt="${n.title}"></div><div class="p-8"><p class="mb-3" style="color:#0e4f2e;font-size:13px;">${n.tag} · ${n.date}</p><h3 class="font-serif" style="color:#0d0d0d;font-size:25px;">${n.title}</h3><p class="mt-4" style="color:#0d0d0d;font-size:16px;">${n.lead}</p><span class="news-more">Leer más <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span></div></article>`;
     }
 
     function renderNewsPage(id) {
@@ -786,21 +797,21 @@
           <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="${n.img}" alt="${n.title}">
           <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/50 via-[#0D0D0D]/45 to-[#0D0D0D]/85"></div>
           <div class="absolute inset-0 flex flex-col justify-end px-8 md:px-20 pb-14 max-w-5xl">
-            <button onclick="showPage('news')" class="self-start mb-6 inline-flex items-center gap-2 text-[#f5b728] font-serif uppercase tracking-widest hover:opacity-80 transition" style="font-size:12px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Noticias</button>
-            <p class="mb-4" style="color:#f5b728;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;">${n.tag} · ${n.date}</p>
-            <h1 class="font-serif text-[#F8F6F2]" style="font-size:52px;line-height:1.05;">${n.title}</h1>
+            <button onclick="showPage('news')" class="self-start mb-6 inline-flex items-center gap-2 text-[#f5b728] font-serif uppercase tracking-widest hover:opacity-80 transition" style="font-size:14px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Noticias</button>
+            <p class="mb-4" style="color:#f5b728;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;">${n.tag} · ${n.date}</p>
+            <h1 class="font-serif text-[#F8F6F2]" style="font-size:60px;line-height:1.05;">${n.title}</h1>
           </div>
         </div>
         <div class="bg-[#F8F6F2] pt-16 pb-24 px-8 md:px-20">
           <div class="max-w-3xl mx-auto">
-            <p class="reveal font-serif italic mb-10" style="color:#0e4f2e;font-size:23px;line-height:1.45;">${n.lead}</p>
-            ${n.body.map((p,i) => `<p class="reveal reveal-delay-${Math.min(i+1,3)} mb-6" style="color:#0d0d0d;font-size:16px;line-height:1.85;">${p}</p>`).join('')}
+            <p class="reveal font-serif italic mb-10" style="color:#0e4f2e;font-size:26px;line-height:1.45;">${n.lead}</p>
+            ${n.body.map((p,i) => `<p class="reveal reveal-delay-${Math.min(i+1,3)} mb-6" style="color:#0d0d0d;font-size:18px;line-height:1.85;">${p}</p>`).join('')}
           </div>
         </div>
         <div class="bg-[#efece5] py-20 px-8 md:px-20">
           <div class="max-w-7xl mx-auto">
-            <p class="section-label reveal mb-4" style="color:#0e4f2e;font-size:11px;">SEGUIR LEYENDO</p>
-            <h2 class="font-serif mb-12 reveal" style="color:#0d0d0d;font-size:34px;">Noticias recomendadas</h2>
+            <p class="section-label reveal mb-4" style="color:#0e4f2e;font-size:13px;">SEGUIR LEYENDO</p>
+            <h2 class="font-serif mb-12 reveal" style="color:#0d0d0d;font-size:39px;">Noticias recomendadas</h2>
             <div class="grid md:grid-cols-2 gap-6">${recos}</div>
           </div>
         </div>`;
@@ -855,9 +866,11 @@
     }
     function updateFinderResults(){
       const brands = Array.from(document.querySelectorAll('.fnd-brand.active')).map(e => e.dataset.brand);
-      const strs   = Array.from(document.querySelectorAll('.fnd-str.active')).map(e => e.dataset.str);
-      const cepos  = Array.from(document.querySelectorAll('.fnd-cepo.active')).map(e => e.dataset.cepo);
-      const sizes  = Array.from(document.querySelectorAll('.fnd-size.active')).map(e => e.dataset.size);
+      const sv = +(document.getElementById('fnd-strength')||{value:0}).value;
+      const strs = sv === 0 ? [] : (sv === 1 ? ['Media'] : ['Media-Fuerte']);
+      const cepos = Array.from(document.querySelectorAll('.fnd-cepo.active')).map(e => e.dataset.cepo);
+      const szSel = (document.getElementById('fnd-size-select')||{value:''}).value;
+      const sizes = szSel ? [szSel] : [];
       let list = finderVitolas();
       if (brands.length) list = list.filter(x => brands.includes(x.brand));
       if (strs.length)   list = list.filter(x => strs.includes(x.fortaleza));
@@ -869,21 +882,21 @@
       if (count) count.textContent = list.length + (list.length === 1 ? ' puro encontrado' : ' puros encontrados');
       if (!list.length){ cont.innerHTML = ''; none.classList.remove('hidden'); return; }
       none.classList.add('hidden');
-      cont.innerHTML = list.map((x, i) => `<button onclick="showVitola('${x.brand}',${x.vi})" class="finder-card group text-left bg-white rounded-xl border border-[#0e4f2e]/12 hover:border-[#0e4f2e]/40 hover:shadow-lg transition p-6 flex flex-col" style="animation-delay:${i*0.05}s">
-        <div class="h-14 flex items-center mb-4"><img src="${brandLogo[x.brand]}" class="h-11 w-auto" alt="${x.brandName}"></div>
-        <h3 class="font-serif text-[#0d0d0d] group-hover:text-[#0e4f2e] transition leading-tight" style="font-size:21px;">${x.name}</h3>
-        <p class="text-[#0e4f2e] mt-1" style="font-size:12px;">${x.brandName}</p>
-        <div class="mt-4 pt-4 border-t border-[#0d0d0d]/8 flex flex-wrap gap-x-4 gap-y-1" style="color:#0d0d0d;opacity:0.7;font-size:12px;">
-          <span>${x.formato}</span><span>Cepo ${x.cepo}</span>${x.largo ? `<span>${x.largo} mm</span>` : ''}<span>${x.fortaleza}</span>
-        </div>
-        <span class="mt-4 inline-flex items-center gap-1 text-[#0e4f2e] uppercase tracking-wider" style="font-size:11px;">Ver ficha \u2192</span>
+      cont.innerHTML = list.map((x, i) => `<button onclick="showVitola('${x.brand}',${x.vi})" class="finder-card group relative text-left bg-white rounded-xl border border-[#0e4f2e]/12 hover:border-[#0e4f2e]/40 hover:shadow-lg transition p-5 flex flex-col" style="animation-delay:${i*0.05}s">
+        <span class="fnd-cepo-badge"><b>${x.cepo}</b><span>Cepo</span></span>
+        <div class="aspect-square rounded-lg overflow-hidden bg-[#efece5] mb-4"><img class="w-full h-full object-cover" loading="lazy" src="${PURO_DEFAULT}" alt="${x.name}"></div>
+        <div class="flex items-center gap-2 mb-1"><img src="${brandLogo[x.brand]}" class="h-6 w-auto" alt="${x.brandName}"><span class="text-[#0e4f2e]" style="font-size:13px;">${x.brandName}</span></div>
+        <h3 class="font-serif text-[#0d0d0d] group-hover:text-[#0e4f2e] transition leading-tight" style="font-size:23px;">${x.name}</h3>
+        <p style="color:#0d0d0d;opacity:0.6;font-size:14px;" class="mt-1">${x.formato}${x.largo ? ' · ' + x.largo + ' mm' : ''}</p>
       </button>`).join('');
     }
-    document.querySelectorAll('.fnd-brand, .fnd-str, .fnd-cepo, .fnd-size').forEach(btn => {
+    document.querySelectorAll('.fnd-brand, .fnd-cepo').forEach(btn => {
       btn.addEventListener('click', () => { btn.classList.toggle('active'); updateFinderResults(); });
     });
-    document.getElementById('finder-clear').addEventListener('click', () => {
-      document.querySelectorAll('.fnd-brand, .fnd-str, .fnd-cepo, .fnd-size').forEach(b => b.classList.remove('active'));
+        document.getElementById('finder-clear').addEventListener('click', () => {
+      document.querySelectorAll('.fnd-brand, .fnd-cepo').forEach(b => b.classList.remove('active'));
+      const sl = document.getElementById('fnd-strength'); if (sl) sl.value = 0;
+      const sz = document.getElementById('fnd-size-select'); if (sz) sz.value = '';
       updateFinderResults();
     });
 
@@ -960,8 +973,8 @@
         const cards = b.vitolas.map((v, i) => `
           <button onclick="showVitola('${b.id}',${i})" class="group text-left">
             <div class="aspect-square overflow-hidden rounded-lg bg-[#efece5] border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${PURO_DEFAULT}" alt="${v.name}"></div>
-            <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:19px;">${v.name}</h4>
-            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:12px;">${v.formato} · Cepo ${v.cepo} · ${v.largo}</p>
+            <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">${v.name}</h4>
+            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">${v.formato} · Cepo ${v.cepo} · ${v.largo}</p>
           </button>`).join('');
         // Las marcas no tienen página: sólo su foto + descripción, y sus productos como botones.
         return `<div id="linea-${b.id}" class="line-block reveal scroll-mt-28" data-line="${b.id}">
@@ -969,11 +982,11 @@
             ${lineImg(b.img, 'absolute inset-0 w-full h-full object-cover', b.name)}
             <div class="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/60 to-[#0D0D0D]/20"></div>
             <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-12 max-w-2xl">
-              <h3 class="font-serif text-[#F8F6F2] leading-none" style="font-size:52px;">${b.name}</h3>
-              <p class="text-[#f5b728] mt-2" style="font-size:13px;">${c.tasting || ''} · ${b.fortaleza}</p>
+              <h3 class="font-serif text-[#F8F6F2] leading-none" style="font-size:60px;">${b.name}</h3>
+              <p class="text-[#f5b728] mt-2" style="font-size:15px;">${c.tasting || ''} · ${b.fortaleza}</p>
             </div>
           </div>
-          <p class="text-[#0d0d0d]/70 leading-[1.9] max-w-3xl mb-10" style="font-size:15px;">${c.flavor_desc || ''}</p>
+          <p class="text-[#0d0d0d]/70 leading-[1.9] max-w-3xl mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">${cards}</div>
         </div>`;
       }).join('');
@@ -1012,15 +1025,15 @@
       document.getElementById('page-vitola').innerHTML = `
         <div class="min-h-screen bg-[#F8F6F2] pt-28 pb-24 px-8 md:px-20">
           <div class="max-w-6xl mx-auto">
-            <button onclick="showPage('tienda');setTimeout(function(){scrollToLine('${b.id}')},60)" class="mb-10 inline-flex items-center gap-2 text-[#0e4f2e] font-serif uppercase tracking-widest hover:opacity-70 transition" style="font-size:12px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> ${b.name}</button>
+            <button onclick="showPage('tienda');setTimeout(function(){scrollToLine('${b.id}')},60)" class="mb-10 inline-flex items-center gap-2 text-[#0e4f2e] font-serif uppercase tracking-widest hover:opacity-70 transition" style="font-size:14px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> ${b.name}</button>
             <div class="grid md:grid-cols-2 gap-14 items-start">
               <div class="reveal reveal-left bg-white rounded-2xl border border-[#0d0d0d]/8 p-8 flex items-center justify-center" style="min-height:360px;">${mainImg}</div>
               <div class="reveal reveal-right relative">
-                ${c.awards ? `<div class="absolute -top-1 right-0 text-center"><div class="w-16 h-16 rounded-full border-2 border-[#f5b728] flex items-center justify-center"><i data-lucide="award" style="width:26px;height:26px;color:#0e4f2e"></i></div><p class="uppercase tracking-wider text-[#0e4f2e] mt-1" style="font-size:10px;">Premios</p></div>` : ''}
+                ${c.awards ? `<div class="absolute -top-1 right-0 text-center"><div class="w-16 h-16 rounded-full border-2 border-[#f5b728] flex items-center justify-center"><i data-lucide="award" style="width:26px;height:26px;color:#0e4f2e"></i></div><p class="uppercase tracking-wider text-[#0e4f2e] mt-1" style="font-size:12px;">Premios</p></div>` : ''}
                 <h1 class="font-serif text-4xl md:text-5xl text-[#0D0D0D] leading-[0.95] mb-2 pr-20">${v.name}</h1>
-                <p class="text-[#0e4f2e] uppercase tracking-[0.18em] font-semibold mb-8" style="font-size:12px;">Línea ${b.name}</p>
-                <p class="text-[#0d0d0d]/70 leading-[1.85] mb-10" style="font-size:15px;">${c.flavor_desc || ''}</p>
-                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-5" style="font-size:12px;">Características</h3>
+                <p class="text-[#0e4f2e] uppercase tracking-[0.18em] font-semibold mb-8" style="font-size:14px;">Línea ${b.name}</p>
+                <p class="text-[#0d0d0d]/70 leading-[1.85] mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
+                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-5" style="font-size:14px;">Características</h3>
                 <div class="space-y-4 mb-10">
                   ${intensityBar(c.intensity || 3)}
                   ${vitolaSpec('Formato / Vitola', v.formato)}
@@ -1030,17 +1043,17 @@
                   ${vitolaSpec('Envase', b.envase)}
                   ${vitolaSpec('Unidades por caja', v.uds)}
                 </div>
-                ${c.awards ? `<div class="mb-2 p-4 bg-white border-l-4 border-[#f5b728]"><p class="text-[#0e4f2e] uppercase tracking-[0.15em] font-semibold mb-2" style="font-size:11px;">Reconocimiento</p><p class="text-[#0d0d0d]/80 text-sm">${c.awards}</p></div>` : ''}
+                ${c.awards ? `<div class="mb-2 p-4 bg-white border-l-4 border-[#f5b728]"><p class="text-[#0e4f2e] uppercase tracking-[0.15em] font-semibold mb-2" style="font-size:13px;">Reconocimiento</p><p class="text-[#0d0d0d]/80 text-sm">${c.awards}</p></div>` : ''}
               </div>
             </div>
             <div class="mt-20">
               <div class="flex items-center justify-between mb-6">
-                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold" style="font-size:12px;">Galería</h3>
-                <button onclick="shareVitola('${b.id}',${index})" class="inline-flex items-center gap-2 text-[#0e4f2e] hover:text-[#f5b728] transition font-serif uppercase tracking-widest" style="font-size:12px;"><i data-lucide="share-2" style="width:16px;height:16px"></i> Compartir</button>
+                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold" style="font-size:14px;">Galería</h3>
+                <button onclick="shareVitola('${b.id}',${index})" class="inline-flex items-center gap-2 text-[#0e4f2e] hover:text-[#f5b728] transition font-serif uppercase tracking-widest" style="font-size:14px;"><i data-lucide="share-2" style="width:16px;height:16px"></i> Compartir</button>
               </div>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4">${gallery}</div>
             </div>
-            ${c.pairing ? `<div class="mt-16 pt-10 border-t border-[#0d0d0d]/10 max-w-3xl"><h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-3" style="font-size:12px;">Maridaje recomendado</h3><p class="text-[#0d0d0d]/75 leading-relaxed" style="font-size:16px;">${c.pairing}</p></div>` : ''}
+            ${c.pairing ? `<div class="mt-16 pt-10 border-t border-[#0d0d0d]/10 max-w-3xl"><h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-3" style="font-size:14px;">Maridaje recomendado</h3><p class="text-[#0d0d0d]/75 leading-relaxed" style="font-size:18px;">${c.pairing}</p></div>` : ''}
           </div>
         </div>`;
       showPage('vitola');
