@@ -233,7 +233,8 @@
     .hero-slides { position: absolute; inset: 0; overflow: hidden; }
     .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2.4s ease-in-out; will-change: opacity; }
     .hero-slide.active { opacity: 1; }
-    .hero-slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); }
+    .hero-slide.active img { animation: kenburns 12s linear forwards; }
     @keyframes kenburns {
       from { transform: scale(1.1) translate(0, 0); }
       to   { transform: scale(1.24) translate(-2.5%, -2%); }
@@ -326,6 +327,7 @@
           <a onclick="gotoLinea('mata')">Alejandro Mata</a>
         </span></span>
       </span>
+      <span class="nav-link" data-page="finder" onclick="showPage('finder')">Encuentra tu Puro</span>
       <span class="nav-link" data-page="productos" onclick="showPage('productos')">Humidor</span>
       <button onclick="showPage('home')" class="px-2 cursor-pointer hover:opacity-80 transition flex items-center" aria-label="Inicio"><img src="assets/img/logos/company-gold.webp" alt="Alfambra Boutique Cigar" class="h-14 md:h-20 w-auto"></button>
       <span class="nav-link" data-page="about" onclick="showPage('about')">Nosotros</span>
@@ -346,6 +348,7 @@
     <div id="mobile-menu" class="md:hidden">
       <div class="mm-inner">
         <a onclick="mobileGo('tienda')">Productos</a>
+        <a onclick="mobileGo('finder')">Encuentra tu Puro</a>
         <a onclick="mobileGo('productos')">Humidor</a>
         <a onclick="mobileGo('about')">Nosotros</a>
         <a onclick="mobileGo('catalogue')">Catálogo</a>
@@ -655,7 +658,9 @@
                   <select id="lang1" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line1')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
+                  <button onclick="downloadPDF('line1')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="previewPDF('line1')" aria-label="Ver catálogo" class="cat-icon-btn"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
+                  <button onclick="sharePDF('line1')" aria-label="Compartir catálogo" class="cat-icon-btn"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
               </div>
             </div>
@@ -676,7 +681,9 @@
                   <select id="lang2" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line2')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
+                  <button onclick="downloadPDF('line2')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="previewPDF('line2')" aria-label="Ver catálogo" class="cat-icon-btn"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
+                  <button onclick="sharePDF('line2')" aria-label="Compartir catálogo" class="cat-icon-btn"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
               </div>
             </div>
@@ -697,7 +704,9 @@
                   <select id="lang3" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button onclick="downloadPDF('line3')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
+                  <button onclick="downloadPDF('line3')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:14px;height:14px"></i> Descargar</button>
+                  <button onclick="previewPDF('line3')" aria-label="Ver catálogo" class="cat-icon-btn"><i data-lucide="eye" style="width:16px;height:16px"></i></button>
+                  <button onclick="sharePDF('line3')" aria-label="Compartir catálogo" class="cat-icon-btn"><i data-lucide="share-2" style="width:16px;height:16px"></i></button>
                 </div>
               </div>
             </div>
@@ -1195,7 +1204,7 @@
       cont.innerHTML = brandLines.map(b => {
         const c = cigars[b.id] || {};
         const cards = b.vitolas.map((v, i) => `
-          <button onclick="showVitola('${b.id}',${i})" class="group text-left reveal lift" style="transition-delay:${i*0.05}s">
+          <button onclick="showVitola('${b.id}',${i})" class="group text-left">
             <div class="aspect-square overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${v.img || b.cigarImg || PURO_DEFAULT}" alt="${v.name}"></div>
             <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">${v.name}</h4>
             <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">${v.formato} · Cepo ${v.cepo} · ${v.largo}</p>
