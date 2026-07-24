@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Marca — Tabacalera Alfambra</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#f5b728;--black:#0D0D0D;--ivory:#F8F6F2;--green:#0E4F2E;--primary:#f5b728;--primary-d:#d9990f;--primary-l:#f5d488;--d1:#0D0D0D;--d2:#0A3A20;--g1:#6b6b66;--g2:#d9d6cf;--g3:#efece5;--white:#ffffff;--off-white:#F8F6F2;--font-head:'Instrument Serif';--font-body:'Instrument Serif';
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body,'Roboto',sans-serif);background:var(--off-white,#FAF8F5);color:var(--d1,#0F0F0D);line-height:1.6}
+.cover{background:var(--d1);color:#fff;padding:64px 5% 48px;border-bottom:4px solid var(--primary)}
+.cover-tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:12px}
+.cover h1{font-family:var(--font-head,'Archivo',sans-serif);font-size:clamp(32px,6vw,72px);font-weight:900;line-height:1}
+.cover h1 em{color:var(--primary);font-style:normal}
+.cover p{font-size:14px;color:rgba(255,255,255,.45);font-weight:300;margin-top:12px;max-width:520px}
+.toc{background:var(--d2,#1A1915);padding:0 5%;display:flex;flex-wrap:wrap;gap:0}
+.toc a{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;padding:15px 18px;border-bottom:2px solid transparent;white-space:nowrap}
+.toc a:hover{color:var(--primary);border-bottom-color:var(--primary)}
+.sec{padding:56px 5%;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--g3,#eaeaea)}
+.sec-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:8px}
+.sec-h2{font-family:var(--font-head,'Archivo',sans-serif);font-size:clamp(22px,3vw,36px);font-weight:800;margin-bottom:28px}
+.rule{width:40px;height:2px;background:var(--primary);margin:0 0 28px}
+/* Swatches */
+.swatches{display:flex;flex-wrap:wrap;gap:20px}
+.swatch{min-width:140px;display:flex;flex-direction:column;gap:8px}
+.swatch-box{height:88px;border-radius:6px;display:flex;align-items:flex-end;padding:8px 10px;font-family:monospace;font-size:12px;font-weight:700;border:1px solid rgba(0,0,0,.06)}
+.swatch-meta{display:flex;flex-direction:column;gap:2px}
+.swatch-meta strong{font-family:var(--font-head,'Archivo',sans-serif);font-size:13px}
+.swatch-meta code{font-size:11px;background:var(--g3,#eaeaea);padding:1px 5px;border-radius:3px;color:var(--d1);font-family:monospace;width:fit-content}
+.swatch-meta span{font-size:11px;color:var(--g1,#6B7380);font-weight:300;line-height:1.4}
+/* Fonts */
+.font-card{background:#fff;border:1px solid var(--g3,#eaeaea);border-radius:6px;padding:28px;margin-bottom:14px}
+.font-demo{font-size:42px;font-weight:900;margin-bottom:6px}
+.font-meta{font-size:12px;color:var(--g1,#6B7380);margin-bottom:6px}
+.font-meta code{background:var(--g3,#eaeaea);padding:1px 5px;border-radius:3px}
+.font-meta a{color:var(--primary)}
+.font-use{font-size:12px;color:var(--g1,#6B7380);font-weight:300}
+/* Pages table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--d1);color:#fff;padding:10px 14px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+td{padding:10px 14px;border-bottom:1px solid var(--g3,#eaeaea);vertical-align:top}
+tr:hover td{background:var(--off-white,#FAF8F5)}
+td code{background:var(--g3,#eaeaea);padding:1px 5px;border-radius:3px;font-size:11px;font-family:monospace}
+/* JS fns */
+.fn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.fn-grid{grid-template-columns:1fr}}
+.fn-card{background:var(--d2,#1A1915);border-radius:6px;padding:18px 20px;border-left:3px solid var(--primary)}
+.fn-card h4{font-family:monospace;font-size:14px;color:var(--primary-l,#F2C4B6);margin-bottom:6px}
+.fn-card p{font-size:12px;color:rgba(255,255,255,.5);font-weight:300;line-height:1.5}
+/* i18n */
+.key-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.key-row{display:flex;gap:10px;padding:7px 12px;background:#fff;border:1px solid var(--g3,#eaeaea);border-radius:4px;font-size:12px}
+.key-name{font-family:monospace;color:#c03c10;font-size:11px;white-space:nowrap;min-width:120px}
+.key-val{color:var(--g1,#6B7380);font-weight:300}
+/* Tree */
+.tree{background:var(--d2,#1A1915);border-radius:6px;padding:22px 26px;font-family:monospace;font-size:13px;color:rgba(255,255,255,.55);line-height:2;overflow-x:auto}
+.tree .d{color:var(--primary-l,#F2C4B6);font-weight:700}
+.tree .c{color:rgba(255,255,255,.22);font-style:italic}
+/* Componentes */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.comp-grid{grid-template-columns:1fr}}
+.comp-card{background:#fff;border:1px solid var(--g3,#eaeaea);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.comp-demo{padding:24px;display:flex;align-items:center;justify-content:center;background:var(--off-white,#faf8f5);border-bottom:1px solid var(--g3,#eaeaea);min-height:112px}
+.comp-body{padding:15px 18px}
+.comp-body h4{font-family:var(--font-head,'Instrument Serif',serif);font-size:16px;margin-bottom:4px;color:var(--d1)}
+.comp-body p{font-size:12px;color:var(--g1,#6B7380);font-weight:300;margin-bottom:9px}
+.comp-body code{font-size:11px;color:#0e4f2e;background:var(--g3,#eaeaea);padding:5px 9px;border-radius:4px;display:block;line-height:1.55;font-family:monospace}
+footer{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.08em;text-transform:uppercase;margin-top:40px}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-tag">Manual de Marca · Tabacalera Alfambra</div>
+  <h1>Brand<br><em>Manual</em></h1>
+  <p>Referencia de diseño generada automáticamente desde <strong>index.html</strong>. Incluye colores, tipografía, componentes, páginas, traducciones y funciones JS.</p>
+</div>
+
+<nav class="toc">
+  <a href="#colores">01 Colores</a>
+  <a href="#tipografia">02 Tipografía</a>
+  <a href="#componentes">03 Componentes</a>
+  <a href="#paginas">04 Páginas</a>
+  <a href="#i18n">05 Idioma</a>
+  <a href="#funciones">06 Funciones JS</a>
+  <a href="#storage">07 localStorage</a>
+  <a href="#archivos">08 Assets</a>
+</nav>
+
+<!-- 01 COLORES -->
+<div id="colores" class="sec">
+  <div class="sec-label">01</div>
+  <h2 class="sec-h2">Paleta de Colores</h2>
+  <div class="rule"></div>
+  <p style="font-size:13px;color:var(--g1);margin-bottom:28px;font-weight:300">
+    Variables CSS definidas en <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">:root</code>.
+    Usar siempre las variables, nunca valores hexadecimales directos.
+  </p>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-box" style="background:#f5b728;color:#ffffff">
+        <span>#f5b728</span>
+      </div>
+      <div class="swatch-meta">
+        <strong>Dorado Alfambra</strong>
+        <code>--gold</code>
+        <span>Acentos, botones/CTA, iconos, logos y detalles premium</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#0D0D0D;color:#ffffff">
+        <span>#0D0D0D</span>
+      </div>
+      <div class="swatch-meta">
+        <strong>Negro</strong>
+        <code>--black</code>
+        <span>Texto principal, secciones oscuras, nav y footer</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#F8F6F2;color:#ffffff">
+        <span>#F8F6F2</span>
+      </div>
+      <div class="swatch-meta">
+        <strong>Marfil</strong>
+        <code>--ivory</code>
+        <span>Fondo general claro de la web</span>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#0E4F2E;color:#ffffff">
+        <span>#0E4F2E</span>
+      </div>
+      <div class="swatch-meta">
+        <strong>Verde Alhambra</strong>
+        <code>--green</code>
+        <span>Nav, franja destacada, verificación de edad y marca</span>
+      </div>
+    </div></div>
+</div>
+
+<!-- 02 TIPOGRAFÍA -->
+<div id="tipografia" class="sec">
+  <div class="sec-label">02</div>
+  <h2 class="sec-h2">Tipografía</h2>
+  <div class="rule"></div>
+  
+    <div class="font-card">
+      <div class="font-demo" style="font-family:'Instrument Serif',sans-serif;">Instrument Serif</div>
+      <div class="font-meta">
+        <code>--font-body</code> · Google Fonts ·
+        <a href="https://fonts.google.com/specimen/Instrument+Serif" target="_blank">Ver en Google Fonts →</a>
+      </div>
+      <div class="font-use">Párrafos, formularios, etiquetas, nav links</div>
+    </div>
+  <div style="background:var(--d2);border-radius:6px;padding:18px 22px;margin-top:10px">
+    <p style="font-size:12px;color:rgba(255,255,255,.4);font-weight:300;line-height:1.7">
+      ⚠ <strong style="color:rgba(255,255,255,.7)">RGPD WordPress:</strong>
+      Descargar fuentes en <a href="https://gwfh.mranftl.com" style="color:var(--primary)">gwfh.mranftl.com</a>
+      y servirlas localmente, o usar el plugin OMGF para evitar transferencia de IPs a Google.
+    </p>
+  </div>
+</div>
+
+<!-- 03 COMPONENTES -->
+<div id="componentes" class="sec">
+  <div class="sec-label">03</div>
+  <h2 class="sec-h2">Componentes / Elementos</h2>
+  <div class="rule"></div>
+  <p style="font-size:13px;color:var(--g1);margin-bottom:24px;font-weight:300">Cómo es cada elemento de la interfaz: muestra en vivo + especificación visual.</p>
+  <div class="comp-grid"><div class="comp-card"><div class="comp-demo"><button style="font-family:Georgia,serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;border:none;border-radius:12px;padding:12px 24px;background:linear-gradient(135deg,#f9c944,#f5b728 48%,#d9990f);box-shadow:0 10px 24px -10px rgba(245,183,40,.7)">Descargar catálogo</button></div><div class="comp-body"><h4>Botón primario (dorado)</h4><p>Acción principal: descargas, confirmar, enviar.</p><code>Fondo degradado dorado · texto negro · radius 12px · mayúsculas serif · sombra dorada · eleva al hover</code></div></div><div class="comp-card"><div class="comp-demo"><button style="font-family:Georgia,serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#0e4f2e;background:transparent;border:1px solid #0e4f2e;border-radius:6px;padding:11px 24px">Enviar mensaje</button></div><div class="comp-body"><h4>Botón contorno</h4><p>Acciones secundarias (formulario, CTA suaves).</p><code>Borde verde/dorado · texto del mismo color · se rellena al hover · radius 6px</code></div></div><div class="comp-card"><div class="comp-demo"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid rgba(245,183,40,.5);border-radius:50%;color:#f5b728;font-size:18px">✦</span></div><div class="comp-body"><h4>Botón de icono / redes</h4><p>Redes sociales, ver/compartir.</p><code>Círculo 44px · borde dorado · se rellena de dorado al hover</code></div></div><div class="comp-card"><div class="comp-demo"><span style="font-family:Georgia,serif;text-transform:uppercase;letter-spacing:.13em;color:#0e4f2e;border-bottom:1px solid #f5b728;padding-bottom:3px">Productos ▾</span></div><div class="comp-body"><h4>Enlace de menú</h4><p>Navegación principal (serif, en el nav verde translúcido).</p><code>Serif · mayúsculas · marfil 55% → dorado · subrayado dorado que crece al hover</code></div></div><div class="comp-card"><div class="comp-demo"><div style="text-align:center"><span style="color:#f5b728;font-size:12px;letter-spacing:.28em;text-transform:uppercase">Conservación premium</span><div style="width:44px;height:1px;background:#f5b728;margin:8px auto 0"></div></div></div><div class="comp-body"><h4>Etiqueta de sección</h4><p>Antetítulo (eyebrow) sobre los títulos de sección y cabeceros.</p><code>Dorado · mayúsculas · tracking amplio · línea dorada de 44px centrada</code></div></div><div class="comp-card"><div class="comp-demo"><div style="width:150px;background:#141210;border:1px solid rgba(245,183,40,.2);border-radius:14px;overflow:hidden"><div style="height:58px;background:linear-gradient(#3a2f1e,#141210);position:relative"><span style="position:absolute;top:4px;left:10px;color:#f5b728;font-family:Georgia,serif;font-size:24px">01</span><span style="position:absolute;top:8px;right:8px;border:1px solid rgba(245,183,40,.5);color:#f5b728;border-radius:999px;padding:2px 8px;font-size:8px;text-transform:uppercase">Completo</span></div><div style="padding:8px 12px;color:#f5b728;font-family:Georgia,serif">El Brujito</div></div></div><div class="comp-body"><h4>Tarjeta de catálogo</h4><p>Catálogo descargable por línea.</p><code>Fondo oscuro degradado · radius 20px · índice dorado · tag píldora · acento dorado superior + elevación al hover</code></div></div><div class="comp-card"><div class="comp-demo"><div style="width:120px;background:#fff;border:1px solid rgba(245,183,40,.25);border-radius:10px;padding:10px;text-align:center"><div style="height:56px;background:#efece5;border-radius:6px"></div><div style="font-family:Georgia,serif;color:#0d0d0d;margin-top:8px;font-size:14px">Robusto</div><div style="color:#0e4f2e;font-size:11px">Cepo 52 · 127 mm</div></div></div><div class="comp-body"><h4>Tarjeta de producto</h4><p>Vitola en la rejilla de cada marca.</p><code>Fondo blanco · borde dorado sutil · imagen contain · título serif · datos en verde</code></div></div><div class="comp-card"><div class="comp-demo"><span style="display:inline-flex;flex-direction:column;width:46px;height:46px;border-radius:50%;background:#0e4f2e;color:#F8F6F2;align-items:center;justify-content:center;line-height:1"><b style="font-family:Georgia,serif;font-size:18px">52</b><span style="font-size:8px;letter-spacing:.1em;text-transform:uppercase;opacity:.85">Cepo</span></span></div><div class="comp-body"><h4>Badge de cepo</h4><p>Ring gauge sobre la foto en las tarjetas del buscador.</p><code>Círculo verde · número serif + etiqueta 'Cepo' en marfil</code></div></div><div class="comp-card"><div class="comp-demo"><span style="display:inline-block;border:1px solid #0e4f2e;color:#fff;background:#0e4f2e;border-radius:999px;padding:8px 16px;font-family:Georgia,serif;font-size:14px">Medio · 48–52</span></div><div class="comp-body"><h4>Píldora de filtro / tag</h4><p>Filtros de cepo y etiquetas.</p><code>Píldora · borde verde · activa = verde relleno con sombra</code></div></div><div class="comp-card"><div class="comp-demo"><div style="width:180px;height:10px;border-radius:999px;background:linear-gradient(90deg,#e7dfce,#c9a24a,#8a5a1a);position:relative"><span style="position:absolute;left:60%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:#0e4f2e;border:3px solid #F8F6F2;box-shadow:0 2px 6px rgba(0,0,0,.3)"></span></div></div><div class="comp-body"><h4>Slider de fortaleza</h4><p>Selector de fortaleza en el buscador y ficha de producto.</p><code>Barra degradada (suave→fuerte) · pulgar verde con borde marfil</code></div></div><div class="comp-card"><div class="comp-demo"><div style="width:180px"><div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#0e4f2e;margin-bottom:2px">Nombre</div><div style="border-bottom:1px solid #0e4f2e;height:22px"></div></div></div><div class="comp-body"><h4>Campo de formulario</h4><p>Inputs del formulario de contacto.</p><code>Sin caja · línea inferior · label flotante · la línea se vuelve dorada al foco</code></div></div><div class="comp-card"><div class="comp-demo"><div style="width:190px;height:66px;border-radius:6px;background:linear-gradient(#0000005a,#000000a6),#5b4a33;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="color:#f5b728;font-size:8px;letter-spacing:.2em;text-transform:uppercase">Descargas por línea</span><span style="color:#F8F6F2;font-family:Georgia,serif;font-size:16px">Catálogo</span></div></div><div class="comp-body"><h4>Cabecero de sección</h4><p>Banner superior de cada página interior.</p><code>Foto + degradado oscuro · etiqueta dorada + título serif centrados bajo el nav</code></div></div></div>
+</div>
+
+<!-- 04 PÁGINAS -->
+<div id="paginas" class="sec">
+  <div class="sec-label">04</div>
+  <h2 class="sec-h2">Páginas (SPA)</h2>
+  <div class="rule"></div>
+  <p style="font-size:13px;color:var(--g1);margin-bottom:20px;font-weight:300">
+    Sitio de página única. Función <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">showPage(id)</code>
+    activa/desactiva la clase <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">.active</code>.
+  </p>
+  <table><thead><tr><th>ID</th><th>Página</th><th>Descripción</th><th>Nav</th></tr></thead>
+  <tbody><tr><td><code>page-tienda</code></td><td><strong>Productos</strong></td><td>Marcas por línea con banner + descripción y rejilla de vitolas (render dinámico).</td><td>Clara</td></tr>
+<tr><td><code>page-productos</code></td><td><strong>Humidor</strong></td><td>Humidores Alfambra Simple y Doble con ficha técnica completa.</td><td>Clara</td></tr>
+<tr><td><code>page-catalogue</code></td><td><strong>Catálogo</strong></td><td>Catálogos descargables por línea (Completo, El Brujito, Alejandro Mata).</td><td>Clara</td></tr>
+<tr><td><code>page-home</code></td><td><strong>Inicio</strong></td><td>Portada. Hero con carrusel, filosofía (fondo negro) y franja destacada "Colección 1984" (verde).</td><td>Verde translúcido</td></tr>
+<tr><td><code>page-about</code></td><td><strong>Nosotros</strong></td><td>Historia de la casa, ciclo de producción y galería.</td><td>Clara</td></tr>
+<tr><td><code>page-news</code></td><td><strong>Noticias</strong></td><td>Listado de novedades (masonry) con páginas de artículo dinámicas.</td><td>Clara</td></tr>
+<tr><td><code>page-contact</code></td><td><strong>Contacto</strong></td><td>Datos reales, redes sociales y formulario.</td><td>Clara</td></tr>
+<tr><td><code>page-vitola</code></td><td><strong>Ficha de producto</strong></td><td>Página individual de cada vitola: imagen, fortaleza, cepo, galería (2 fotos) y maridaje.</td><td>Clara</td></tr>
+</tbody></table>
+</div>
+
+<!-- 04 IDIOMA -->
+<div id="i18n" class="sec">
+  <div class="sec-label">05</div>
+  <h2 class="sec-h2">Idioma (Español / Inglés)</h2>
+  <div class="rule"></div>
+  <p style="font-size:13px;color:var(--g1);margin-bottom:20px;font-weight:300">
+    Selector <strong>ES / EN</strong> a la derecha del menú. Traduce <strong>toda la web</strong>
+    (incluido el contenido dinámico) mediante <strong>Google Translate</strong> con su interfaz
+    nativa oculta por CSS; el idioma se recuerda en la cookie
+    <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">googtrans</code>.
+    Función: <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">setSiteLang('es'|'en')</code>.
+  </p>
+  <p style="font-size:12px;color:var(--g1);font-weight:300">
+    Nota: solo funciona en el sitio publicado (requiere red). Para una traducción de marca con
+    control total se usaría un diccionario i18n manual con <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">data-i18n</code>.
+  </p>
+</div>
+
+<!-- 05 FUNCIONES JS -->
+<div id="funciones" class="sec">
+  <div class="sec-label">06</div>
+  <h2 class="sec-h2">Funciones JavaScript</h2>
+  <div class="rule"></div>
+  <div class="fn-grid"><div class="fn-card"><h4>showPage(id)</h4><p>Navega entre secciones .page añadiendo/quitando .active; dispara render de tienda/finder y los reveals.</p></div><div class="fn-card"><h4>dismissAgeGate()</h4><p>Cierra la verificación de edad: los paneles dorados se abren como puertas y revelan la web.</p></div><div class="fn-card"><h4>playHero()</h4><p>Reinicia la animación de entrada del título del hero.</p></div><div class="fn-card"><h4>toggleMobileNav() / mobileGo(id)</h4><p>Abre/cierra el menú hamburguesa móvil; mobileGo navega y lo cierra.</p></div><div class="fn-card"><h4>setSiteLang("es"|"en")</h4><p>Cambia el idioma de toda la web vía Google Translate (persiste en cookie googtrans).</p></div><div class="fn-card"><h4>renderLines()</h4><p>Pinta la página Productos (banner por marca + rejilla de vitolas) desde brandLines.</p></div><div class="fn-card"><h4>showVitola(brandId, index)</h4><p>Genera la ficha individual de una vitola (imagen, fortaleza, cepo, galería, maridaje).</p></div><div class="fn-card"><h4>gotoLinea(id)</h4><p>Va a Productos y hace scroll a la marca indicada (desde el desplegable del menú).</p></div><div class="fn-card"><h4>updateFinderResults()</h4><p>Filtra las vitolas del buscador por marca, fortaleza, cepo y tamaño.</p></div><div class="fn-card"><h4>showNews(id) / renderNewsPage(id)</h4><p>Abre la página de un artículo de noticias (render dinámico).</p></div><div class="fn-card"><h4>downloadPDF(line)</h4><p>Descarga el catálogo de la línea en el idioma elegido.</p></div><div class="fn-card"><h4>setCookieConsent(bool)</h4><p>Guarda la elección de cookies en localStorage y oculta el banner.</p></div></div>
+</div>
+
+<!-- 06 LOCALSTORAGE -->
+<div id="storage" class="sec">
+  <div class="sec-label">07</div>
+  <h2 class="sec-h2">localStorage</h2>
+  <div class="rule"></div>
+  <table><thead><tr><th>Clave</th><th>Tipo</th><th>Valores</th><th>Uso</th></tr></thead>
+  <tbody><tr><td><code>alfambra_cookies</code></td><td>localStorage</td><td><code>'accepted' | 'rejected'</code></td><td>Respuesta al banner de cookies</td></tr><tr><td><code>googtrans</code></td><td>cookie</td><td><code>'/es/en' | '/es/es'</code></td><td>Idioma activo (Google Translate)</td></tr></tbody></table>
+</div>
+
+<!-- 07 ASSETS -->
+<div id="archivos" class="sec">
+  <div class="sec-label">08</div>
+  <h2 class="sec-h2">Estructura de Assets</h2>
+  <div class="rule"></div>
+  <div class="tree">
+    <span class="d">assets/</span><br>
+    ├── <span class="d">img/</span> favicon.png <span class="c">← Imagen — assets/img/favicon.png (12 KB)</span><br>├── <span class="d">img/</span> gate-panel-left.webp <span class="c">← Elemento decorativo — assets/img/gate-panel-left.webp (151 KB)</span><br>├── <span class="d">img/</span> gate-panel-right.webp <span class="c">← Elemento decorativo — assets/img/gate-panel-right.webp (151 KB)</span><br>├── <span class="d">img/</span> intro-curtain-left.webp <span class="c">← Imagen — assets/img/intro-curtain-left.webp (175 KB)</span><br>├── <span class="d">img/</span> intro-curtain-right.webp <span class="c">← Imagen — assets/img/intro-curtain-right.webp (168 KB)</span><br>├── <span class="d">img/</span> company-gold.webp <span class="c">← Logo / marca — assets/img/logos/company-gold.webp (61 KB)</span><br>├── <span class="d">img/</span> barbudo-fumando.webp <span class="c">← Cabecero / hero — assets/img/hero/barbudo-fumando.webp (137 KB)</span><br>├── <span class="d">img/</span> hombre-campo.webp <span class="c">← Cabecero / hero — assets/img/hero/hombre-campo.webp (201 KB)</span><br>├── <span class="d">img/</span> mujer-plantacion.webp <span class="c">← Cabecero / hero — assets/img/hero/mujer-plantacion.webp (244 KB)</span><br>├── <span class="d">img/</span> hombre-patio.jpg <span class="c">← Cabecero / hero — assets/img/hero/hombre-patio.jpg (176 KB)</span><br>├── <span class="d">img/</span> mujer-patio.webp <span class="c">← Cabecero / hero — assets/img/hero/mujer-patio.webp (178 KB)</span><br>├── <span class="d">img/</span> campo-atardecer.jpg <span class="c">← Cabecero / hero — assets/img/hero/campo-atardecer.jpg (250 KB)</span><br>├── <span class="d">img/</span> retrato-hombre.jpg <span class="c">← Estilo de vida — assets/img/vida/retrato-hombre.jpg (176 KB)</span><br>├── <span class="d">img/</span> mata-genesis-box.jpg <span class="c">← Imagen — assets/img/mata-genesis-box.jpg (134 KB)</span><br>├── <span class="d">img/</span> plantacion-mujer.webp <span class="c">← Estilo de vida — assets/img/vida/plantacion-mujer.webp (244 KB)</span><br>├── <span class="d">img/</span> torcedor.webp <span class="c">← Estilo de vida — assets/img/news/torcedor.webp (154 KB)</span><br>├── <span class="d">img/</span> bodegon.webp <span class="c">← Bodegón / gama — assets/img/bodegon.webp (106 KB)</span><br>├── <span class="d">img/</span> brujito-logo.png <span class="c">← Logo / marca — assets/img/logos/brujito-logo.png (53 KB)</span><br>├── <span class="d">img/</span> clasica-logo.png <span class="c">← Logo / marca — assets/img/logos/clasica-logo.png (33 KB)</span><br>├── <span class="d">img/</span> seleccion-logo.png <span class="c">← Logo / marca — assets/img/logos/seleccion-logo.png (40 KB)</span><br>├── <span class="d">img/</span> jose-logo.png <span class="c">← Logo / marca — assets/img/logos/jose-logo.png (38 KB)</span><br>├── <span class="d">img/</span> mata-logo.png <span class="c">← Logo / marca — assets/img/logos/mata-logo.png (28 KB)</span><br>├── <span class="d">img/</span> humidor-header.webp <span class="c">← Humidor — assets/img/humidor-header.webp (90 KB)</span><br>├── <span class="d">img/</span> humidor-simple.webp <span class="c">← Humidor — assets/img/humidor-simple.webp (75 KB)</span><br>├── <span class="d">img/</span> humidor-doble.webp <span class="c">← Humidor — assets/img/humidor-doble.webp (116 KB)</span><br>├── <span class="d">img/</span> lineup-puros-alfambra.jpg <span class="c">← Bodegón / gama — assets/img/lineup-puros-alfambra.jpg (26 KB)</span><br>├── <span class="d">img/</span> campo-tabaco.jpg <span class="c">← Estilo de vida — assets/img/news/campo-tabaco.jpg (458 KB)</span><br>├── <span class="d">img/</span> hombre-fumando.webp <span class="c">← Estilo de vida — assets/img/news/hombre-fumando.webp (170 KB)</span><br>├── <span class="d">img/</span> catalog-header.webp <span class="c">← Bodegón / gama — assets/img/catalog-header.webp (201 KB)</span><br>├── <span class="d">img/</span> trama-amarillo.png <span class="c">← Logo / marca — assets/img/logos/trama-amarillo.png (514 KB)</span><br>├── <span class="d">img/</span> brujito-box.png <span class="c">← Foto de producto — assets/img/products/brujito-box.png (189 KB)</span><br>├── <span class="d">img/</span> footer-tabacalera.webp <span class="c">← Logo / marca — assets/img/logos/footer-tabacalera.webp (19 KB)</span><br>├── <span class="d">img/</span> alfambra-gold.png <span class="c">← Logo / marca — assets/img/logos/alfambra-gold.png (11 KB)</span><br>├── <span class="d">img/</span> puro-default.webp <span class="c">← Imagen — assets/img/puro-default.webp (27 KB)</span><br>├── <span class="d">img/</span> brujito-cigar.webp <span class="c">← Foto de producto — assets/img/products/brujito-cigar.webp (20 KB)</span><br>├── <span class="d">img/</span> brujito-logo-ivory.png <span class="c">← Logo / marca — assets/img/logos/brujito-logo-ivory.png (18 KB)</span><br>├── <span class="d">img/</span> brujito-cigar2.webp <span class="c">← Foto de producto — assets/img/products/brujito-cigar2.webp (57 KB)</span><br>├── <span class="d">img/</span> verde-cigar.png <span class="c">← Foto de producto — assets/img/products/verde-cigar.png (349 KB)</span><br>├── <span class="d">img/</span> clasica-lineup.webp <span class="c">← Bodegón / gama — assets/img/clasica-lineup.webp (213 KB)</span><br>├── <span class="d">img/</span> gener-cigar.webp <span class="c">← Foto de producto — assets/img/products/gener-cigar.webp (72 KB)</span><br>├── <span class="d">img/</span> gener-box.png <span class="c">← Foto de producto — assets/img/products/gener-box.png (215 KB)</span><br>├── <span class="d">img/</span> mata-carmelita.webp <span class="c">← Foto de producto — assets/img/products/mata-carmelita.webp (133 KB)</span><br>├── <span class="d">img/</span> mata-maduro.webp <span class="c">← Foto de producto — assets/img/products/mata-maduro.webp (146 KB)</span><br>
+    ├── <span class="d">fuentes/</span> FUENTES.txt<br>
+    └── INDICE_ASSETS.html
+  </div>
+</div>
+
+<footer>Tabacalera Alfambra · Manual de Marca generado automáticamente</footer>
+</body>
+</html>

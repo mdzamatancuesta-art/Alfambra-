@@ -366,6 +366,65 @@ ls_rows = ''.join(
     for k, t, v, u in ls_keys
 )
 
+# ─────────────────────────────────────────────────────────────────
+#  COMPONENTES / ELEMENTOS DE UI (cómo es cada elemento)
+# ─────────────────────────────────────────────────────────────────
+COMPONENTS = [
+    ("Botón primario (dorado)",
+     '<button style="font-family:Georgia,serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;border:none;border-radius:12px;padding:12px 24px;background:linear-gradient(135deg,#f9c944,#f5b728 48%,#d9990f);box-shadow:0 10px 24px -10px rgba(245,183,40,.7)">Descargar catálogo</button>',
+     "Acción principal: descargas, confirmar, enviar.",
+     "Fondo degradado dorado · texto negro · radius 12px · mayúsculas serif · sombra dorada · eleva al hover"),
+    ("Botón contorno",
+     '<button style="font-family:Georgia,serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#0e4f2e;background:transparent;border:1px solid #0e4f2e;border-radius:6px;padding:11px 24px">Enviar mensaje</button>',
+     "Acciones secundarias (formulario, CTA suaves).",
+     "Borde verde/dorado · texto del mismo color · se rellena al hover · radius 6px"),
+    ("Botón de icono / redes",
+     '<span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid rgba(245,183,40,.5);border-radius:50%;color:#f5b728;font-size:18px">✦</span>',
+     "Redes sociales, ver/compartir.",
+     "Círculo 44px · borde dorado · se rellena de dorado al hover"),
+    ("Enlace de menú",
+     '<span style="font-family:Georgia,serif;text-transform:uppercase;letter-spacing:.13em;color:#0e4f2e;border-bottom:1px solid #f5b728;padding-bottom:3px">Productos ▾</span>',
+     "Navegación principal (serif, en el nav verde translúcido).",
+     "Serif · mayúsculas · marfil 55% → dorado · subrayado dorado que crece al hover"),
+    ("Etiqueta de sección",
+     '<div style="text-align:center"><span style="color:#f5b728;font-size:12px;letter-spacing:.28em;text-transform:uppercase">Conservación premium</span><div style="width:44px;height:1px;background:#f5b728;margin:8px auto 0"></div></div>',
+     "Antetítulo (eyebrow) sobre los títulos de sección y cabeceros.",
+     "Dorado · mayúsculas · tracking amplio · línea dorada de 44px centrada"),
+    ("Tarjeta de catálogo",
+     '<div style="width:150px;background:#141210;border:1px solid rgba(245,183,40,.2);border-radius:14px;overflow:hidden"><div style="height:58px;background:linear-gradient(#3a2f1e,#141210);position:relative"><span style="position:absolute;top:4px;left:10px;color:#f5b728;font-family:Georgia,serif;font-size:24px">01</span><span style="position:absolute;top:8px;right:8px;border:1px solid rgba(245,183,40,.5);color:#f5b728;border-radius:999px;padding:2px 8px;font-size:8px;text-transform:uppercase">Completo</span></div><div style="padding:8px 12px;color:#f5b728;font-family:Georgia,serif">El Brujito</div></div>',
+     "Catálogo descargable por línea.",
+     "Fondo oscuro degradado · radius 20px · índice dorado · tag píldora · acento dorado superior + elevación al hover"),
+    ("Tarjeta de producto",
+     '<div style="width:120px;background:#fff;border:1px solid rgba(245,183,40,.25);border-radius:10px;padding:10px;text-align:center"><div style="height:56px;background:#efece5;border-radius:6px"></div><div style="font-family:Georgia,serif;color:#0d0d0d;margin-top:8px;font-size:14px">Robusto</div><div style="color:#0e4f2e;font-size:11px">Cepo 52 · 127 mm</div></div>',
+     "Vitola en la rejilla de cada marca.",
+     "Fondo blanco · borde dorado sutil · imagen contain · título serif · datos en verde"),
+    ("Badge de cepo",
+     '<span style="display:inline-flex;flex-direction:column;width:46px;height:46px;border-radius:50%;background:#0e4f2e;color:#F8F6F2;align-items:center;justify-content:center;line-height:1"><b style="font-family:Georgia,serif;font-size:18px">52</b><span style="font-size:8px;letter-spacing:.1em;text-transform:uppercase;opacity:.85">Cepo</span></span>',
+     "Ring gauge sobre la foto en las tarjetas del buscador.",
+     "Círculo verde · número serif + etiqueta 'Cepo' en marfil"),
+    ("Píldora de filtro / tag",
+     '<span style="display:inline-block;border:1px solid #0e4f2e;color:#fff;background:#0e4f2e;border-radius:999px;padding:8px 16px;font-family:Georgia,serif;font-size:14px">Medio · 48–52</span>',
+     "Filtros de cepo y etiquetas.",
+     "Píldora · borde verde · activa = verde relleno con sombra"),
+    ("Slider de fortaleza",
+     '<div style="width:180px;height:10px;border-radius:999px;background:linear-gradient(90deg,#e7dfce,#c9a24a,#8a5a1a);position:relative"><span style="position:absolute;left:60%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:#0e4f2e;border:3px solid #F8F6F2;box-shadow:0 2px 6px rgba(0,0,0,.3)"></span></div>',
+     "Selector de fortaleza en el buscador y ficha de producto.",
+     "Barra degradada (suave→fuerte) · pulgar verde con borde marfil"),
+    ("Campo de formulario",
+     '<div style="width:180px"><div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#0e4f2e;margin-bottom:2px">Nombre</div><div style="border-bottom:1px solid #0e4f2e;height:22px"></div></div>',
+     "Inputs del formulario de contacto.",
+     "Sin caja · línea inferior · label flotante · la línea se vuelve dorada al foco"),
+    ("Cabecero de sección",
+     '<div style="width:190px;height:66px;border-radius:6px;background:linear-gradient(#0000005a,#000000a6),#5b4a33;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="color:#f5b728;font-size:8px;letter-spacing:.2em;text-transform:uppercase">Descargas por línea</span><span style="color:#F8F6F2;font-family:Georgia,serif;font-size:16px">Catálogo</span></div>',
+     "Banner superior de cada página interior.",
+     "Foto + degradado oscuro · etiqueta dorada + título serif centrados bajo el nav"),
+]
+components_html = ''.join(
+    f'<div class="comp-card"><div class="comp-demo">{demo}</div>'
+    f'<div class="comp-body"><h4>{nombre}</h4><p>{uso}</p><code>{spec}</code></div></div>'
+    for nombre, demo, uso, spec in COMPONENTS
+)
+
 manual_html = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -427,6 +486,15 @@ td code{{background:var(--g3,#eaeaea);padding:1px 5px;border-radius:3px;font-siz
 .tree{{background:var(--d2,#1A1915);border-radius:6px;padding:22px 26px;font-family:monospace;font-size:13px;color:rgba(255,255,255,.55);line-height:2;overflow-x:auto}}
 .tree .d{{color:var(--primary-l,#F2C4B6);font-weight:700}}
 .tree .c{{color:rgba(255,255,255,.22);font-style:italic}}
+/* Componentes */
+.comp-grid{{display:grid;grid-template-columns:1fr 1fr;gap:16px}}
+@media(max-width:640px){{.comp-grid{{grid-template-columns:1fr}}}}
+.comp-card{{background:#fff;border:1px solid var(--g3,#eaeaea);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}}
+.comp-demo{{padding:24px;display:flex;align-items:center;justify-content:center;background:var(--off-white,#faf8f5);border-bottom:1px solid var(--g3,#eaeaea);min-height:112px}}
+.comp-body{{padding:15px 18px}}
+.comp-body h4{{font-family:var(--font-head,'Instrument Serif',serif);font-size:16px;margin-bottom:4px;color:var(--d1)}}
+.comp-body p{{font-size:12px;color:var(--g1,#6B7380);font-weight:300;margin-bottom:9px}}
+.comp-body code{{font-size:11px;color:#0e4f2e;background:var(--g3,#eaeaea);padding:5px 9px;border-radius:4px;display:block;line-height:1.55;font-family:monospace}}
 footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.08em;text-transform:uppercase;margin-top:40px}}
 </style>
 </head>
@@ -441,11 +509,12 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
 <nav class="toc">
   <a href="#colores">01 Colores</a>
   <a href="#tipografia">02 Tipografía</a>
-  <a href="#paginas">03 Páginas</a>
-  <a href="#i18n">04 Traducciones</a>
-  <a href="#funciones">05 Funciones JS</a>
-  <a href="#storage">06 localStorage</a>
-  <a href="#archivos">07 Assets</a>
+  <a href="#componentes">03 Componentes</a>
+  <a href="#paginas">04 Páginas</a>
+  <a href="#i18n">05 Idioma</a>
+  <a href="#funciones">06 Funciones JS</a>
+  <a href="#storage">07 localStorage</a>
+  <a href="#archivos">08 Assets</a>
 </nav>
 
 <!-- 01 COLORES -->
@@ -475,9 +544,18 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
   </div>
 </div>
 
-<!-- 03 PÁGINAS -->
-<div id="paginas" class="sec">
+<!-- 03 COMPONENTES -->
+<div id="componentes" class="sec">
   <div class="sec-label">03</div>
+  <h2 class="sec-h2">Componentes / Elementos</h2>
+  <div class="rule"></div>
+  <p style="font-size:13px;color:var(--g1);margin-bottom:24px;font-weight:300">Cómo es cada elemento de la interfaz: muestra en vivo + especificación visual.</p>
+  <div class="comp-grid">{components_html}</div>
+</div>
+
+<!-- 04 PÁGINAS -->
+<div id="paginas" class="sec">
+  <div class="sec-label">04</div>
   <h2 class="sec-h2">Páginas (SPA)</h2>
   <div class="rule"></div>
   <p style="font-size:13px;color:var(--g1);margin-bottom:20px;font-weight:300">
@@ -490,7 +568,7 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
 
 <!-- 04 IDIOMA -->
 <div id="i18n" class="sec">
-  <div class="sec-label">04</div>
+  <div class="sec-label">05</div>
   <h2 class="sec-h2">Idioma (Español / Inglés)</h2>
   <div class="rule"></div>
   <p style="font-size:13px;color:var(--g1);margin-bottom:20px;font-weight:300">
@@ -508,7 +586,7 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
 
 <!-- 05 FUNCIONES JS -->
 <div id="funciones" class="sec">
-  <div class="sec-label">05</div>
+  <div class="sec-label">06</div>
   <h2 class="sec-h2">Funciones JavaScript</h2>
   <div class="rule"></div>
   <div class="fn-grid">{fn_cards_html}</div>
@@ -516,7 +594,7 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
 
 <!-- 06 LOCALSTORAGE -->
 <div id="storage" class="sec">
-  <div class="sec-label">06</div>
+  <div class="sec-label">07</div>
   <h2 class="sec-h2">localStorage</h2>
   <div class="rule"></div>
   <table><thead><tr><th>Clave</th><th>Tipo</th><th>Valores</th><th>Uso</th></tr></thead>
@@ -525,7 +603,7 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
 
 <!-- 07 ASSETS -->
 <div id="archivos" class="sec">
-  <div class="sec-label">07</div>
+  <div class="sec-label">08</div>
   <h2 class="sec-h2">Estructura de Assets</h2>
   <div class="rule"></div>
   <div class="tree">
