@@ -37,6 +37,10 @@ print(f"{'='*60}\n")
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
+# Nombre de marca (del <title>) para rotular el manual
+_title_m = re.search(r'<title>([^<]+)</title>', html, re.I)
+BRAND = _title_m.group(1).strip() if _title_m else html_path.stem
+
 # ─────────────────────────────────────────────────────────────────
 # 1. EXTRAER VARIABLES CSS (colores, fuentes)
 # ─────────────────────────────────────────────────────────────────
@@ -57,6 +61,24 @@ colors = {k: v for k, v in css_vars.items() if v.startswith('#') or v.startswith
 fonts  = {k: v for k, v in css_vars.items() if 'font' in k or 'family' in k.lower()}
 print(f"  Colores: {list(colors.items())}")
 print(f"  Fuentes: {list(fonts.items())}")
+
+# Alias para que el PROPIO manual use la paleta de Alfambra (no aparecen como swatches)
+_alias = {
+    '--primary':   css_vars.get('--gold', '#f5b728'),
+    '--primary-d': '#d9990f',
+    '--primary-l': '#f5d488',
+    '--d1':        css_vars.get('--black', '#0D0D0D'),
+    '--d2':        '#0A3A20',
+    '--g1':        '#6b6b66',
+    '--g2':        '#d9d6cf',
+    '--g3':        '#efece5',
+    '--white':     '#ffffff',
+    '--off-white': css_vars.get('--ivory', '#F8F6F2'),
+    '--font-head': "'Instrument Serif'",
+    '--font-body': "'Instrument Serif'",
+}
+for _k, _v in _alias.items():
+    css_vars.setdefault(_k, _v)
 
 # ─────────────────────────────────────────────────────────────────
 # 2. EXTRAER FUENTES GOOGLE
@@ -256,16 +278,10 @@ def color_card(var, hex_val, name, usage):
 
 # Mapear variables a nombres legibles
 COLOR_NAMES = {
-    '--primary':   ('Color Principal',   'CTAs, énfasis, botones primarios, iconos activos'),
-    '--primary-d': ('Principal Oscuro',  'Hover de botones primarios'),
-    '--primary-l': ('Principal Claro',   'Texto decorativo sobre fondos oscuros'),
-    '--d1':        ('Negro',             'Color de texto principal, fondos oscuros, nav'),
-    '--d2':        ('Gris Muy Oscuro',   'Fondos secundarios, footer, cookie banner'),
-    '--g1':        ('Gris Medio',        'Textos secundarios, subtítulos, placeholders'),
-    '--g2':        ('Gris Claro',        'Bordes, separadores de campos'),
-    '--g3':        ('Gris Muy Claro',    'Fondos sutiles, chips de código'),
-    '--white':     ('Blanco',            'Texto sobre oscuro, tarjetas, inputs'),
-    '--off-white': ('Off-White',         'Fondo general de la web'),
+    '--gold':  ('Dorado Alfambra', 'Acentos, botones/CTA, iconos, logos y detalles premium'),
+    '--black': ('Negro',           'Texto principal, secciones oscuras, nav y footer'),
+    '--ivory': ('Marfil',          'Fondo general claro de la web'),
+    '--green': ('Verde Alhambra',  'Nav, franja destacada, verificación de edad y marca'),
 }
 
 color_cards_html = ''
@@ -299,12 +315,15 @@ pages_unique = list(OrderedDict.fromkeys(pages_found))
 
 pages_rows = ''
 page_labels = {
-    'home': ('Home', 'Página principal. Hero, servicios, galería, metodología, clientes.', 'Transparente'),
-    'projects': ('Proyectos', 'Grid filtrable de tarjetas de proyecto.', 'Oscura'),
-    'contact': ('Solicitar Presupuesto', 'Formulario de briefing completo.', 'Oscura'),
-    'legal': ('Aviso Legal', 'Texto legal del sitio.', 'Oscura'),
-    'privacy': ('Política de Privacidad', 'RGPD y tratamiento de datos.', 'Oscura'),
-    'cookies': ('Política de Cookies', 'Tabla de cookies y gestión.', 'Oscura'),
+    'home': ('Inicio', 'Portada. Hero con carrusel, filosofía (fondo negro) y franja destacada "Colección 1984" (verde).', 'Verde translúcido'),
+    'tienda': ('Productos', 'Marcas por línea con banner + descripción y rejilla de vitolas (render dinámico).', 'Clara'),
+    'productos': ('Humidor', 'Humidores Alfambra Simple y Doble con ficha técnica completa.', 'Clara'),
+    'finder': ('Encuentra tu Puro', 'Buscador de vitolas por marca, fortaleza, cepo y tamaño (oculto en el menú).', 'Clara'),
+    'about': ('Nosotros', 'Historia de la casa, ciclo de producción y galería.', 'Clara'),
+    'catalogue': ('Catálogo', 'Catálogos descargables por línea (Completo, El Brujito, Alejandro Mata).', 'Clara'),
+    'news': ('Noticias', 'Listado de novedades (masonry) con páginas de artículo dinámicas.', 'Clara'),
+    'contact': ('Contacto', 'Datos reales, redes sociales y formulario.', 'Clara'),
+    'vitola': ('Ficha de producto', 'Página individual de cada vitola: imagen, fortaleza, cepo, galería (2 fotos) y maridaje.', 'Clara'),
 }
 for pid in pages_unique:
     label, desc, nav = page_labels.get(pid, (pid.title(), '', '—'))
@@ -312,15 +331,18 @@ for pid in pages_unique:
 
 # JS functions
 js_fns = {
-    'showPage(pageId)': 'Navega entre páginas añadiendo/quitando clase .active. Fuerza nav oscuro en páginas interiores.',
-    'setLang("es"|"en")': 'Actualiza todos data-i18n, data-i18n-html y data-i18n-ph. Persiste en localStorage.',
-    'filterProjects(cat, btn)': 'Filtra tarjetas de proyecto por data-cat. "all" muestra todas.',
-    'cookieAction("accept"|"deny")': 'Guarda elección en localStorage y oculta banner con animación.',
-    'showCookieBanner()': 'Muestra el banner de cookies (3,4s delay al cargar + botón footer).',
-    'openLightbox(index)': 'Abre lightbox de galería de escenografías.',
-    'toggleMobileMenu()': 'Abre/cierra menú móvil overlay.',
-    'handleSubmit(event)': 'Manejador del formulario: previene envío y muestra mensaje de éxito.',
-    'toggleSizeOption(btn)': 'Toggle exclusivo en botones de opción rápida del formulario.',
+    'showPage(id)': 'Navega entre secciones .page añadiendo/quitando .active; dispara render de tienda/finder y los reveals.',
+    'dismissAgeGate()': 'Cierra la verificación de edad: los paneles dorados se abren como puertas y revelan la web.',
+    'playHero()': 'Reinicia la animación de entrada del título del hero.',
+    'toggleMobileNav() / mobileGo(id)': 'Abre/cierra el menú hamburguesa móvil; mobileGo navega y lo cierra.',
+    'setSiteLang("es"|"en")': 'Cambia el idioma de toda la web vía Google Translate (persiste en cookie googtrans).',
+    'renderLines()': 'Pinta la página Productos (banner por marca + rejilla de vitolas) desde brandLines.',
+    'showVitola(brandId, index)': 'Genera la ficha individual de una vitola (imagen, fortaleza, cepo, galería, maridaje).',
+    'gotoLinea(id)': 'Va a Productos y hace scroll a la marca indicada (desde el desplegable del menú).',
+    'updateFinderResults()': 'Filtra las vitolas del buscador por marca, fortaleza, cepo y tamaño.',
+    'showNews(id) / renderNewsPage(id)': 'Abre la página de un artículo de noticias (render dinámico).',
+    'downloadPDF(line)': 'Descarga el catálogo de la línea en el idioma elegido.',
+    'setCookieConsent(bool)': 'Guarda la elección de cookies en localStorage y oculta el banner.',
 }
 fn_cards_html = ''.join(
     f'<div class="fn-card"><h4>{fn}</h4><p>{desc}</p></div>'
@@ -336,8 +358,8 @@ i18n_rows = ''.join(
 
 # localStorage keys
 ls_keys = [
-    ('madex-lang', 'localStorage', "'es' | 'en'", 'Persiste el idioma seleccionado'),
-    ('madex_cookie', 'localStorage', "'accept' | 'deny'", 'Respuesta al banner de cookies'),
+    ('alfambra_cookies', 'localStorage', "'accepted' | 'rejected'", 'Respuesta al banner de cookies'),
+    ('googtrans', 'cookie', "'/es/en' | '/es/es'", 'Idioma activo (Google Translate)'),
 ]
 ls_rows = ''.join(
     f'<tr><td><code>{k}</code></td><td>{t}</td><td><code>{v}</code></td><td>{u}</td></tr>'
@@ -349,7 +371,7 @@ manual_html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual de Marca — {html_path.stem}</title>
+<title>Manual de Marca — {BRAND}</title>
 {"".join(f'<link href="{l}" rel="stylesheet">' for l in gf_links)}
 <style>
 :root {{
@@ -411,7 +433,7 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
 <body>
 
 <div class="cover">
-  <div class="cover-tag">Manual de Marca · {html_path.stem}</div>
+  <div class="cover-tag">Manual de Marca · {BRAND}</div>
   <h1>Brand<br><em>Manual</em></h1>
   <p>Referencia de diseño generada automáticamente desde <strong>{html_path.name}</strong>. Incluye colores, tipografía, componentes, páginas, traducciones y funciones JS.</p>
 </div>
@@ -466,18 +488,22 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
   <tbody>{pages_rows}</tbody></table>
 </div>
 
-<!-- 04 TRADUCCIONES -->
+<!-- 04 IDIOMA -->
 <div id="i18n" class="sec">
   <div class="sec-label">04</div>
-  <h2 class="sec-h2">Sistema de Traducciones</h2>
+  <h2 class="sec-h2">Idioma (Español / Inglés)</h2>
   <div class="rule"></div>
   <p style="font-size:13px;color:var(--g1);margin-bottom:20px;font-weight:300">
-    Atributos HTML:
-    <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">data-i18n</code> (textContent) ·
-    <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">data-i18n-html</code> (innerHTML) ·
-    <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">data-i18n-ph</code> (placeholder)
+    Selector <strong>ES / EN</strong> a la derecha del menú. Traduce <strong>toda la web</strong>
+    (incluido el contenido dinámico) mediante <strong>Google Translate</strong> con su interfaz
+    nativa oculta por CSS; el idioma se recuerda en la cookie
+    <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">googtrans</code>.
+    Función: <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">setSiteLang('es'|'en')</code>.
   </p>
-  <div class="key-grid">{i18n_rows}</div>
+  <p style="font-size:12px;color:var(--g1);font-weight:300">
+    Nota: solo funciona en el sitio publicado (requiere red). Para una traducción de marca con
+    control total se usaría un diccionario i18n manual con <code style="background:var(--g3);padding:1px 5px;border-radius:3px;">data-i18n</code>.
+  </p>
 </div>
 
 <!-- 05 FUNCIONES JS -->
@@ -510,11 +536,11 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
   </div>
 </div>
 
-<footer>{html_path.stem} · Manual de Marca generado automáticamente</footer>
+<footer>{BRAND} · Manual de Marca generado automáticamente</footer>
 </body>
 </html>"""
 
-manual_path = out_dir / 'manual' / 'MADEX_Manual_de_Marca.html'
+manual_path = out_dir / 'manual' / 'Alfambra_Manual_de_Marca.html'
 with open(manual_path, 'w', encoding='utf-8') as f:
     f.write(manual_html)
 print(f"\n[Manual] Guardado en: {manual_path}")
@@ -566,7 +592,7 @@ footer{{background:var(--d2,#1A1915);padding:24px 5%;text-align:center;font-size
 </head>
 <body>
 <header>
-  <div class="tag">Índice de Assets · {html_path.stem}</div>
+  <div class="tag">Índice de Assets · {BRAND}</div>
   <h1>Assets del Sitio Web</h1>
   <p>{len(images_info)} imágenes únicas extraídas de {html_path.name}</p>
 </header>
@@ -580,7 +606,7 @@ footer{{background:var(--d2,#1A1915);padding:24px 5%;text-align:center;font-size
   <h2 class="sec-h2">Tipografías</h2>
   {''.join(f'<div style="background:#fff;border:1px solid #eaeaea;border-radius:6px;padding:24px;margin-bottom:12px"><div style="font-family:\'{f}\',sans-serif;font-size:36px;font-weight:900;margin-bottom:6px">{f}</div><div style="font-size:12px;color:#6B7380">Google Fonts · <a href="https://fonts.google.com/specimen/{f.replace(chr(32),chr(43))}" style="color:#E8501D">Ver →</a></div></div>' for f in gf_families)}
 </div>
-<footer>{html_path.stem} · Índice de Assets generado automáticamente</footer>
+<footer>{BRAND} · Índice de Assets generado automáticamente</footer>
 </body>
 </html>"""
 
@@ -592,7 +618,7 @@ print(f"[Index] Guardado en: {index_path}")
 # ─────────────────────────────────────────────────────────────────
 # 9. CREAR ZIP CON TODAS LAS IMÁGENES
 # ─────────────────────────────────────────────────────────────────
-stem = html_path.stem.replace(' ', '_')
+stem = re.sub(r'[^A-Za-z0-9]+', '_', BRAND).strip('_') or html_path.stem
 zip_path = out_dir / f'{stem}_imagenes.zip'
 with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
     for img in images_info:
@@ -600,7 +626,7 @@ with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
         zf.write(src, img['rel_path'])
     # Añadir índice y manual también
     zf.write(index_path, 'assets/INDICE_ASSETS.html')
-    zf.write(manual_path, 'manual/MADEX_Manual_de_Marca.html')
+    zf.write(manual_path, 'manual/Alfambra_Manual_de_Marca.html')
     zf.write(out_dir / 'assets' / 'fuentes' / 'FUENTES.txt', 'assets/fuentes/FUENTES.txt')
 
 zip_kb = zip_path.stat().st_size // 1024
@@ -617,7 +643,7 @@ print(f"""
   Carpeta salida : {out_dir}
 
   Archivos generados:
-    manual/MADEX_Manual_de_Marca.html  (manual de marca)
+    manual/Alfambra_Manual_de_Marca.html  (manual de marca)
     assets/INDICE_ASSETS.html          (índice visual)
     assets/fuentes/FUENTES.txt         (referencia tipografías)
     {len(images_info)} imágenes en assets/img/ y assets/iconos/
