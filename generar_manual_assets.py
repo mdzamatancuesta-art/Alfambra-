@@ -212,11 +212,18 @@ if not images_info:
         elif 'gate' in low or 'trama' in low: cat, desc = 'decorativo', 'Elemento decorativo'
         elif 'bodegon' in low or 'lineup' in low or 'catalog' in low: cat, desc = 'portada', 'Bodegón / gama'
         else:                                 cat, desc = 'otro', 'Imagen'
+        # Palabras clave = texto alt de la imagen en el HTML
+        alt = ''
+        _tag = re.search(r'<img[^>]*' + re.escape(ref) + r'[^>]*>', html)
+        if _tag:
+            _a = re.search(r'alt="([^"]+)"', _tag.group(0))
+            if _a:
+                alt = _a.group(1).strip()
         images_info.append({
             'md5': hashlib.md5(raw).hexdigest(), 'mime': mime, 'ext': ext,
             'base_name': src_file.stem, 'filename': src_file.name, 'folder': 'img',
             'rel_path': f'assets/img/{src_file.name}', 'cat': cat,
-            'desc': f'{desc} — {ref}', 'size_kb': max(1, len(raw)//1024),
+            'desc': (alt or desc), 'keywords': alt, 'size_kb': max(1, len(raw)//1024),
             'data_b64': None, 'bytes': raw, 'ctx_preview': ref,
         })
     print(f"  (reserva archivos) imágenes referenciadas: {len(images_info)}")
@@ -457,6 +464,34 @@ components_html = ''.join(
     for nombre, demo, uso, spec in COMPONENTS
 )
 
+# Tokens de diseño (medidas exactas)
+DESIGN_TOKENS = [
+    ("Tipografía base", "Instrument Serif (serif) — .font-serif"),
+    ("Hero H1", "clamp(46px, 12vw, 83px)"),
+    ("Título de cabecero (banner)", "clamp(30px, 7vw, 51px)"),
+    ("Título de sección H2", "clamp(28–30px, 6vw, 41–46px)"),
+    ("Subtítulo / H3", "22–26px"),
+    ("Cuerpo de texto", "17–18px · line-height 1.8–2"),
+    ("Etiqueta / eyebrow", "12–13px · UPPERCASE · tracking 0.28em"),
+    ("Enlace de menú", "1.02rem serif · tracking 0.13em"),
+    ("Radio · botón", "12px"),
+    ("Radio · tarjeta catálogo", "20px"),
+    ("Radio · tarjeta producto / input", "6–12px"),
+    ("Radio · píldora / badge", "999px (círculo 46px)"),
+    ("Radio · panel del buscador", "22px"),
+    ("Sombra · botón dorado", "0 10–12px 24–28px -10px rgba(245,183,40,.7)"),
+    ("Sombra · tarjeta (hover)", "0 44px 84px -30px rgba(0,0,0,.9)"),
+    ("Espaciado · secciones", "128px vertical (py-32) en escritorio"),
+    ("Padding lateral", "32px móvil · 80px escritorio (px-8 / md:px-20)"),
+    ("Nav altura", "~72px móvil · ~110px escritorio"),
+    ("Breakpoint móvil", "768px (prefijo md:)"),
+    ("Transiciones", "0.35s carga · 0.55s reveals · 0.3–0.6s hover"),
+]
+tokens_rows = ''.join(
+    f'<tr><td><strong>{t}</strong></td><td><code>{v}</code></td></tr>'
+    for t, v in DESIGN_TOKENS
+)
+
 manual_html = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -581,7 +616,10 @@ footer{{background:var(--d2,#1A1915);padding:28px 5%;text-align:center;font-size
   <div class="sec-label">03</div>
   <h2 class="sec-h2">Componentes / Elementos</h2>
   <div class="rule"></div>
-  <p style="font-size:13px;color:var(--g1);margin-bottom:24px;font-weight:300">Cómo es cada elemento de la interfaz: muestra en vivo + especificación visual.</p>
+  <p style="font-size:13px;color:var(--g1);margin-bottom:22px;font-weight:300">Cómo es cada elemento de la interfaz: muestra en vivo + especificación visual.</p>
+  <h3 style="font-family:var(--font-head);font-size:19px;font-weight:800;margin:0 0 14px">Tokens de diseño (medidas exactas)</h3>
+  <table style="margin-bottom:36px"><thead><tr><th>Token</th><th>Valor</th></tr></thead><tbody>{tokens_rows}</tbody></table>
+  <h3 style="font-family:var(--font-head);font-size:19px;font-weight:800;margin:0 0 16px">Elementos</h3>
   <div class="comp-grid">{components_html}</div>
 </div>
 
