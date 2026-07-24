@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tabacalera Alfambra</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
@@ -406,10 +408,10 @@
 
     <section class="home-section py-32 px-8 md:px-20 bg-[#0E4F2E] border-t border-[#f5b728]/20">
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div class="reveal reveal-left img-reveal rounded-2xl overflow-hidden shadow-2xl" style="box-shadow:0 40px 90px -30px rgba(0,0,0,0.7);"><img class="w-full aspect-[4/3] object-cover" loading="lazy" src="assets/img/mata-genesis-box.jpg" alt="Colección Selección Premium Alfambra"></div>
+        <div class="reveal reveal-left img-reveal rounded-2xl overflow-hidden shadow-2xl" style="box-shadow:0 40px 90px -30px rgba(0,0,0,0.7);"><img class="w-full aspect-[4/3] object-cover" loading="lazy" src="assets/img/mata-genesis-box.jpg" alt="Colección 1984 Alfambra"></div>
         <div class="reveal reveal-right">
-          <p class="mb-6" style="color:#f5b728;font-size:13px;letter-spacing:0.3em;text-transform:uppercase;">Destacado</p>
-          <h2 class="font-serif mb-10" style="color:#F8F6F2;font-size:44px;">Colección Selección Premium</h2>
+          <p class="mb-6" style="color:#f5b728;font-size:13px;letter-spacing:0.3em;text-transform:uppercase;">Nuestra ligada más premium</p>
+          <h2 class="font-serif mb-10" style="color:#F8F6F2;font-size:clamp(30px, 6vw, 44px);">Colección 1984</h2>
           <p class="leading-[2]" style="color:rgba(248,246,242,0.85);font-size:18px;">Nuestra línea insignia representa lo mejor de la tabacalera. Hojas envejecidas cinco años, triple fermentación y una ligada secreta que define el carácter inconfundible de Alfambra.</p>
           <div class="mt-12 pt-8 border-t border-[#f5b728]/20"><p class="italic" style="color:rgba(245,183,40,0.9);font-size:17px;">Creado con esmero, custodiado por el tiempo</p></div>
         </div>
@@ -536,7 +538,7 @@
     <div class="relative w-full h-80 md:h-96 overflow-hidden">
       <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="assets/img/humidor-header.webp" alt="Humidores Alfambra">
       <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80"></div>
-      <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-8 md:px-20 pt-20 md:pt-24"><div class="hdr-label"><span>Conservación premium</span></div><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: clamp(30px, 7vw, 51px);">Humidores Alfambra</h2></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-8 md:px-20 pt-20 md:pt-24"><div class="hdr-label"><span>Conservación premium</span></div><h2 class="font-serif text-4xl md:text-5xl text-[#F8F6F2]" style="font-size: clamp(30px, 7vw, 51px);">Humidores Alfambra</h2><p class="mt-4 text-[#F8F6F2]/85 uppercase" style="font-size:13px;letter-spacing:0.28em;">Puntos de venta · Cigar Lounge</p></div>
     </div>
     <div class="w-full bg-[#F8F6F2] pb-24 pt-12">
       <div class="max-w-7xl mx-auto px-8 md:px-20">
@@ -638,11 +640,32 @@
       <div class="max-w-7xl mx-auto px-8 md:px-20 relative">
         <h2 class="font-serif mb-6 reveal" style="color: rgb(13, 13, 13); font-size: clamp(30px, 6vw, 46px); line-height:1.1;">Catálogos por Línea</h2>
         <p class="italic opacity-60 mb-14 max-w-2xl leading-relaxed reveal reveal-delay-1" style="color: rgb(13, 13, 13); font-size: 20px;">La excelencia nace cuando la paciencia se encuentra con la pasión. Elija su línea y descargue el catálogo en el idioma que prefiera.</p>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="cat-card reveal flex flex-col">
+            <div class="cat-media">
+              <img loading="lazy" src="assets/img/lineup-puros-alfambra.jpg" alt="Catálogo completo Alfambra">
+              <span class="cat-index">01</span>
+              <span class="cat-tag">Completo</span>
+              <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Catálogo Completo</h3></div>
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="cat-hairline"></div>
+              <p class="text-[#F8F6F2]/75 mb-8 flex-1 leading-relaxed" style="font-size: 15px;">Todas nuestras marcas en un solo catálogo: El Brujito, Alfambra Verde, Serie Clásica, Selección, José Gener y Alejandro Mata.</p>
+              <div class="space-y-4">
+                <div>
+                  <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
+                  <select id="lang0" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button onclick="downloadPDF('line0')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="cat-card reveal  flex flex-col">
             <div class="cat-media">
               <img loading="lazy" src="assets/img/products/brujito-box.png" alt="El Brujito">
-              <span class="cat-index">01</span>
+              <span class="cat-index">02</span>
               <span class="cat-tag">Tradición</span>
               <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">El Brujito</h3></div>
             </div>
@@ -663,7 +686,7 @@
           <div class="cat-card reveal reveal-delay-1 flex flex-col">
             <div class="cat-media">
               <img loading="lazy" src="assets/img/clasica-lineup.webp" alt="Alfambra Serie Clásica">
-              <span class="cat-index">02</span>
+              <span class="cat-index">03</span>
               <span class="cat-tag">Serie</span>
               <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Alfambra Serie Clásica</h3></div>
             </div>
@@ -684,7 +707,7 @@
           <div class="cat-card reveal reveal-delay-2 flex flex-col">
             <div class="cat-media">
               <img loading="lazy" src="assets/img/mata-genesis-box.jpg" alt="Alejandro Mata Colección 1964">
-              <span class="cat-index">03</span>
+              <span class="cat-index">04</span>
               <span class="cat-tag">Colección 1964</span>
               <div class="cat-title-over"><h3 class="font-serif text-[#F8F6F2]" style="font-size: 30px; line-height:1.05;">Alejandro Mata</h3></div>
             </div>
@@ -1248,8 +1271,7 @@
       const c = cigars[brandId] || {};
       const mainSrc = v.img || b.cigarImg || PURO_DEFAULT;
       const mainImg = `<img class="w-full h-auto object-contain max-h-[520px] mx-auto" loading="lazy" src="${mainSrc}" alt="${v.name}">`;
-      const galSrc = (b.gallery && b.gallery.length) ? b.gallery.slice(0,4) : [mainSrc];
-      while (galSrc.length < 3) galSrc.push(mainSrc);
+      const galSrc = [mainSrc, 'assets/img/bodegon.webp'];
       const gallery = galSrc.map(s => galleryTile(s, v.name)).join('');
       document.getElementById('page-vitola').innerHTML = `
         <div class="min-h-screen bg-[#F8F6F2] pt-28 pb-24 px-8 md:px-20">
@@ -1280,7 +1302,7 @@
                 <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold" style="font-size:14px;">Galería</h3>
                 <button onclick="shareVitola('${b.id}',${index})" class="inline-flex items-center gap-2 text-[#0e4f2e] hover:text-[#f5b728] transition font-serif uppercase tracking-widest" style="font-size:14px;"><i data-lucide="share-2" style="width:16px;height:16px"></i> Compartir</button>
               </div>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">${gallery}</div>
+              <div class="grid grid-cols-2 gap-4 max-w-2xl">${gallery}</div>
             </div>
             ${c.pairing ? `<div class="mt-16 pt-10 border-t border-[#0d0d0d]/10 max-w-3xl"><h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-3" style="font-size:14px;">Maridaje recomendado</h3><p class="text-[#0d0d0d]/75 leading-relaxed" style="font-size:18px;">${c.pairing}</p></div>` : ''}
           </div>
