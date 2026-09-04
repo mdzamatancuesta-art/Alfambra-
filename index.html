@@ -320,12 +320,14 @@
         <span class="nav-link" data-page="tienda" onclick="showPage('tienda')">Productos ▾</span>
         <span class="nav-prod-menu"><span class="nav-prod-inner">
           <span class="nav-prod-title">Nuestras Marcas</span>
-          <a onclick="gotoLinea('brujito')">El Brujito</a>
-          <a onclick="gotoLinea('verde')">Alfambra Verde</a>
-          <a onclick="gotoLinea('naranja')">Alfambra Serie Clásica</a>
+          <a onclick="gotoLinea('boutique')">Alfambra Boutique</a>
           <a onclick="gotoLinea('seleccion')">Alfambra Selección</a>
-          <a onclick="gotoLinea('gener')">José Gener</a>
-          <a onclick="gotoLinea('mata')">Alejandro Mata</a>
+          <a onclick="gotoLinea('clasico')">Alfambra Clásico</a>
+          <a onclick="gotoLinea('brujito')">El Brujito</a>
+          <a onclick="gotoLinea('jg')">J·G Tradición Tabacalera</a>
+          <a onclick="gotoLinea('carmelita')">Alejandro Mata · Carmelita</a>
+          <a onclick="gotoLinea('maduro')">Alejandro Mata · Maduro</a>
+          <a onclick="gotoLinea('diamante')">Diamante</a>
         </span></span>
       </span>
       <span class="nav-link" data-page="productos" onclick="showPage('productos')">Humidor</span>
@@ -494,12 +496,14 @@
           <div class="flex flex-col">
             <label class="text-xs uppercase tracking-wider mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">Marca</label>
             <div class="flex flex-wrap gap-5">
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="boutique"><span class="fnd-logo"><img src="assets/img/logos/company-gold.webp" alt="Boutique"></span><span class="fnd-brand-name">Boutique</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="seleccion"><span class="fnd-logo"><img src="assets/img/logos/seleccion-logo.png" alt="Selección"></span><span class="fnd-brand-name">Selección</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="clasico"><span class="fnd-logo"><img src="assets/img/logos/clasico-logo.png" alt="Clásico"></span><span class="fnd-brand-name">Clásico</span></button>
               <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="brujito"><span class="fnd-logo"><img src="assets/img/logos/brujito-logo.png" alt="El Brujito"></span><span class="fnd-brand-name">El Brujito</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="verde"><span class="fnd-logo"><img src="assets/img/logos/company-gold.webp" alt="Alfambra Verde"></span><span class="fnd-brand-name">Verde</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="naranja"><span class="fnd-logo"><img src="assets/img/logos/clasica-logo.png" alt="Alfambra Serie Clásica"></span><span class="fnd-brand-name">Clásica</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="seleccion"><span class="fnd-logo"><img src="assets/img/logos/seleccion-logo.png" alt="Alfambra Selección"></span><span class="fnd-brand-name">Selección</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="gener"><span class="fnd-logo"><img src="assets/img/logos/jose-logo.png" alt="José Gener"></span><span class="fnd-brand-name">José Gener</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="mata"><span class="fnd-logo"><img src="assets/img/logos/mata-logo.png" alt="Alejandro Mata"></span><span class="fnd-brand-name">A. Mata</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="jg"><span class="fnd-logo"><img src="assets/img/logos/jg-logo.png" alt="J·G"></span><span class="fnd-brand-name">J·G</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="carmelita"><span class="fnd-logo"><img src="assets/img/logos/mata-logo.png" alt="Carmelita"></span><span class="fnd-brand-name">Carmelita</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="maduro"><span class="fnd-logo"><img src="assets/img/logos/mata-logo.png" alt="Maduro"></span><span class="fnd-brand-name">Maduro</span></button>
+              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="diamante"><span class="fnd-logo"><img src="assets/img/logos/diamante-logo.png" alt="Diamante"></span><span class="fnd-brand-name">Diamante</span></button>
             </div>
           </div>
           <div class="flex flex-col">
@@ -930,12 +934,14 @@
     })();
 
     const cigars = {
-      brujito: { name: 'El Brujito', strength: 'Media-Fuerte', intensity: 4, tasting: 'Poder Ancestral', flavor_desc: 'Línea de origen nicaragüense que destaca por su excelente relación calidad-precio. Su ligada ofrece una experiencia sensorial rica en matices terrosos, cacao, café tostado y un distinguido toque especiado. Es un cigarro de carácter definido.', sizes: ['Robusto (F1): 130 mm', 'Toro (F2): 150 mm', 'Churchill (F3): 160 mm', 'Coronita (F8): 115 mm'], tobacco: [{ label: 'Procedencia', value: 'Estelí, Nicaragua' }, { label: 'Fortaleza', value: 'Media-Fuerte' }, { label: 'Presentación', value: 'Caja de madera, 25 uds.' }], recommended_format: 'Robusto (F1)', pairing: 'Rones añejos (ej. Flor de Caña), whiskies de malta con toque ahumado o un café espresso intenso.' },
-      verde: { name: 'Alfambra Verde', strength: 'Media', intensity: 2, tasting: 'Equilibrio Perfecto', flavor_desc: 'Diseñada específicamente para el fumador diario que busca equilibrio y regularidad. Sus notas principales recorren matices amaderados de cedro, almendras y un trasfondo final dulce y cremoso.', sizes: ['Gran Toro: 140 mm', 'Petit Toro: 110 mm', 'Robusto: 127 mm', 'Half Corona: 90 mm', 'Magníficos: 152 mm'], tobacco: [{ label: 'Procedencia', value: 'Estelí, Nicaragua' }, { label: 'Fortaleza', value: 'Media' }, { label: 'Presentación', value: 'Mazo, 25 uds.' }], recommended_format: 'Gran Toro', pairing: 'Café cortado o capuchino, cervezas rubias o de trigo, y bourbons jóvenes.' },
-      naranja: { name: 'Alfambra Serie Clásica', strength: 'Media', intensity: 3, tasting: 'Calidez Especiada', flavor_desc: 'La serie clásica que eleva la intensidad de la fumada. Ofrece un perfil complejo con sabores predominantes a cuero, pimienta blanca y maderas nobles, logrando una experiencia equilibrada y madura.', sizes: ['Toro Gigante: 152 mm', 'Torpedo: 152 mm', 'Robusto: 127 mm', 'Robusto Gordo: 127 mm'], tobacco: [{ label: 'Procedencia', value: 'Estelí, Nicaragua' }, { label: 'Fortaleza', value: 'Media' }, { label: 'Presentación', value: 'Mazo, 10 uds.' }], recommended_format: 'Toro Gigante', pairing: 'Ron añejo ligero, vinos tintos con crianza (Ribera o Rioja) o cerveza Amber Ale.' },
-      seleccion: { name: 'Alfambra Selección', strength: 'Media', intensity: 3, tasting: 'Expresión Máxima', flavor_desc: 'Línea de alta gama compuesta por tabacos sometidos a un proceso de añejamiento superior. El resultado es una fumada de gran complejidad que despliega notas de frutos secos tostados, cuero y un final elegante en boca.', sizes: ['Petit 52: 102 mm', 'Petit 56: 102 mm', 'Petit 60: 102 mm', 'Pirámide: 152 mm', 'Robusto: 127 mm', 'Robusto Gordo: 127 mm'], tobacco: [{ label: 'Procedencia', value: 'Estelí, Nicaragua' }, { label: 'Fortaleza', value: 'Media' }, { label: 'Presentación', value: 'Caja de madera, 25 uds.' }], recommended_format: 'Pirámide', pairing: 'Coñac, Brandy de Jerez o un ron premium de perfil complejo y dulzón.' },
-      gener: { name: 'José Gener', strength: 'Media', intensity: 2, tasting: 'Homenaje Aromático', flavor_desc: 'Un homenaje a la tradición tabaquera con un marcado perfil caribeño. Se distinguen por ser altamente aromáticos, aportando matices de cedro dulce, crema y un toque sutil de especias.', sizes: ['Robusto: 124 mm', 'Fantásticos: 127 mm', 'Pirámide: 152 mm', 'Toro: 152 mm', 'Maravillas: 150 mm', 'Lancero: 192 mm'], tobacco: [{ label: 'Procedencia', value: 'Estelí, Nicaragua' }, { label: 'Fortaleza', value: 'Media' }, { label: 'Presentación', value: 'Caja de madera, 24 uds.' }], recommended_format: 'Robusto', pairing: 'Whisky suave, destilados ligeros, vinos tintos jóvenes o café cortado.' },
-      mata: { name: 'Alejandro Mata', strength: 'Media', intensity: 3, tasting: 'Creación de Autor', flavor_desc: 'La joya de nuestra corona; una línea de producción cuidada al detalle que busca la máxima expresión sensorial. Su ligada entrega una riqueza absoluta de matices donde convergen el cacao, la tierra y una selección de especias complejas.', sizes: ['Magnífico'], tobacco: [{ label: 'Procedencia', value: 'Estelí, Nicaragua' }, { label: 'Fortaleza', value: 'Media' }, { label: 'Presentación', value: 'Caja de madera de lujo, 25 uds.' }], recommended_format: 'Magnífico', pairing: 'Destilados premium, rones de largo añejamiento, maltas complejos o un vino de Oporto.' }
+      boutique: { name: "Alfambra Boutique", strength: "Media", intensity: 2, tasting: "Car\u00e1cter Terroso", flavor_desc: "Alfambra Boutique se caracteriza por un sabor terroso y ligeramente picante que, una vez encendido, despliega sabores amaderados, a pimienta y avellana cruda. Las notas c\u00edtricas destapan aromas a fruta deshidratada, caf\u00e9, tostados y, al final, nuez moscada y cacao.", pairing: "Ron a\u00f1ejo y caf\u00e9 espresso intenso." },
+      seleccion: { name: "Alfambra Selecci\u00f3n", strength: "Media", intensity: 2, tasting: "Equilibrio Noble", flavor_desc: "Alfambra Selecci\u00f3n se distingue por una entrada suave y equilibrada que, tras el encendido, despliega notas de heno fresco, cuero noble y sutiles toques de pimienta blanca. Su evoluci\u00f3n revela matices de almendra tostada, cedro y recuerdos terrosos, dejando un fondo bals\u00e1mico y un final limpio y especiado en el paladar.", pairing: "Co\u00f1ac, brandy de Jerez o malta suave." },
+      clasico: { name: "Alfambra Cl\u00e1sico", strength: "Media", intensity: 2, tasting: "Elegancia Cremosa", flavor_desc: "Alfambra Cl\u00e1sico se caracteriza por una entrada amable y untuosa que, tras el encendido, despliega notas predominantes de almendra tierna, cedro dulce y sutiles matices herb\u00e1ceos. Su evoluci\u00f3n en boca revela recuerdos de pan tostado, vainilla y un fondo ligeramente especiado, dejando un postgusto limpio, cremoso y de gran elegancia.", pairing: "Caf\u00e9 con leche, vinos blancos con crianza." },
+      brujito: { name: "El Brujito", strength: "Media-Fuerte", intensity: 3, tasting: "Poder Ancestral", flavor_desc: "avanzar la fumada, revela notas de vainilla, cacao amargo y cuero viejo. Los matices de frutos secos tostados abren paso a sutiles recuerdos de melaza y cedro, dejando un fondo bals\u00e1mico y un final elegante en boca.", pairing: "Ron intenso (Flor de Ca\u00f1a) o whisky ahumado." },
+      jg: { name: "J\u00b7G Tradici\u00f3n Tabacalera", strength: "Fuerte", intensity: 4, tasting: "Tradici\u00f3n Envolvente", flavor_desc: "J.G. se caracteriza por una entrada rica y envolvente que, tras el encendido, despliega notas de cuero fino y un toque sutil de pimienta y frutos rojos. Su evoluci\u00f3n revela matices de almendra tostada, cedro y recuerdos de cacao fino, dejando un fondo bals\u00e1mico y un final amplio y elegante en el paladar.", pairing: "Whisky suave, vinos tintos j\u00f3venes o caf\u00e9 cortado." },
+      carmelita: { name: "Alejandro Mata \u00b7 Carmelita", strength: "Fuerte", intensity: 4, tasting: "Autor \u00b7 Natural", flavor_desc: "La Selecci\u00f3n Carmelita se caracteriza por un sabor terroso y ligeramente picante que, una vez encendido, despliega sabores amaderados, a pimienta y avellana cruda. Las notas c\u00edtricas destapan aromas a fruta deshidratada, caf\u00e9, tostados y, al final, nuez moscada y cacao.", pairing: "Ron premium o vino de Oporto." },
+      maduro: { name: "Alejandro Mata \u00b7 Maduro", strength: "Fuerte", intensity: 5, tasting: "Autor \u00b7 Maduro", flavor_desc: "La Selecci\u00f3n Maduro se caracteriza por una entrada robusta y especiada que, tras el encendido, despliega notas profundas de madera de roble, cuero curado y granos de caf\u00e9 expreso. Su evoluci\u00f3n revela un car\u00e1cter m\u00e1s intenso con matices de pimienta negra, cacao amargo y un fondo tostado de gran persistencia en el paladar.", pairing: "Caf\u00e9 expreso y rones oscuros de largo a\u00f1ejamiento." },
+      diamante: { name: "Diamante", strength: "Media-Fuerte", intensity: 3, tasting: "Frescura Equilibrada", flavor_desc: "despliega notas de cedro suave, torrefactos y un fondo ligeramente herb\u00e1ceo. Su evoluci\u00f3n ofrece una fumada muy equilibrada culminando en una bocanada limpia y de agradable persistencia.", pairing: "Cervezas rubias, bourbon joven o caf\u00e9 suave." }
     };
 
     function openDetail(id) {
@@ -1068,9 +1074,10 @@
     }
 
     const brandLogo = {
-      brujito:'assets/img/logos/alfambra-gold.png', verde:'assets/img/logos/alfambra-gold.png',
-      naranja:'assets/img/logos/clasica-logo.png', seleccion:'assets/img/logos/seleccion-logo.png',
-      gener:'assets/img/logos/jose-logo.png', mata:'assets/img/logos/alfambra-gold.png'
+      boutique:'assets/img/logos/company-gold.webp', seleccion:'assets/img/logos/seleccion-logo.png',
+      clasico:'assets/img/logos/clasico-logo.png', brujito:'assets/img/logos/brujito-logo.png',
+      jg:'assets/img/logos/jg-logo.png', carmelita:'assets/img/logos/mata-logo.png',
+      maduro:'assets/img/logos/mata-logo.png', diamante:'assets/img/logos/diamante-logo.png'
     };
     function cepoBand(c){ return c <= 46 ? 'fino' : (c <= 52 ? 'medio' : 'grueso'); }
     function sizeBand(mm){ return !mm ? null : (mm < 120 ? 'corto' : (mm <= 150 ? 'medio' : 'largo')); }
@@ -1121,69 +1128,99 @@
     // ---- Productos: banner por marca (línea) + rejilla de vitolas ----
     const PURO_DEFAULT = 'assets/img/puro-default.webp';
     const brandLines = [
-      { id:'brujito', name:'El Brujito', procedencia:'Nicaragua', fortaleza:'Media-Fuerte', envase:'Caja de madera',
-        img:{ main:'assets/img/bodegon.webp' }, cigarImg:'assets/img/products/brujito-cigar.webp', logo:'assets/img/logos/brujito-logo.png', bannerLogo:'assets/img/logos/brujito-logo-ivory.png',
-        gallery:['assets/img/products/brujito-cigar.webp','assets/img/products/brujito-cigar2.webp','assets/img/products/brujito-box.png'],
+      { id:"boutique", name:"Alfambra Boutique", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media", envase:"Caja de 5", capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua",
+        img:{ main:"assets/img/vitolas/boutique__gran-toro.png" }, cigarImg:"assets/img/vitolas/boutique__gran-toro.png", bannerLogo:'assets/img/logos/company-gold.webp',
         vitolas:[
-          {name:'El Brujito F1', cepo:52, formato:'Robusto (F1)', largo:'130 mm', uds:25},
-          {name:'El Brujito F2', cepo:54, formato:'Toro (F2)', largo:'150 mm', uds:25},
-          {name:'El Brujito F3', cepo:48, formato:'Churchill (F3)', largo:'160 mm', uds:25},
-          {name:'El Brujito F7 Toro', cepo:54, formato:'Toro (F7)', largo:'150 mm', uds:25},
-          {name:'El Brujito F8 Coronita', cepo:40, formato:'Coronita (F8)', largo:'115 mm', uds:50},
-          {name:'F9 10º Aniversario', cepo:52, formato:'Robusto (F9)', largo:'130 mm', uds:25},
-          {name:'Serie Oro Pelo de Oro E.L.', cepo:54, formato:'Toro', largo:'152 mm', uds:24},
-          {name:'Year of The Dragon', cepo:54, formato:'Toro', largo:'152 mm', uds:24},
-          {name:'10º Aniversario Torito', cepo:60, formato:'Torito', largo:'117 mm', uds:25},
-          {name:'Año de la Culebra', cepo:38, formato:'Culebra', largo:'178 mm', uds:24}
+          {name:"Gran Toro", cepo:56, formato:"56 x 140 mm", largo:"140 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/boutique__gran-toro.png"},
+          {name:"Magn\u00edfico", cepo:60, formato:"60 x 130 mm", largo:"130 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/boutique__magnifico.png"},
+          {name:"Robusto", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/boutique__robusto.png"},
+          {name:"Petit Toro", cepo:52, formato:"52 x 110 mm", largo:"110 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/boutique__petit-toro.png"},
+          {name:"Half Corona", cepo:48, formato:"48 x 100 mm", largo:"100 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/boutique__half-corona.png"}
         ] },
-      { id:'verde', name:'Alfambra Verde', procedencia:'Nicaragua', fortaleza:'Media', envase:'Mazo',
-        img:{ main:'assets/img/bodegon.webp' }, cigarImg:'assets/img/products/verde-cigar.png',
-        gallery:['assets/img/products/verde-cigar.png'],
+      { id:"seleccion", name:"Alfambra Selecci\u00f3n", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media", envase:"Caja de 5", capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua",
+        img:{ main:"assets/img/vitolas/seleccion__majestuoso.png" }, cigarImg:"assets/img/vitolas/seleccion__majestuoso.png", bannerLogo:'assets/img/logos/seleccion-logo.png',
         vitolas:[
-          {name:'Gran Toro', cepo:54, formato:'Gran Toro', largo:'140 mm', uds:25},
-          {name:'Petit Toro', cepo:54, formato:'Petit Toro', largo:'110 mm', uds:25},
-          {name:'Robusto', cepo:52, formato:'Robusto', largo:'127 mm', uds:25},
-          {name:'Half Corona', cepo:46, formato:'Half Corona', largo:'90 mm', uds:25},
-          {name:'Magníficos', cepo:56, formato:'Magníficos', largo:'152 mm', uds:25}
+          {name:"Majestuoso", cepo:60, formato:"60 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__majestuoso.png"},
+          {name:"Magnum", cepo:56, formato:"56 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__magnum.png"},
+          {name:"Toro", cepo:52, formato:"52 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__toro.png"},
+          {name:"Robusto Gordo", cepo:58, formato:"58 x 127 mm", largo:"127 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__robusto-gordo.png"},
+          {name:"Mareva", cepo:42, formato:"42 x 127 mm", largo:"127 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__mareva.png"},
+          {name:"Robusto", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__robusto.png"},
+          {name:"Wide Toro", cepo:54, formato:"54 x 110 mm", largo:"110 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__wide-toro.png"},
+          {name:"Petit 60", cepo:60, formato:"60 x 102 mm", largo:"102 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__petit-60.png"},
+          {name:"Petit 56", cepo:56, formato:"56 x 102 mm", largo:"102 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__petit-56.png"},
+          {name:"Petit 52", cepo:52, formato:"52 x 102 mm", largo:"102 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__petit-52.png"},
+          {name:"Churchill", cepo:48, formato:"48 x 174 mm", largo:"174 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__churchill.png"},
+          {name:"Toro Gigante", cepo:56, formato:"56 x 165 mm", largo:"165 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__toro-gigante.png"},
+          {name:"Sublime", cepo:54, formato:"54 x 164 mm", largo:"164 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__sublime.png"},
+          {name:"Pir\u00e1mide", cepo:52, formato:"52 x 155 mm", largo:"155 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__piramide.png"}
         ] },
-      { id:'naranja', name:'Alfambra Serie Clásica', procedencia:'Nicaragua', fortaleza:'Media', envase:'Mazo',
-        img:{ main:'assets/img/clasica-lineup.webp' },
-        gallery:['assets/img/clasica-lineup.webp'],
+      { id:"clasico", name:"Alfambra Cl\u00e1sico", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media", envase:"Caja de 5", capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua",
+        img:{ main:"assets/img/vitolas/clasico__grandioso.png" }, cigarImg:"assets/img/vitolas/clasico__grandioso.png", bannerLogo:'assets/img/logos/clasico-logo.png',
         vitolas:[
-          {name:'Serie I Toro Gigante', cepo:60, formato:'Toro Gigante', largo:'152 mm', uds:10},
-          {name:'Serie IV Torpedo', cepo:52, formato:'Torpedo', largo:'152 mm', uds:10},
-          {name:'Serie V Robusto', cepo:52, formato:'Robusto', largo:'127 mm', uds:10},
-          {name:'Serie VIII Robusto Gordo', cepo:54, formato:'Robusto Gordo', largo:'127 mm', uds:10}
+          {name:"Grandioso", cepo:60, formato:"60 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__grandioso.png"},
+          {name:"Robusto", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__robusto.png"},
+          {name:"Magnum", cepo:56, formato:"56 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__magnum.png"},
+          {name:"Wide Toro", cepo:54, formato:"54 x 110 mm", largo:"110 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__wide-toro.png"},
+          {name:"Toro", cepo:52, formato:"52 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__toro.png"},
+          {name:"Petit 60", cepo:60, formato:"60 x 102 mm", largo:"102 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__petit-60.png"},
+          {name:"Robusto Gordo", cepo:58, formato:"58 x 127 mm", largo:"127 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__robusto-gordo.png"},
+          {name:"Petit 56", cepo:56, formato:"56 x 102 mm", largo:"102 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__petit-56.png"},
+          {name:"Mareva", cepo:42, formato:"42 x 127 mm", largo:"127 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__mareva.png"},
+          {name:"Petit 52", cepo:52, formato:"52 x 102 mm", largo:"102 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__petit-52.png"},
+          {name:"Don Fernando", cepo:58, formato:"58 x 180 mm", largo:"180 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__don-fernando.png"},
+          {name:"Churchill", cepo:48, formato:"48 x 174 mm", largo:"174 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__churchill.png"},
+          {name:"Toro Gigante", cepo:56, formato:"56 x 165 mm", largo:"165 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__toro-gigante.png"},
+          {name:"Sublime", cepo:54, formato:"54 x 164 mm", largo:"164 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__sublime.png"},
+          {name:"Torpedo", cepo:52, formato:"52 x 156 mm", largo:"156 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__torpedo.png"}
         ] },
-      { id:'seleccion', name:'Alfambra Selección', procedencia:'Nicaragua', fortaleza:'Media', envase:'Caja de madera',
-        img:{ main:'assets/img/bodegon.webp' },
+      { id:"brujito", name:"El Brujito", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media-Fuerte", envase:"Caja de 5", capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua",
+        img:{ main:"assets/img/vitolas/brujito__f3-grandioso.png" }, cigarImg:"assets/img/vitolas/brujito__f3-grandioso.png", bannerLogo:'assets/img/logos/brujito-logo-ivory.png',
         vitolas:[
-          {name:'Selección Petit 52', cepo:52, formato:'Petit 52', largo:'102 mm', uds:25},
-          {name:'Selección Petit 56', cepo:56, formato:'Petit 56', largo:'102 mm', uds:25},
-          {name:'Selección Petit 60', cepo:60, formato:'Petit 60', largo:'102 mm', uds:25},
-          {name:'Selección Pirámide', cepo:52, formato:'Pirámide', largo:'152 mm', uds:25},
-          {name:'Selección Robusto', cepo:52, formato:'Robusto', largo:'127 mm', uds:25},
-          {name:'Selección Robusto Gordo', cepo:56, formato:'Robusto Gordo', largo:'127 mm', uds:25}
+          {name:"F3 Grandioso", cepo:60, formato:"60 x 160 mm", largo:"160 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__f3-grandioso.png"},
+          {name:"F2 Magnum", cepo:56, formato:"56 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__f2-magnum.png"},
+          {name:"F2 Magnum Ed. Limitada", cepo:56, formato:"56 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__f2-magnum-ed-limitada.png"},
+          {name:"F7 Toro", cepo:52, formato:"52 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__f7-toro.png"},
+          {name:"F1 Robusto", cepo:50, formato:"50 x 125 mm", largo:"125 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__f1-robusto.png"},
+          {name:"Gordito \u00b7 10\u00ba Aniv.", cepo:55, formato:"55 x 130 mm", largo:"130 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__gordito-10o-aniv.png"},
+          {name:"F8 Coronita", cepo:42, formato:"42 x 114 mm", largo:"114 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__f8-coronita.png"},
+          {name:"Torito \u00b7 10\u00ba Aniv.", cepo:54, formato:"54 x 118 mm", largo:"118 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__torito-10o-aniv.png"},
+          {name:"Robusto Gordo", cepo:56, formato:"56 x 127 mm", largo:"127 mm", uds:5, fuerza:3, capa:"Nicaragua", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/brujito__robusto-gordo.png"}
         ] },
-      { id:'gener', name:'José Gener', procedencia:'Nicaragua', fortaleza:'Media', envase:'Caja de madera',
-        img:{ main:'assets/img/bodegon.webp' }, cigarImg:'assets/img/products/gener-cigar.webp', bannerLogo:'assets/img/logos/jose-logo.png',
-        gallery:['assets/img/products/gener-cigar.webp','assets/img/products/gener-box.png'],
+      { id:"jg", name:"J\u00b7G Tradici\u00f3n Tabacalera", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido",
+        img:{ main:"assets/img/vitolas/jg__lancero.png" }, cigarImg:"assets/img/vitolas/jg__lancero.png", bannerLogo:'assets/img/logos/jg-logo.png',
         vitolas:[
-          {name:'JG Robusto', cepo:50, formato:'Robusto', largo:'124 mm', uds:24},
-          {name:'JG Fantásticos', cepo:52, formato:'Fantásticos', largo:'127 mm', uds:24},
-          {name:'JG Pirámide', cepo:52, formato:'Pirámide', largo:'152 mm', uds:24},
-          {name:'JG Toro', cepo:52, formato:'Toro', largo:'152 mm', uds:24},
-          {name:'JG Maravillas', cepo:55, formato:'Maravillas', largo:'150 mm', uds:24},
-          {name:'JG Lancero', cepo:38, formato:'Lancero', largo:'192 mm', uds:24}
+          {name:"Lancero", cepo:40, formato:"40 x 192 mm", largo:"192 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__lancero.png"},
+          {name:"Maravilla", cepo:58, formato:"58 x 170 mm", largo:"170 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__maravilla.png"},
+          {name:"Pir\u00e1mide", cepo:54, formato:"54 x 160 mm", largo:"160 mm", uds:5, fuerza:4, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__piramide.png"},
+          {name:"Toro", cepo:52, formato:"52 x 150 mm", largo:"150 mm", uds:5, fuerza:4, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__toro.png"},
+          {name:"Fant\u00e1stico", cepo:56, formato:"56 x 125 mm", largo:"125 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__fantastico.png"},
+          {name:"Robusto", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:4, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__robusto.png"}
         ] },
-      { id:'mata', name:'Alejandro Mata', procedencia:'Estelí, Nicaragua', fortaleza:'Media', envase:'Caja de madera de lujo',
-        img:{ main:'assets/img/mata-genesis-box.jpg' }, cigarImg:'assets/img/products/mata-carmelita.webp',
-        logo:'assets/img/logos/mata-logo.png', coleccion:'Colección 1964', lema:'Una nueva expresión de nuestra historia',
-        gallery:['assets/img/products/mata-carmelita.webp','assets/img/products/mata-maduro.webp','assets/img/mata-genesis-box.jpg'],
+      { id:"carmelita", name:"Alejandro Mata \u00b7 Carmelita", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
+        img:{ main:"assets/img/vitolas/carmelita__alba.png" }, cigarImg:"assets/img/vitolas/carmelita__alba.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Colección 1964', lema:'Una nueva expresión de nuestra historia', logo:'assets/img/logos/mata-logo.png',
         vitolas:[
-          {name:'Selección Carmelita', cepo:52, formato:'Toro (natural)', largo:'152 mm', uds:20, img:'assets/img/products/mata-carmelita.webp'},
-          {name:'Selección Maduro', cepo:52, formato:'Toro (maduro)', largo:'152 mm', uds:20, img:'assets/img/products/mata-maduro.webp'},
-          {name:'Génesis', cepo:54, formato:'Toro', largo:'152 mm', uds:20, img:'assets/img/mata-genesis-box.jpg'}
+          {name:"Alba", cepo:56, formato:"56 x 160 mm", largo:"160 mm", uds:5, fuerza:3, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__alba.png"},
+          {name:"Camino", cepo:54, formato:"54 x 150 mm", largo:"150 mm", uds:5, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__camino.png"},
+          {name:"Ra\u00edz", cepo:56, formato:"56 x 130 mm", largo:"130 mm", uds:5, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__raiz.png"},
+          {name:"G\u00e9nesis", cepo:52, formato:"52 x 124 mm", largo:"124 mm", uds:5, fuerza:3, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__genesis.png"},
+          {name:"Amanecer", cepo:52, formato:"52 x 102 mm", largo:"102 mm", uds:5, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__amanecer.png"}
+        ] },
+      { id:"maduro", name:"Alejandro Mata \u00b7 Maduro", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
+        img:{ main:"assets/img/vitolas/maduro__linaje.png" }, cigarImg:"assets/img/vitolas/maduro__linaje.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Colección 1964', lema:'Una nueva expresión de nuestra historia', logo:'assets/img/logos/mata-logo.png',
+        vitolas:[
+          {name:"Linaje", cepo:54, formato:"54 x 160 mm", largo:"160 mm", uds:5, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__linaje.png"},
+          {name:"Temple", cepo:55, formato:"55 x 155 mm", largo:"155 mm", uds:5, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__temple.png"},
+          {name:"Legado", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__legado.png"}
+        ] },
+      { id:"diamante", name:"Diamante", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media-Fuerte", envase:"Caja de 5", capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua",
+        img:{ main:"assets/img/vitolas/diamante__torpedo.png" }, cigarImg:"assets/img/vitolas/diamante__torpedo.png", bannerLogo:'assets/img/logos/diamante-logo.png',
+        vitolas:[
+          {name:"Torpedo", cepo:54, formato:"54 x 160 mm", largo:"160 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__torpedo.png"},
+          {name:"Trabuco", cepo:70, formato:"70 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__trabuco.png"},
+          {name:"Magnum", cepo:56, formato:"56 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__magnum.png"},
+          {name:"Toro", cepo:52, formato:"52 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__toro.png"},
+          {name:"Robusto", cepo:50, formato:"50 x 125 mm", largo:"125 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__robusto.png"}
         ] }
     ];
     function lineImg(cfg, cls, alt) {
@@ -1200,7 +1237,7 @@
           <button onclick="showVitola('${b.id}',${i})" class="group text-left">
             <div class="aspect-square overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${v.img || b.cigarImg || PURO_DEFAULT}" alt="${v.name}"></div>
             <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">${v.name}</h4>
-            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">${v.formato} · Cepo ${v.cepo} · ${v.largo}</p>
+            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">Cepo ${v.cepo} · ${v.largo}</p>
           </button>`).join('');
         // Las marcas no tienen página: sólo su foto + descripción, y sus productos como botones.
         return `<div id="linea-${b.id}" class="line-block reveal scroll-mt-28" data-line="${b.id}">
@@ -1265,10 +1302,12 @@
                 <p class="text-[#0d0d0d]/70 leading-[1.85] mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
                 <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-5" style="font-size:14px;">Características</h3>
                 <div class="space-y-4 mb-10">
-                  ${intensityBar(c.intensity || 3)}
-                  ${vitolaSpec('Formato / Vitola', v.formato)}
+                  ${intensityBar(v.fuerza || c.intensity || 3)}
                   ${vitolaSpec('Cepo (Ring Gauge)', v.cepo)}
                   ${vitolaSpec('Longitud', v.largo)}
+                  ${vitolaSpec('Capa', v.capa || '—')}
+                  ${vitolaSpec('Capote', v.capote || '—')}
+                  ${vitolaSpec('Tripa', v.tripa || '—')}
                   ${vitolaSpec('Origen', b.procedencia)}
                   ${vitolaSpec('Envase', b.envase)}
                   ${vitolaSpec('Unidades por caja', v.uds)}
