@@ -655,11 +655,11 @@
             </div>
             <div class="p-8 flex flex-col flex-1">
               <div class="cat-hairline"></div>
-              <p class="text-[#F8F6F2]/75 mb-8 flex-1 leading-relaxed" style="font-size: 15px;">Todas nuestras marcas en un solo catálogo: El Brujito, Alfambra Verde, Serie Clásica, Selección, José Gener y Alejandro Mata.</p>
+              <p class="text-[#F8F6F2]/75 mb-8 flex-1 leading-relaxed" style="font-size: 15px;">Todas nuestras marcas en un solo catálogo: Alfambra Boutique, Selección, Clásico, El Brujito, J·G Tradición, Alejandro Mata, Diamante y Ediciones Especiales.</p>
               <div class="space-y-4">
                 <div>
                   <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
-                  <select id="lang0" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <select id="lang0" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option></select>
                 </div>
                 <div class="flex items-center gap-2">
                   <button onclick="downloadPDF('line0')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
@@ -680,7 +680,7 @@
               <div class="space-y-4">
                 <div>
                   <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
-                  <select id="lang1" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <select id="lang1" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option></select>
                 </div>
                 <div class="flex items-center gap-2">
                   <button onclick="downloadPDF('line1')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
@@ -701,7 +701,7 @@
               <div class="space-y-4">
                 <div>
                   <label class="text-xs uppercase tracking-[0.16em] mb-2 block" style="color: rgb(245, 183, 40); font-size: 12px;">Idioma del catálogo</label>
-                  <select id="lang3" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option></select>
+                  <select id="lang3" class="cat-lang w-full pl-4 pr-11 py-3 border border-[#f5b728]/30 rounded-xl text-[#F8F6F2] font-serif cursor-pointer hover:border-[#f5b728]/70 focus:border-[#f5b728] focus:outline-none transition" style="font-size: 16px;"><option value="es">Español</option></select>
                 </div>
                 <div class="flex items-center gap-2">
                   <button onclick="downloadPDF('line3')" class="cat-btn-dl" style="font-size: 13px;"><i data-lucide="download" style="width:15px;height:15px"></i> Descargar catálogo</button>
@@ -1055,22 +1055,24 @@
       e.target.reset();
       setTimeout(() => document.getElementById('contact-success').classList.add('hidden'), 4000);
     }
+    // Catálogo oficial 2026 (por ahora un único PDF completo con todas las marcas).
+    // Para servir catálogos por línea en el futuro, añade su ruta aquí.
+    const CATALOG_PDF = 'assets/pdf/Catalogo_Alfambra_Tabacalera_2026.pdf';
+    const CATALOGS = { line0: CATALOG_PDF, line1: CATALOG_PDF, line3: CATALOG_PDF };
+    function catUrl(line) { return CATALOGS[line] || CATALOG_PDF; }
     function downloadPDF(line) {
-      const lang = document.getElementById('lang' + line.replace('line', '')).value;
       const link = document.createElement('a');
-      link.href = 'https://example.com/pdfs/cat-' + line + '-' + lang + '.pdf';
-      link.download = 'catalogo-alfambra.pdf';
+      link.href = catUrl(line);
+      link.download = 'Catalogo_Alfambra_Tabacalera_2026.pdf';
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.click();
     }
     function previewPDF(line) {
-      const lang = document.getElementById('lang' + line.replace('line', '')).value;
-      window.open('https://example.com/pdfs/cat-' + line + '-' + lang + '.pdf', '_blank', 'noopener,noreferrer');
+      window.open(catUrl(line), '_blank', 'noopener,noreferrer');
     }
     function sharePDF(line) {
-      const lang = document.getElementById('lang' + line.replace('line', '')).value;
-      const url = 'https://example.com/pdfs/cat-' + line + '-' + lang + '.pdf';
+      const url = new URL(catUrl(line), window.location.href).href;
       if (navigator.share) { navigator.share({ title: 'Catálogo Tabacalera Alfambra', url: url }).catch(() => {}); }
       else { navigator.clipboard.writeText(url).catch(() => {}); }
     }

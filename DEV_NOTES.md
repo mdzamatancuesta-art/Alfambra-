@@ -17,12 +17,14 @@ Dependencias por CDN (se cargan en `<head>`):
 - **Instrument Serif** (Google Fonts) — tipografía principal (clase `.font-serif`).
 - **Lucide** icons (`lucide.createIcons()` genera los `<i data-lucide="...">`).
 
-Assets locales en `assets/img/`:
-- `logos/` — logos (company-gold, footer-tabacalera, marcas, brujito, mata, tramas).
-- `hero/` — fotos del carrusel de inicio.
-- `products/` — fotos de puros/cajas por marca.
-- `news/`, `vida/` — fotos de estilo de vida.
-- `humidor-*.webp`, `catalog-header.webp`, `clasica-lineup.webp`, `gate-panel-*.webp`, `trama-box.webp`, etc.
+Assets locales en `assets/img/` (todo local, **0 dependencias de imágenes externas**):
+- `logos/` — logos **SVG** de marca en 3 variantes: color/dorado (`marca.svg`), blanco (`marca-white.svg`, para banners oscuros) y negro (`marca-black.svg`). Marcas: `boutique, seleccion, clasico, brujito, jg, mata, diamante, ediciones, tabacalera`. También quedan logos generales antiguos (`company-gold.webp`, `footer-tabacalera.webp`, `alfambra-gold.png`, `trama-*`).
+- `vitolas/` — 62 PNG cuadrados por vitola, `{marca}__{slug}.png`.
+- `bodegones/` — bodegones (fotos de producto) por línea: `bodegon-{boutique,seleccion,clasico,brujito,mata,diamante,col1964}.webp`. J·G usa el genérico `assets/img/bodegon.webp`.
+- `hero/`, `news/`, `vida/` — fotos de campo / estilo de vida.
+- `humidor-*.webp`, `catalog-header.webp`, `gate-panel-*.webp`, `favicon.png`, etc.
+
+Catálogo descargable en `assets/pdf/Catalogo_Alfambra_Tabacalera_2026.pdf` (ver §7b).
 
 ## 2. Navegación (SPA)
 
@@ -36,16 +38,20 @@ Cada "página" es una `<section class="page" id="page-XXX">`. `showPage('xxx')` 
 
 Dos estructuras JS al final del `<script>`:
 
-- **`brandLines[]`** — 6 marcas (`brujito, verde, naranja, seleccion, gener, mata`). Cada una:
-  `{ id, name, procedencia, fortaleza, envase, img{main}, cigarImg, gallery[], bannerLogo, logo, coleccion, lema, vitolas[{name, cepo, formato, largo, uds, img}] }`.
-  - `cigarImg` = foto por defecto del puro de esa marca; `vitola.img` la sobreescribe.
-  - `naranja` se muestra como **"Alfambra Serie Clásica"** (el `id` sigue siendo `naranja` para no romper anclas).
-- **`cigars{}`** — textos por marca (`flavor_desc`, `tasting`, `intensity`, `pairing`, `sizes`, `tobacco`).
+- **`brandLines[]`** — **9 líneas**, en el orden oficial del catálogo:
+  `boutique, seleccion, clasico, brujito, jg, carmelita, maduro, diamante, col1964`.
+  Cada una:
+  `{ id, name, group?, procedencia, fortaleza, envase, capa, capote, tripa, img{main}, bodegon, cigarImg, bannerLogo, logo?, coleccion?, lema?, vitolas[{name, cepo, formato, largo, uds, fuerza, capa, capote, tripa, img}] }`.
+  - **`group`** — agrupa líneas bajo un encabezado de sección en Productos: `carmelita` y `maduro` → `"Alejandro Mata"`; `diamante` y `col1964` → `"Ediciones Especiales"`. `renderLines()` pinta el encabezado cuando cambia el `group`.
+  - **`img.main`** y **`bodegon`** apuntan al bodegón de la línea (foto de producto). `bannerLogo` = logo blanco (SVG) sobre el banner oscuro; `logo` = logo dorado que aparece en el bloque `coleccion` sobre marfil.
+  - `cigarImg` = foto por defecto del puro; `vitola.img` la sobreescribe.
+  - **`col1964`** = "Alejandro Mata – Colección 1964", edición especial (Ediciones Especiales): humidor con las 8 vitolas (Carmelita + Maduro) + botella Arzuaga. Se **excluye del buscador** en `finderVitolas()` para no duplicar vitolas.
+- **`cigars{}`** — textos por línea (`name, strength, intensity, tasting, flavor_desc, pairing`).
 
 Renderizado:
-- `renderLines()` pinta la página **Productos** (banner por marca + rejilla de vitolas). Marca con `coleccion` (Alejandro Mata) muestra logo + "Colección 1964" + lema.
-- `showVitola(brandId, index)` genera la **página individual** del puro (imagen, ficha, barra de fortaleza, cepo, galería, maridaje, botón compartir).
-- **Finder** (`page-finder`): `finderVitolas()` aplana todas las vitolas; `updateFinderResults()` filtra por marca / fortaleza (slider) / cepo / tamaño y pinta tarjetas con `showVitola`.
+- `renderLines()` pinta la página **Productos** (encabezado de grupo cuando aplica + banner por línea + rejilla de vitolas). Línea con `coleccion` muestra logo + eyebrow + lema.
+- `showVitola(brandId, index)` genera la **página individual** del puro (imagen, ficha con Cepo/Longitud/Capa/Capote/Tripa/Origen/Envase/Uds, barra de fortaleza, galería = puro + bodegón de la línea, maridaje, compartir).
+- **Finder** (`page-finder`, oculto del menú): `finderVitolas()` aplana las vitolas (menos `col1964`); `updateFinderResults()` filtra por marca / fortaleza / cepo / tamaño.
 
 **Para añadir/editar un puro:** edita `brandLines` (datos) y, si hace falta, `cigars` (textos). Nada más.
 
@@ -70,9 +76,16 @@ Escritorio intacto; el trabajo responsive es **aditivo**:
 
 Datos reales en `page-contact` y footer: **C. Zamora 3, Laguna de Duero (Valladolid), tel 607 65 48 22, 24h**. Footer con redes sociales, enlaces legales UE y **banner de cookies** (`#cookie-banner`, `setCookieConsent()`, `localStorage['alfambra_cookies']`).
 
-## 8. Imágenes de Google Drive (aviso)
+## 7b. Catálogo descargable
 
-Algunas fotos aún se enlazan por `lh3.googleusercontent.com/d/<ID>=w1920` con fallback a un asset local. Son **poco fiables** (pueden devolver recortes/miniaturas). **Recomendación:** descargar y servir todas las imágenes desde `assets/img/` como el resto.
+Página **Catálogo** (`page-catalogue`): tarjetas con botón "Descargar catálogo". Toda la lógica está en un único sitio:
+- `CATALOG_PDF` + mapa `CATALOGS` (por `line0/line1/line3`) → ruta del PDF local.
+- `downloadPDF/previewPDF/sharePDF` usan `catUrl(line)`.
+- Hoy hay **un solo PDF completo** (`assets/pdf/Catalogo_Alfambra_Tabacalera_2026.pdf`, ES) y las 3 tarjetas apuntan a él. Para servir catálogos por línea, añade su ruta en `CATALOGS`.
+
+## 8. Imágenes
+
+**Todas las imágenes son locales** (`assets/img/`); no queda ninguna dependencia externa (se migraron las de Google Drive/pexels). Al añadir fotos nuevas, guárdalas en `assets/img/` y referencia por ruta relativa.
 
 ## 9. Despliegue
 
