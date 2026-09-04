@@ -328,6 +328,7 @@
           <a onclick="gotoLinea('carmelita')">Alejandro Mata · Carmelita</a>
           <a onclick="gotoLinea('maduro')">Alejandro Mata · Maduro</a>
           <a onclick="gotoLinea('diamante')">Diamante</a>
+          <a onclick="gotoLinea('col1964')">Alejandro Mata – Colección 1964</a>
         </span></span>
       </span>
       <span class="nav-link" data-page="productos" onclick="showPage('productos')">Humidor</span>
@@ -941,7 +942,8 @@
       jg: { name: "J\u00b7G Tradici\u00f3n Tabacalera", strength: "Fuerte", intensity: 4, tasting: "Tradici\u00f3n Envolvente", flavor_desc: "J.G. se caracteriza por una entrada rica y envolvente que, tras el encendido, despliega notas de cuero fino y un toque sutil de pimienta y frutos rojos. Su evoluci\u00f3n revela matices de almendra tostada, cedro y recuerdos de cacao fino, dejando un fondo bals\u00e1mico y un final amplio y elegante en el paladar.", pairing: "Whisky suave, vinos tintos j\u00f3venes o caf\u00e9 cortado." },
       carmelita: { name: "Alejandro Mata \u00b7 Carmelita", strength: "Fuerte", intensity: 4, tasting: "Autor \u00b7 Natural", flavor_desc: "La Selecci\u00f3n Carmelita se caracteriza por un sabor terroso y ligeramente picante que, una vez encendido, despliega sabores amaderados, a pimienta y avellana cruda. Las notas c\u00edtricas destapan aromas a fruta deshidratada, caf\u00e9, tostados y, al final, nuez moscada y cacao.", pairing: "Ron premium o vino de Oporto." },
       maduro: { name: "Alejandro Mata \u00b7 Maduro", strength: "Fuerte", intensity: 5, tasting: "Autor \u00b7 Maduro", flavor_desc: "La Selecci\u00f3n Maduro se caracteriza por una entrada robusta y especiada que, tras el encendido, despliega notas profundas de madera de roble, cuero curado y granos de caf\u00e9 expreso. Su evoluci\u00f3n revela un car\u00e1cter m\u00e1s intenso con matices de pimienta negra, cacao amargo y un fondo tostado de gran persistencia en el paladar.", pairing: "Caf\u00e9 expreso y rones oscuros de largo a\u00f1ejamiento." },
-      diamante: { name: "Diamante", strength: "Media-Fuerte", intensity: 3, tasting: "Frescura Equilibrada", flavor_desc: "despliega notas de cedro suave, torrefactos y un fondo ligeramente herb\u00e1ceo. Su evoluci\u00f3n ofrece una fumada muy equilibrada culminando en una bocanada limpia y de agradable persistencia.", pairing: "Cervezas rubias, bourbon joven o caf\u00e9 suave." }
+      diamante: { name: "Diamante", strength: "Media-Fuerte", intensity: 3, tasting: "Frescura Equilibrada", flavor_desc: "despliega notas de cedro suave, torrefactos y un fondo ligeramente herb\u00e1ceo. Su evoluci\u00f3n ofrece una fumada muy equilibrada culminando en una bocanada limpia y de agradable persistencia.", pairing: "Cervezas rubias, bourbon joven o caf\u00e9 suave." },
+      col1964: { name: "Alejandro Mata \u2013 Colecci\u00f3n 1964", strength: "Fuerte", intensity: 4, tasting: "Edici\u00f3n Especial", flavor_desc: "La m\u00e1xima expresi\u00f3n de la casa: un humidor de edici\u00f3n extremadamente limitada que re\u00fane las ocho vitolas de Alejandro Mata \u2014 capa Carmelita y capa Maduro \u2014 en cajas de madera barnizada con remates de piel. Incluye 15 unidades de cada vitola y una botella de vino Arzuaga Ribera del Duero Reserva Especial 2020. Una nueva expresi\u00f3n de nuestra historia, creada con tiempo, dedicaci\u00f3n y maestr\u00eda artesanal.", pairing: "Arzuaga Ribera del Duero Reserva Especial 2020." }
     };
 
     function openDetail(id) {
@@ -1083,10 +1085,10 @@
     function sizeBand(mm){ return !mm ? null : (mm < 120 ? 'corto' : (mm <= 150 ? 'medio' : 'largo')); }
     function finderVitolas(){
       const out = [];
-      brandLines.forEach(b => b.vitolas.forEach((v, vi) => out.push({
+      brandLines.forEach(b => { if (b.id === 'col1964') return; b.vitolas.forEach((v, vi) => out.push({
         brand:b.id, brandName:b.name, vi, name:v.name, formato:v.formato, cepo:v.cepo,
         largo: parseInt(v.largo) || null, fortaleza: b.fortaleza, img: v.img || b.cigarImg || PURO_DEFAULT
-      })));
+      })); });
       return out;
     }
     function updateFinderResults(){
@@ -1197,8 +1199,8 @@
           {name:"Fant\u00e1stico", cepo:56, formato:"56 x 125 mm", largo:"125 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__fantastico.png"},
           {name:"Robusto", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:4, capa:"Ecuador", capote:"Nicaragua", tripa:"Origen desconocido", img:"assets/img/vitolas/jg__robusto.png"}
         ] },
-      { id:"carmelita", name:"Alejandro Mata \u00b7 Carmelita", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
-        img:{ main:"assets/img/bodegones/bodegon-carmelita.webp" }, bodegon:"assets/img/bodegones/bodegon-carmelita.webp", cigarImg:"assets/img/vitolas/carmelita__alba.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Colección 1964', lema:'Una nueva expresión de nuestra historia', logo:'assets/img/logos/mata-logo.png',
+      { id:"carmelita", name:"Alejandro Mata \u00b7 Carmelita", group:"Alejandro Mata", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
+        img:{ main:"assets/img/bodegones/bodegon-mata.webp" }, bodegon:"assets/img/bodegones/bodegon-mata.webp", cigarImg:"assets/img/vitolas/carmelita__alba.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Selección Carmelita', logo:'assets/img/logos/mata-logo.png',
         vitolas:[
           {name:"Alba", cepo:56, formato:"56 x 160 mm", largo:"160 mm", uds:5, fuerza:3, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__alba.png"},
           {name:"Camino", cepo:54, formato:"54 x 150 mm", largo:"150 mm", uds:5, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__camino.png"},
@@ -1206,14 +1208,14 @@
           {name:"G\u00e9nesis", cepo:52, formato:"52 x 124 mm", largo:"124 mm", uds:5, fuerza:3, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__genesis.png"},
           {name:"Amanecer", cepo:52, formato:"52 x 102 mm", largo:"102 mm", uds:5, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__amanecer.png"}
         ] },
-      { id:"maduro", name:"Alejandro Mata \u00b7 Maduro", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
-        img:{ main:"assets/img/bodegones/bodegon-maduro.webp" }, bodegon:"assets/img/bodegones/bodegon-maduro.webp", cigarImg:"assets/img/vitolas/maduro__linaje.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Colección 1964', lema:'Una nueva expresión de nuestra historia', logo:'assets/img/logos/mata-logo.png',
+      { id:"maduro", name:"Alejandro Mata \u00b7 Maduro", group:"Alejandro Mata", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Caja de 5", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
+        img:{ main:"assets/img/bodegones/bodegon-mata.webp" }, bodegon:"assets/img/bodegones/bodegon-mata.webp", cigarImg:"assets/img/vitolas/maduro__linaje.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Selección Maduro', logo:'assets/img/logos/mata-logo.png',
         vitolas:[
           {name:"Linaje", cepo:54, formato:"54 x 160 mm", largo:"160 mm", uds:5, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__linaje.png"},
           {name:"Temple", cepo:55, formato:"55 x 155 mm", largo:"155 mm", uds:5, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__temple.png"},
           {name:"Legado", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:5, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__legado.png"}
         ] },
-      { id:"diamante", name:"Diamante", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media-Fuerte", envase:"Caja de 5", capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua",
+      { id:"diamante", name:"Diamante", group:"Ediciones Especiales", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media-Fuerte", envase:"Caja de 5", capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua",
         img:{ main:"assets/img/bodegones/bodegon-diamante.webp" }, bodegon:"assets/img/bodegones/bodegon-diamante.webp", cigarImg:"assets/img/vitolas/diamante__torpedo.png", bannerLogo:'assets/img/logos/diamante-logo.png',
         vitolas:[
           {name:"Torpedo", cepo:54, formato:"54 x 160 mm", largo:"160 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__torpedo.png"},
@@ -1221,6 +1223,18 @@
           {name:"Magnum", cepo:56, formato:"56 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__magnum.png"},
           {name:"Toro", cepo:52, formato:"52 x 150 mm", largo:"150 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__toro.png"},
           {name:"Robusto", cepo:50, formato:"50 x 125 mm", largo:"125 mm", uds:5, fuerza:3, capa:"Ecuador", capote:"Indonesia", tripa:"Nicaragua", img:"assets/img/vitolas/diamante__robusto.png"}
+        ] },
+      { id:"col1964", name:"Alejandro Mata \u2013 Colecci\u00f3n 1964", group:"Ediciones Especiales", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Fuerte", envase:"Humidor de 15 uds. por vitola + botella de vino", capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa",
+        img:{ main:"assets/img/bodegones/bodegon-col1964.webp" }, bodegon:"assets/img/bodegones/bodegon-col1964.webp", cigarImg:"assets/img/vitolas/carmelita__alba.png", bannerLogo:'assets/img/logos/mata-logo.png', coleccion:'Colecci\u00f3n 1964', lema:'Una nueva expresi\u00f3n de nuestra historia', logo:'assets/img/logos/mata-logo.png',
+        vitolas:[
+          {name:"Alba", cepo:56, formato:"56 x 160 mm", largo:"160 mm", uds:15, fuerza:3, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__alba.png"},
+          {name:"Camino", cepo:54, formato:"54 x 150 mm", largo:"150 mm", uds:15, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__camino.png"},
+          {name:"Ra\u00edz", cepo:56, formato:"56 x 130 mm", largo:"130 mm", uds:15, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__raiz.png"},
+          {name:"G\u00e9nesis", cepo:52, formato:"52 x 124 mm", largo:"124 mm", uds:15, fuerza:3, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__genesis.png"},
+          {name:"Amanecer", cepo:52, formato:"52 x 102 mm", largo:"102 mm", uds:15, fuerza:4, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/carmelita__amanecer.png"},
+          {name:"Linaje", cepo:54, formato:"54 x 160 mm", largo:"160 mm", uds:15, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__linaje.png"},
+          {name:"Temple", cepo:55, formato:"55 x 155 mm", largo:"155 mm", uds:15, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__temple.png"},
+          {name:"Legado", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:15, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__legado.png"}
         ] }
     ];
     function lineImg(cfg, cls, alt) {
@@ -1231,7 +1245,11 @@
     function renderLines() {
       const cont = document.getElementById('lines-container');
       if (!cont) return;
-      cont.innerHTML = brandLines.map(b => {
+      cont.innerHTML = brandLines.map((b, bi) => {
+        const prevGroup = bi > 0 ? brandLines[bi-1].group : null;
+        const groupHeader = (b.group && b.group !== prevGroup)
+          ? `<div class="reveal col-span-full mt-6 mb-2"><div class="flex items-center gap-5"><span class="h-px flex-1 bg-[#0e4f2e]/20"></span><h2 class="font-serif text-[#0e4f2e] text-center whitespace-nowrap" style="font-size:clamp(26px,5vw,40px);">${b.group}</h2><span class="h-px flex-1 bg-[#0e4f2e]/20"></span></div></div>`
+          : '';
         const c = cigars[b.id] || {};
         const cards = b.vitolas.map((v, i) => `
           <button onclick="showVitola('${b.id}',${i})" class="group text-left">
@@ -1240,7 +1258,7 @@
             <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">Cepo ${v.cepo} · ${v.largo}</p>
           </button>`).join('');
         // Las marcas no tienen página: sólo su foto + descripción, y sus productos como botones.
-        return `<div id="linea-${b.id}" class="line-block reveal scroll-mt-28" data-line="${b.id}">
+        return `${groupHeader}<div id="linea-${b.id}" class="line-block reveal scroll-mt-28" data-line="${b.id}">
           <div class="relative w-full h-52 md:h-64 rounded-xl overflow-hidden mb-6">
             ${lineImg(b.img, 'absolute inset-0 w-full h-full object-cover', b.name)}
             <div class="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/60 to-[#0D0D0D]/20"></div>
