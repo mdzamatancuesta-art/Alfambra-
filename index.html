@@ -1290,7 +1290,7 @@
           </button>`).join('');
         const info = lineInfo[b.id] || {};
         const presentBlock = (info.presentacion || (info.formatos && info.formatos.length)) ? `
-          <div class="grid md:grid-cols-3 gap-8 max-w-4xl mb-12 pt-2">
+          <div class="grid sm:grid-cols-3 gap-8 pt-2">
             ${info.presentacion ? `<div class="md:col-span-2"><p class="text-[#0d0d0d]/70 leading-[1.9]" style="font-size:16px;">${info.presentacion}</p></div>` : ''}
             ${(info.formatos && info.formatos.length) ? `<div><p class="text-[#0e4f2e] uppercase tracking-[0.18em] font-semibold mb-3" style="font-size:12px;">Presentaciones</p><ul class="space-y-2">${info.formatos.map(f=>`<li class="flex items-start gap-2 text-[#0d0d0d]/75" style="font-size:14px;"><span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#f5b728] shrink-0"></span><span>${f}</span></li>`).join('')}</ul></div>` : ''}
           </div>` : '';
@@ -1305,10 +1305,26 @@
             </div>
             ${b.bannerLogo ? `<img src="${b.bannerLogo}" alt="" class="hidden sm:block absolute top-1/2 right-6 md:right-12 -translate-y-1/2 h-24 md:h-36 w-auto opacity-90 pointer-events-none select-none" onerror="this.style.display='none'">` : ''}
           </div>
-          ${info.intro ? `<p class="font-serif italic text-[#0e4f2e] leading-snug max-w-3xl mb-7" style="font-size:clamp(20px,3.4vw,26px);">${info.intro}</p>` : ''}
-          ${b.coleccion ? `<div class="flex items-center gap-6 mb-7 flex-wrap">${b.logo?`<img src="${b.logo}" alt="${b.name}" class="h-24 w-auto" onerror="this.style.display='none'">`:''}<div><p class="text-[#f5b728] uppercase tracking-[0.24em] font-semibold mb-1" style="font-size:13px;">${b.coleccion}</p>${b.lema?`<p class="font-serif italic text-[#0d0d0d] leading-tight" style="font-size:26px;">${b.lema}</p>`:''}</div></div>` : ''}
-          <p class="text-[#0d0d0d]/70 leading-[1.9] max-w-3xl mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
-          ${presentBlock}
+          <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-14">
+            <div class="lg:col-span-7">
+              ${info.intro ? `<p class="font-serif italic text-[#0e4f2e] leading-snug mb-7" style="font-size:clamp(20px,3.4vw,26px);">${info.intro}</p>` : ''}
+              ${b.coleccion ? `<div class="flex items-center gap-6 mb-7 flex-wrap">${b.logo?`<img src="${b.logo}" alt="${b.name}" class="h-24 w-auto" onerror="this.style.display='none'">`:''}<div><p class="text-[#f5b728] uppercase tracking-[0.24em] font-semibold mb-1" style="font-size:13px;">${b.coleccion}</p>${b.lema?`<p class="font-serif italic text-[#0d0d0d] leading-tight" style="font-size:26px;">${b.lema}</p>`:''}</div></div>` : ''}
+              <p class="text-[#0d0d0d]/70 leading-[1.9] mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
+              ${presentBlock}
+            </div>
+            <div class="lg:col-span-5">
+              <figure class="rounded-2xl overflow-hidden bg-gradient-to-b from-white to-[#F1EEE8] border border-[#f5b728]/20" style="box-shadow:0 34px 66px -34px rgba(0,0,0,0.4);">
+                <div class="aspect-[5/4] flex items-center justify-center p-8">
+                  <img class="w-full h-full object-contain" loading="lazy" src="${(b.vitolas[0] && b.vitolas[0].img) || b.cigarImg || PURO_DEFAULT}" alt="${b.name}">
+                </div>
+                ${b.vitolas[0] ? `<figcaption class="px-6 pb-6 pt-1 text-center border-t border-[#0d0d0d]/8">
+                  <p class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mt-4 mb-1" style="font-size:11px;">Vitola insignia</p>
+                  <p class="font-serif text-[#0d0d0d]" style="font-size:22px;">${b.vitolas[0].name}</p>
+                  <p class="text-[#0e4f2e]/75 mt-1" style="font-size:13px;">Cepo ${b.vitolas[0].cepo} · ${b.vitolas[0].largo}</p>
+                </figcaption>` : ''}
+              </figure>
+            </div>
+          </div>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">${cards}</div>
         </div>`;
       }).join('');
