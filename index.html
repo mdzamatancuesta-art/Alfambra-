@@ -24,7 +24,7 @@
     @keyframes gateRightIn { from { transform: translateX(101%); } to { transform: translateX(0); } }
     .gate-content { position: relative; z-index: 2; width: min(560px, calc(100vw - 48px)); margin: 0 auto; text-align: center; padding: 0 20px; animation: gateContentIn 1.1s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
     @keyframes gateContentIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-    .gate-logo { height: clamp(190px, 26vw, 250px); width: auto; margin: 0 auto 26px; display: block; transform-origin: center; filter: drop-shadow(0 12px 34px rgba(0,0,0,0.4)); animation: gateLogoIn 1.3s cubic-bezier(0.34,1.56,0.64,1) 0.55s both; transition: opacity 0.7s ease, transform 1s cubic-bezier(0.16,1,0.3,1); }
+    .gate-logo { width: clamp(280px, 64vw, 440px); height: auto; margin: 0 auto 30px; display: block; transform-origin: center; filter: drop-shadow(0 12px 34px rgba(0,0,0,0.4)); animation: gateLogoIn 1.3s cubic-bezier(0.34,1.56,0.64,1) 0.55s both; transition: opacity 0.7s ease, transform 1s cubic-bezier(0.16,1,0.3,1); }
     @keyframes gateLogoIn { 0% { opacity: 0; transform: scale(0.55) translateY(14px); } 60% { opacity: 1; } 100% { opacity: 1; transform: scale(1) translateY(0); } }
     .gate-rule { width: 120px; height: 1px; background: rgba(245,183,40,0.55); margin: 0 auto 24px; }
     .gate-notice { color: rgba(248,246,242,0.85); font-size: 15px; line-height: 1.75; margin-bottom: 28px; }
@@ -304,7 +304,7 @@
     <div class="gate-panel gate-left"></div>
     <div class="gate-panel gate-right"></div>
     <div class="gate-content">
-      <img src="assets/img/logos/company-gold.webp" alt="Alfambra Boutique Cigar" class="gate-logo">
+      <img src="assets/img/logos/tabacalera-white.svg" alt="Tabacalera Alfambra" class="gate-logo">
       <div class="gate-rule"></div>
       <p class="gate-notice">Alfambra Boutique Cigars distribuye puros y productos del tabaco, y esta página web contiene información relacionada con ellos. Está destinada exclusivamente a personas en edad legal para fumar. Al acceder, usted confirma que tiene la edad legal para fumar en su país y que consiente ver información relacionada con productos del tabaco.</p>
       <p class="gate-confirm">Por favor, confirme que es mayor de 18 años</p>
@@ -333,7 +333,7 @@
       </span>
       <span class="nav-link" data-page="productos" onclick="showPage('productos')">Humidor</span>
       <span class="nav-link" data-page="catalogue" onclick="showPage('catalogue')">Catálogo</span>
-      <button onclick="showPage('home')" class="px-2 cursor-pointer hover:opacity-80 transition flex items-center" aria-label="Inicio"><img src="assets/img/logos/company-gold.webp" alt="Alfambra Boutique Cigar" class="h-14 md:h-20 w-auto"></button>
+      <button onclick="showPage('home')" class="px-2 cursor-pointer hover:opacity-80 transition flex items-center" aria-label="Inicio"><img src="assets/img/logos/tabacalera-white.svg" alt="Tabacalera Alfambra" class="h-12 md:h-16 w-auto"></button>
       <span class="nav-link" data-page="about" onclick="showPage('about')">Nosotros</span>
       <span class="nav-link" data-page="news" onclick="showPage('news')">Noticias</span>
       <span class="nav-link" data-page="contact" onclick="showPage('contact')">Contacto</span>
@@ -344,7 +344,7 @@
     </div>
     <!-- Mobile bar -->
     <div class="nav-mobile flex md:hidden items-center justify-between">
-      <button onclick="showPage('home')" class="flex items-center" aria-label="Inicio"><img src="assets/img/logos/company-gold.webp" alt="Alfambra Boutique Cigar" class="h-11 w-auto"></button>
+      <button onclick="showPage('home')" class="flex items-center" aria-label="Inicio"><img src="assets/img/logos/tabacalera-white.svg" alt="Tabacalera Alfambra" class="h-9 w-auto"></button>
       <button type="button" class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
     <!-- Mobile dropdown menu -->
@@ -369,7 +369,7 @@
   <div id="home-intro" aria-hidden="true">
     <div class="intro-panel intro-left"></div>
     <div class="intro-panel intro-right"></div>
-    <img class="intro-logo" src="assets/img/logos/company-gold.webp" alt="Alfambra Boutique Cigar">
+    <img class="intro-logo" src="assets/img/logos/tabacalera-white.svg" alt="Tabacalera Alfambra">
   </div>
 
   <!-- HOME -->
@@ -1258,14 +1258,14 @@
     ];
     // Textos del catálogo oficial 2026: presentación de marca + formatos.
     const lineInfo = {
-      boutique: { presentacion: "Alfambra Boutique está disponible en 5 vitolas y se presenta en cajas de madera pintadas y barnizadas en mate. Sumérgete en el lujo artesanal a través de sus 5 vitolas únicas, exquisitamente presentadas. ¡El regalo perfecto para los paladares más exigentes!", formatos: ["Cajas de 25 unidades"] },
-      seleccion: { presentacion: "Alfambra Selección está disponible en 14 vitolas y se presenta en cajas de madera pintadas con tapa corredera. Explora la versatilidad y el carácter de esta marca, creada con maestría para ser tu compañía perfecta en cada momento. ¡Una experiencia excepcional en cada detalle!", formatos: ["Cajas de 25 unidades"] },
-      clasico: { presentacion: "Alfambra Clásico es el sabor de siempre, el de todos los días. Disponible en 15 vitolas y presentado en petacas de cartón, está concebido para realzar tus rituales diarios con un perfil de sabor inconfundible. ¡Tradición genuina lista para disfrutar en cualquier lugar!", formatos: ["Petaca de 10 unidades"] },
-      brujito: { presentacion: "El Brujito está disponible en 9 vitolas y se presenta en cajas de madera barnizada con tapa corredera. La auténtica obra maestra de nuestra selección; un prodigio de carácter inigualable concebido para los paladares que buscan la máxima distinción. ¡La máxima expresión del arte tabacalero hecha leyenda!", formatos: ["Cajas de 25 unidades", "Cajas de 50 unidades", "Lata metálica de 24 unidades", "Humidor Pelo de Oro 24 unidades"] },
-      jg: { presentacion: "J·G Tradición Tabacalera está disponible en 6 vitolas y se presenta en cajas de madera pintadas y barnizadas en alto brillo. Descubre la elegancia intemporal de esta marca en sus 6 exclusivas vitolas. ¡Una auténtica obra maestra para los sentidos!", formatos: ["Cajas de 24 unidades"] },
+      boutique: { intro: "Alfambra Boutique es un tabaco nacido de la maestría de Tabacalera Alfambra: cada cigarro es un tributo a los sentidos, donde el sabor profundo y un aroma inconfundible se funden en una experiencia memorable.", presentacion: "Alfambra Boutique está disponible en 5 vitolas y se presenta en cajas de madera pintadas y barnizadas en mate. Sumérgete en el lujo artesanal a través de sus 5 vitolas únicas, exquisitamente presentadas. ¡El regalo perfecto para los paladares más exigentes!", formatos: ["Cajas de 25 unidades"] },
+      seleccion: { intro: "Alfambra Selección es un sueño cumplido, porque el del tabaco es un mundo de constante renovación y reto, que responde a un día a día siempre cambiante y de aprendizaje continuo.", presentacion: "Alfambra Selección está disponible en 14 vitolas y se presenta en cajas de madera pintadas con tapa corredera. Explora la versatilidad y el carácter de esta marca, creada con maestría para ser tu compañía perfecta en cada momento. ¡Una experiencia excepcional en cada detalle!", formatos: ["Cajas de 25 unidades"] },
+      clasico: { intro: "Alfambra Clásico es el sabor de siempre, el de todos los días. Nuestro cigarro más elegido por quienes saben que la verdadera calidad se disfruta en la rutina.", presentacion: "Alfambra Clásico es el sabor de siempre, el de todos los días. Disponible en 15 vitolas y presentado en petacas de cartón, está concebido para realzar tus rituales diarios con un perfil de sabor inconfundible. ¡Tradición genuina lista para disfrutar en cualquier lugar!", formatos: ["Petaca de 10 unidades"] },
+      brujito: { intro: "El Brujito es el fruto de la pasión de Alfambra Cigars y de su compromiso con el territorio de sus vegas en altura.", presentacion: "El Brujito está disponible en 9 vitolas y se presenta en cajas de madera barnizada con tapa corredera. La auténtica obra maestra de nuestra selección; un prodigio de carácter inigualable concebido para los paladares que buscan la máxima distinción. ¡La máxima expresión del arte tabacalero hecha leyenda!", formatos: ["Cajas de 25 unidades", "Cajas de 50 unidades", "Lata metálica de 24 unidades", "Humidor Pelo de Oro 24 unidades"] },
+      jg: { intro: "J·G Tradición Tabacalera es la perfecta armonía entre el sabor con carácter y el aroma con historia, respaldada por la tradición de Tabacalera Alfambra.", presentacion: "J·G Tradición Tabacalera está disponible en 6 vitolas y se presenta en cajas de madera pintadas y barnizadas en alto brillo. Descubre la elegancia intemporal de esta marca en sus 6 exclusivas vitolas. ¡Una auténtica obra maestra para los sentidos!", formatos: ["Cajas de 24 unidades"] },
       carmelita: { presentacion: "Alejandro Mata está disponible en capa carmelita y capa madura, con 5 y 3 vitolas respectivamente, en cajas de madera barnizada con remates de piel. Sometida a rigurosos controles de calidad y a un delicado proceso de fermentación y añejamiento, cada pieza es una obra de producción extremadamente limitada. ¡La máxima expresión del lujo artesanal!", formatos: ["Cajas de 10 unidades", "Cajas de 20 unidades"] },
       maduro: { presentacion: "Alejandro Mata está disponible en capa madura y capa carmelita, con 3 y 5 vitolas respectivamente, en cajas de madera barnizada con remates de piel. Sometida a rigurosos controles de calidad y a un delicado proceso de fermentación y añejamiento, cada pieza es una obra de producción extremadamente limitada. ¡La máxima expresión del lujo artesanal!", formatos: ["Cajas de 10 unidades", "Cajas de 20 unidades"] },
-      diamante: { presentacion: "Diamante es un tabaco pensado para el día a día, para quienes buscan disfrutar sin complicaciones. Disponible en 5 vitolas, combina una propuesta honesta y accesible con la máxima practicidad. ¡Sabor accesible y constante en cada calada!", formatos: ["Bolsas de 5 unidades", "Petacas de 10 unidades"] },
+      diamante: { intro: "Diamante es un tabaco pensado para el día a día, concebido para quienes buscan disfrutar sin complicaciones: el equilibrio perfecto entre rendimiento y el placer de un buen tabaco al alcance de todos.", presentacion: "Diamante es un tabaco pensado para el día a día, para quienes buscan disfrutar sin complicaciones. Disponible en 5 vitolas, combina una propuesta honesta y accesible con la máxima practicidad. ¡Sabor accesible y constante en cada calada!", formatos: ["Bolsas de 5 unidades", "Petacas de 10 unidades"] },
       col1964: { presentacion: "La máxima expresión de la casa: un humidor de edición extremadamente limitada que reúne las ocho vitolas de Alejandro Mata —capa Carmelita y capa Maduro— en madera barnizada con remates de piel. Cada gran tabaco se crea con pasión, conocimiento y Temple. Una nueva expresión de nuestra historia.", formatos: ["Humidor de 15 unidades por vitola", "Incluye botella Arzuaga Ribera del Duero Reserva Especial 2020"] }
     };
     function lineImg(cfg, cls, alt) {
@@ -1305,6 +1305,7 @@
             </div>
             ${b.bannerLogo ? `<img src="${b.bannerLogo}" alt="" class="hidden sm:block absolute top-1/2 right-6 md:right-12 -translate-y-1/2 h-24 md:h-36 w-auto opacity-90 pointer-events-none select-none" onerror="this.style.display='none'">` : ''}
           </div>
+          ${info.intro ? `<p class="font-serif italic text-[#0e4f2e] leading-snug max-w-3xl mb-7" style="font-size:clamp(20px,3.4vw,26px);">${info.intro}</p>` : ''}
           ${b.coleccion ? `<div class="flex items-center gap-6 mb-7 flex-wrap">${b.logo?`<img src="${b.logo}" alt="${b.name}" class="h-24 w-auto" onerror="this.style.display='none'">`:''}<div><p class="text-[#f5b728] uppercase tracking-[0.24em] font-semibold mb-1" style="font-size:13px;">${b.coleccion}</p>${b.lema?`<p class="font-serif italic text-[#0d0d0d] leading-tight" style="font-size:26px;">${b.lema}</p>`:''}</div></div>` : ''}
           <p class="text-[#0d0d0d]/70 leading-[1.9] max-w-3xl mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
           ${presentBlock}
