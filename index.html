@@ -442,6 +442,23 @@
         </div>
 
         <div class="mt-32 pt-20 border-t border-[#0d0d0d]/10">
+          <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">ESTELÍ · LA TIERRA PROMETIDA</p>
+          <h2 class="font-serif mb-8 reveal" style="color: rgb(13, 13, 13); font-size: clamp(30px, 6vw, 46px);">El nacimiento de una pasión</h2>
+          <blockquote class="reveal reveal-delay-1 font-serif italic max-w-3xl mb-10 pl-6 border-l-2 border-[#f5b728]" style="color: rgb(14, 79, 46); font-size: clamp(22px, 4vw, 30px); line-height:1.4;">«En el silencio de la tierra volcánica se gesta el tabaco más refinado.»</blockquote>
+          <p class="reveal reveal-delay-1 max-w-3xl leading-[2] mb-16" style="color: rgb(13, 13, 13); font-size: 18px;">El suelo volcánico de Estelí, Nicaragua, no fue una elección al azar. Alejandro Mata entendió que la fuerza, el temperamento y los nutrientes de esta tierra eran los únicos capaces de dar vida a la ligada que había imaginado. Es aquí, entre volcanes, donde late el corazón de Alfambra.</p>
+          <div class="grid md:grid-cols-2 gap-10 mb-4">
+            <div class="reveal border-t-2 border-[#f5b728] pt-6">
+              <h3 class="font-serif mb-4" style="color: rgb(13, 13, 13); font-size: 26px;">El legado de dieciocho años</h3>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.75;">Tabacalera Alfambra es el resultado de dieciocho años de esfuerzo, dedicación y la pasión personal de su fundador por crear piezas únicas. Cada puro que sale de nuestras galeras lleva consigo el respeto por la tradición artesanal y la promesa de una experiencia inolvidable en cada calada.</p>
+            </div>
+            <div class="reveal reveal-delay-1 border-t-2 border-[#f5b728] pt-6">
+              <h3 class="font-serif mb-4" style="color: rgb(13, 13, 13); font-size: 26px;">Del semillero a la galera</h3>
+              <p class="leading-relaxed" style="color: rgb(13, 13, 13); font-size: 16px; opacity:0.75;">Operamos bajo el concepto de fábrica boutique de cigarros premium. Mantenemos una cuidada y selecta producción que nos permite estar completamente integrados en el proceso, supervisando cada etapa: desde la semilla en nuestras propias vegas nicaragüenses hasta la producción en nuestra fábrica en Estelí.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-32 pt-20 border-t border-[#0d0d0d]/10">
           <p class="section-label reveal mb-4" style="color: rgb(14, 79, 46); font-size: 13px;">CRONOLOGÍA DE LA EXCELENCIA</p>
           <h2 class="font-serif mb-6 reveal" style="color: rgb(13, 13, 13); font-size: clamp(30px, 6vw, 46px);">El Ciclo de Producción</h2>
           <p class="reveal reveal-delay-1 mb-16 max-w-3xl leading-relaxed" style="color: rgb(13, 13, 13); font-size: 18px; opacity:0.75;">Desde la introducción de la semilla en el suelo nicaragüense hasta la culminación del producto, transcurre un periodo estimado de dos años y medio (30 meses), estructurado en cinco etapas fundamentales.</p>
@@ -1239,6 +1256,18 @@
           {name:"Legado", cepo:50, formato:"50 x 124 mm", largo:"124 mm", uds:15, fuerza:5, capa:"Mezcla exclusiva secreta de la casa", capote:"Mezcla exclusiva secreta de la casa", tripa:"Mezcla exclusiva secreta de la casa", img:"assets/img/vitolas/maduro__legado.png"}
         ] }
     ];
+    // Textos del catálogo oficial 2026: presentación de marca + formatos.
+    const lineInfo = {
+      boutique: { presentacion: "Alfambra Boutique está disponible en 5 vitolas y se presenta en cajas de madera pintadas y barnizadas en mate. Sumérgete en el lujo artesanal a través de sus 5 vitolas únicas, exquisitamente presentadas. ¡El regalo perfecto para los paladares más exigentes!", formatos: ["Cajas de 25 unidades"] },
+      seleccion: { presentacion: "Alfambra Selección está disponible en 14 vitolas y se presenta en cajas de madera pintadas con tapa corredera. Explora la versatilidad y el carácter de esta marca, creada con maestría para ser tu compañía perfecta en cada momento. ¡Una experiencia excepcional en cada detalle!", formatos: ["Cajas de 25 unidades"] },
+      clasico: { presentacion: "Alfambra Clásico es el sabor de siempre, el de todos los días. Disponible en 15 vitolas y presentado en petacas de cartón, está concebido para realzar tus rituales diarios con un perfil de sabor inconfundible. ¡Tradición genuina lista para disfrutar en cualquier lugar!", formatos: ["Petaca de 10 unidades"] },
+      brujito: { presentacion: "El Brujito está disponible en 9 vitolas y se presenta en cajas de madera barnizada con tapa corredera. La auténtica obra maestra de nuestra selección; un prodigio de carácter inigualable concebido para los paladares que buscan la máxima distinción. ¡La máxima expresión del arte tabacalero hecha leyenda!", formatos: ["Cajas de 25 unidades", "Cajas de 50 unidades", "Lata metálica de 24 unidades", "Humidor Pelo de Oro 24 unidades"] },
+      jg: { presentacion: "J·G Tradición Tabacalera está disponible en 6 vitolas y se presenta en cajas de madera pintadas y barnizadas en alto brillo. Descubre la elegancia intemporal de esta marca en sus 6 exclusivas vitolas. ¡Una auténtica obra maestra para los sentidos!", formatos: ["Cajas de 24 unidades"] },
+      carmelita: { presentacion: "Alejandro Mata está disponible en capa carmelita y capa madura, con 5 y 3 vitolas respectivamente, en cajas de madera barnizada con remates de piel. Sometida a rigurosos controles de calidad y a un delicado proceso de fermentación y añejamiento, cada pieza es una obra de producción extremadamente limitada. ¡La máxima expresión del lujo artesanal!", formatos: ["Cajas de 10 unidades", "Cajas de 20 unidades"] },
+      maduro: { presentacion: "Alejandro Mata está disponible en capa madura y capa carmelita, con 3 y 5 vitolas respectivamente, en cajas de madera barnizada con remates de piel. Sometida a rigurosos controles de calidad y a un delicado proceso de fermentación y añejamiento, cada pieza es una obra de producción extremadamente limitada. ¡La máxima expresión del lujo artesanal!", formatos: ["Cajas de 10 unidades", "Cajas de 20 unidades"] },
+      diamante: { presentacion: "Diamante es un tabaco pensado para el día a día, para quienes buscan disfrutar sin complicaciones. Disponible en 5 vitolas, combina una propuesta honesta y accesible con la máxima practicidad. ¡Sabor accesible y constante en cada calada!", formatos: ["Bolsas de 5 unidades", "Petacas de 10 unidades"] },
+      col1964: { presentacion: "La máxima expresión de la casa: un humidor de edición extremadamente limitada que reúne las ocho vitolas de Alejandro Mata —capa Carmelita y capa Maduro— en madera barnizada con remates de piel. Cada gran tabaco se crea con pasión, conocimiento y Temple. Una nueva expresión de nuestra historia.", formatos: ["Humidor de 15 unidades por vitola", "Incluye botella Arzuaga Ribera del Duero Reserva Especial 2020"] }
+    };
     function lineImg(cfg, cls, alt) {
       let onerr = '';
       if (cfg.thumb) onerr = ` onerror="this.onerror=function(){this.onerror=null;this.src='${cfg.fallback}'};this.src='${cfg.thumb}'"`;
@@ -1259,6 +1288,12 @@
             <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">${v.name}</h4>
             <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">Cepo ${v.cepo} · ${v.largo}</p>
           </button>`).join('');
+        const info = lineInfo[b.id] || {};
+        const presentBlock = (info.presentacion || (info.formatos && info.formatos.length)) ? `
+          <div class="grid md:grid-cols-3 gap-8 max-w-4xl mb-12 pt-2">
+            ${info.presentacion ? `<div class="md:col-span-2"><p class="text-[#0d0d0d]/70 leading-[1.9]" style="font-size:16px;">${info.presentacion}</p></div>` : ''}
+            ${(info.formatos && info.formatos.length) ? `<div><p class="text-[#0e4f2e] uppercase tracking-[0.18em] font-semibold mb-3" style="font-size:12px;">Presentaciones</p><ul class="space-y-2">${info.formatos.map(f=>`<li class="flex items-start gap-2 text-[#0d0d0d]/75" style="font-size:14px;"><span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#f5b728] shrink-0"></span><span>${f}</span></li>`).join('')}</ul></div>` : ''}
+          </div>` : '';
         // Las marcas no tienen página: sólo su foto + descripción, y sus productos como botones.
         return `${groupHeader}<div id="linea-${b.id}" class="line-block reveal scroll-mt-28" data-line="${b.id}">
           <div class="relative w-full h-52 md:h-64 rounded-xl overflow-hidden mb-6">
@@ -1272,6 +1307,7 @@
           </div>
           ${b.coleccion ? `<div class="flex items-center gap-6 mb-7 flex-wrap">${b.logo?`<img src="${b.logo}" alt="${b.name}" class="h-24 w-auto" onerror="this.style.display='none'">`:''}<div><p class="text-[#f5b728] uppercase tracking-[0.24em] font-semibold mb-1" style="font-size:13px;">${b.coleccion}</p>${b.lema?`<p class="font-serif italic text-[#0d0d0d] leading-tight" style="font-size:26px;">${b.lema}</p>`:''}</div></div>` : ''}
           <p class="text-[#0d0d0d]/70 leading-[1.9] max-w-3xl mb-10" style="font-size:17px;">${c.flavor_desc || ''}</p>
+          ${presentBlock}
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">${cards}</div>
         </div>`;
       }).join('');
