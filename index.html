@@ -86,6 +86,8 @@
     .fnd-brand.active .fnd-logo { transform: scale(1.08); filter: none; opacity: 1; }
     .fnd-brand.active .fnd-brand-name { color: #0e4f2e; font-weight: 600; }
     .fnd-brand.active::after { content: ''; }
+    /* Producto restringido por país (IP). Oculto por defecto; se revela sólo si procede. */
+    .geo-restricted { display: none !important; }
     /* Fortaleza como barra (igual que la ficha) */
     .fnd-range { -webkit-appearance: none; appearance: none; width: 100%; max-width: 320px; height: 10px; border-radius: 999px; background: linear-gradient(90deg, #e7dfce, #c9a24a, #8a5a1a); outline: none; cursor: pointer; }
     .fnd-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #0e4f2e; border: 3px solid #F8F6F2; box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: pointer; }
@@ -322,7 +324,7 @@
           <span class="nav-prod-title">Nuestras Marcas</span>
           <a onclick="gotoLinea('boutique')">Alfambra Boutique</a>
           <a onclick="gotoLinea('seleccion')">Alfambra Selección</a>
-          <a onclick="gotoLinea('clasico')">Alfambra Clásico</a>
+          <a onclick="gotoLinea('clasico')" class="geo-restricted" data-geo="ES">Alfambra Clásico</a>
           <a onclick="gotoLinea('brujito')">El Brujito</a>
           <a onclick="gotoLinea('jg')">J·G Tradición Tabacalera</a>
           <a onclick="gotoLinea('carmelita')">Alejandro Mata · Carmelita</a>
@@ -516,7 +518,7 @@
             <div class="flex flex-wrap gap-5">
               <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="boutique"><span class="fnd-logo"><img src="assets/img/logos/boutique.svg" alt="Boutique"></span><span class="fnd-brand-name">Boutique</span></button>
               <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="seleccion"><span class="fnd-logo"><img src="assets/img/logos/seleccion.svg" alt="Selección"></span><span class="fnd-brand-name">Selección</span></button>
-              <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="clasico"><span class="fnd-logo"><img src="assets/img/logos/clasico.svg" alt="Clásico"></span><span class="fnd-brand-name">Clásico</span></button>
+              <button type="button" class="fnd-brand geo-restricted group flex flex-col items-center cursor-pointer" data-brand="clasico" data-geo="ES"><span class="fnd-logo"><img src="assets/img/logos/clasico.svg" alt="Clásico"></span><span class="fnd-brand-name">Clásico</span></button>
               <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="brujito"><span class="fnd-logo"><img src="assets/img/logos/brujito.svg" alt="El Brujito"></span><span class="fnd-brand-name">El Brujito</span></button>
               <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="jg"><span class="fnd-logo"><img src="assets/img/logos/jg.svg" alt="J·G"></span><span class="fnd-brand-name">J·G</span></button>
               <button type="button" class="fnd-brand group flex flex-col items-center cursor-pointer" data-brand="carmelita"><span class="fnd-logo"><img src="assets/img/logos/mata.svg" alt="Carmelita"></span><span class="fnd-brand-name">Carmelita</span></button>
@@ -1104,7 +1106,7 @@
     function sizeBand(mm){ return !mm ? null : (mm < 120 ? 'corto' : (mm <= 150 ? 'medio' : 'largo')); }
     function finderVitolas(){
       const out = [];
-      brandLines.forEach(b => { if (b.id === 'col1964') return; b.vitolas.forEach((v, vi) => out.push({
+      brandLines.forEach(b => { if (b.id === 'col1964' || !lineVisible(b)) return; b.vitolas.forEach((v, vi) => out.push({
         brand:b.id, brandName:b.name, vi, name:v.name, formato:v.formato, cepo:v.cepo,
         largo: parseInt(v.largo) || null, fortaleza: b.fortaleza, img: v.img || b.cigarImg || PURO_DEFAULT
       })); });
@@ -1176,7 +1178,7 @@
           {name:"Sublime", cepo:54, formato:"54 x 164 mm", largo:"164 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__sublime.png"},
           {name:"Pir\u00e1mide", cepo:52, formato:"52 x 155 mm", largo:"155 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/seleccion__piramide.png"}
         ] },
-      { id:"clasico", name:"Alfambra Cl\u00e1sico", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media", envase:"Caja de 5", capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua",
+      { id:"clasico", name:"Alfambra Cl\u00e1sico", geo:"ES", procedencia:"Estel\u00ed, Nicaragua", fortaleza:"Media", envase:"Caja de 5", capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua",
         img:{ main:"assets/img/bodegones/bodegon-clasico.webp" }, bodegon:"assets/img/bodegones/bodegon-clasico.webp", cigarImg:"assets/img/vitolas/clasico__grandioso.png", bannerLogo:'assets/img/logos/clasico-white.svg',
         vitolas:[
           {name:"Grandioso", cepo:60, formato:"60 x 150 mm", largo:"150 mm", uds:5, fuerza:2, capa:"Ecuador", capote:"Nicaragua", tripa:"Nicaragua", img:"assets/img/vitolas/clasico__grandioso.png"},
@@ -1273,11 +1275,15 @@
       if (cfg.thumb) onerr = ` onerror="this.onerror=function(){this.onerror=null;this.src='${cfg.fallback}'};this.src='${cfg.thumb}'"`;
       return `<img class="${cls}" loading="lazy" src="${cfg.main}" alt="${alt}"${onerr}>`;
     }
+    // Restricción por país (IP). window.__geoCountry se rellena al detectar el país del visitante.
+    window.__geoCountry = window.__geoCountry || null;
+    function lineVisible(b) { return !b.geo || b.geo === window.__geoCountry; }
     function renderLines() {
       const cont = document.getElementById('lines-container');
       if (!cont) return;
-      cont.innerHTML = brandLines.map((b, bi) => {
-        const prevGroup = bi > 0 ? brandLines[bi-1].group : null;
+      const visible = brandLines.filter(lineVisible);
+      cont.innerHTML = visible.map((b, bi) => {
+        const prevGroup = bi > 0 ? visible[bi-1].group : null;
         const groupHeader = (b.group && b.group !== prevGroup)
           ? `<div class="reveal col-span-full mt-6 mb-2"><div class="flex items-center gap-5"><span class="h-px flex-1 bg-[#0e4f2e]/20"></span><h2 class="font-serif text-[#0e4f2e] text-center whitespace-nowrap" style="font-size:clamp(26px,5vw,40px);">${b.group}</h2><span class="h-px flex-1 bg-[#0e4f2e]/20"></span></div></div>`
           : '';
@@ -1421,6 +1427,30 @@
     })();
     renderLines();
     lucide.createIcons();
+
+    // ---- Geolocalización por IP: Alfambra Clásico sólo se muestra en España ----
+    // Por defecto los productos con `geo` están ocultos (fail-closed). Si el país
+    // del visitante coincide, se revelan. Si la detección falla, permanecen ocultos.
+    (function detectGeo() {
+      function applyCountry(cc) {
+        cc = (cc || '').toUpperCase();
+        window.__geoCountry = cc;
+        document.querySelectorAll('.geo-restricted[data-geo]').forEach(function(el){
+          if (el.getAttribute('data-geo') === cc) el.classList.remove('geo-restricted');
+        });
+        try { renderLines(); } catch(e){}
+        try { if (typeof updateFinderResults === 'function') updateFinderResults(); } catch(e){}
+      }
+      fetch('https://ipapi.co/country/')
+        .then(function(r){ if(!r.ok) throw 0; return r.text(); })
+        .then(function(t){ applyCountry((t||'').trim()); })
+        .catch(function(){
+          fetch('https://ipwho.is/?fields=country_code')
+            .then(function(r){ return r.json(); })
+            .then(function(j){ applyCountry(j && j.country_code); })
+            .catch(function(){ /* sin red o bloqueado: Clásico queda oculto */ });
+        });
+    })();
   </script>
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
