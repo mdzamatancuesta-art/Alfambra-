@@ -1288,7 +1288,12 @@
           ? `<div class="reveal col-span-full mt-6 mb-2"><div class="flex items-center gap-5"><span class="h-px flex-1 bg-[#0e4f2e]/20"></span><h2 class="font-serif text-[#0e4f2e] text-center whitespace-nowrap" style="font-size:clamp(26px,5vw,40px);">${b.group}</h2><span class="h-px flex-1 bg-[#0e4f2e]/20"></span></div></div>`
           : '';
         const c = cigars[b.id] || {};
-        const cards = b.vitolas.map((v, i) => `
+        const cards = (b.id === 'col1964') ? `
+          <button onclick="showCollection('${b.id}')" class="group text-left col-span-2 md:col-span-3 lg:col-span-4">
+            <div class="aspect-[21/9] overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${b.bodegon || b.img.main}" alt="${b.name}"></div>
+            <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">Ver la Colección 1964</h4>
+            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">Humidor · 8 vitolas + botella Arzuaga</p>
+          </button>` : b.vitolas.map((v, i) => `
           <button onclick="showVitola('${b.id}',${i})" class="group text-left">
             <div class="aspect-square overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${v.img || b.cigarImg || PURO_DEFAULT}" alt="${v.name}"></div>
             <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">${v.name}</h4>
@@ -1386,6 +1391,63 @@
               <div class="grid grid-cols-2 gap-4 max-w-2xl">${gallery}</div>
             </div>
             ${c.pairing ? `<div class="mt-16 pt-10 border-t border-[#0d0d0d]/10 max-w-3xl"><h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-3" style="font-size:14px;">Maridaje recomendado</h3><p class="text-[#0d0d0d]/75 leading-relaxed" style="font-size:18px;">${c.pairing}</p></div>` : ''}
+          </div>
+        </div>`;
+      showPage('vitola');
+      if (window.lucide) lucide.createIcons();
+    }
+    // Ficha especial de la edición Colección 1964 (humidor con 8 vitolas + vino).
+    function showCollection(brandId) {
+      const b = brandLines.find(x => x.id === brandId);
+      if (!b) return;
+      const bodegon = b.bodegon || b.img.main;
+      const orden = ['Amanecer','Génesis','Raíz','Camino','Alba','Legado','Temple','Linaje'];
+      const byName = {}; b.vitolas.forEach(v => byName[v.name] = v);
+      const filas = orden.map(n => { const v = byName[n] || {}; return `<tr>
+          <td class="py-3 pr-4 border-b border-[#0d0d0d]/8 font-serif text-[#0d0d0d]" style="font-size:18px;">${n}</td>
+          <td class="py-3 text-right border-b border-[#0d0d0d]/8 text-[#0e4f2e]" style="font-size:15px;font-variant-numeric:tabular-nums;">${v.cepo} × ${parseInt(v.largo)} mm</td>
+        </tr>`; }).join('');
+      const thumbs = [{src:bodegon, alt:'Bodegón Alejandro Mata · Colección 1964'}]
+        .concat(orden.map(n => ({src:(byName[n]||{}).img, alt:n})).filter(t => t.src));
+      const gallery = thumbs.map((t,i) => `<button type="button" onclick="document.getElementById('col-main').src='${t.src}'" class="aspect-square rounded-lg overflow-hidden bg-white border ${i===0?'border-[#f5b728]/60':'border-[#0d0d0d]/8'} hover:border-[#f5b728] transition"><img class="w-full h-full object-contain p-2" loading="lazy" src="${t.src}" alt="${t.alt}"></button>`).join('');
+      const desc = [
+        'Todo gran legado comienza con un Amanecer, con ese primer instante en el que una idea empieza a tomar forma. Durante años hemos dedicado nuestro conocimiento al arte de crear puros, aprendiendo de cada hoja, cada cosecha y cada proceso.',
+        'Una experiencia construida desde la Raíz, con respeto por la tradición y la convicción de que cada gran creación necesita su propio Camino para alcanzar la excelencia.',
+        'Hoy nace una marca que representa la evolución natural de nuestra casa: una selección donde el tiempo, la dedicación y la maestría artesanal se unen para crear una experiencia única.',
+        'Cada puro es fruto de un proceso cuidado al detalle, desde la elección de las mejores hojas hasta las manos expertas que le dan forma. Una historia que tiene su Génesis en la naturaleza y que, con paciencia y dedicación, encuentra su Alba en cada nueva creación.',
+        'Porque los grandes tabacos no se hacen con prisa; se crean con pasión, conocimiento y Temple.',
+        'Una expresión nacida de nuestro Linaje, que honra nuestro Legado y celebra el arte de transformar una hoja en una experiencia memorable.',
+        'Esta es nuestra manera de elevar una tradición y compartir una nueva dimensión del arte del puro.'
+      ].map(p => `<p class="text-[#0d0d0d]/70 leading-[1.85] mb-4" style="font-size:16px;">${p}</p>`).join('');
+      document.getElementById('page-vitola').innerHTML = `
+        <div class="min-h-screen bg-[#F8F6F2] pt-28 pb-24 px-8 md:px-20">
+          <div class="max-w-6xl mx-auto">
+            <button onclick="showPage('tienda');setTimeout(function(){scrollToLine('${b.id}')},60)" class="mb-10 inline-flex items-center gap-2 text-[#0e4f2e] font-serif uppercase tracking-widest hover:opacity-70 transition" style="font-size:14px;"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Ediciones Especiales</button>
+            <div class="grid md:grid-cols-2 gap-14 items-start">
+              <div class="reveal reveal-left">
+                <div class="bg-white rounded-2xl border border-[#0d0d0d]/8 p-5 mb-4"><img id="col-main" class="w-full h-auto object-contain max-h-[440px] mx-auto rounded-lg" loading="lazy" src="${bodegon}" alt="${b.name}"></div>
+                <div class="grid grid-cols-5 gap-3">${gallery}</div>
+              </div>
+              <div class="reveal reveal-right">
+                <p class="text-[#f5b728] uppercase tracking-[0.24em] font-semibold mb-2" style="font-size:12px;">Ediciones Especiales · Colección 1964</p>
+                <h1 class="font-serif text-4xl md:text-5xl text-[#0D0D0D] leading-[0.98] mb-3">Alejandro Mata Colección 1964</h1>
+                <p class="font-serif italic text-[#0e4f2e] mb-7" style="font-size:22px;">«Una nueva expresión de nuestra historia»</p>
+                ${desc}
+                <div class="mt-8 mb-8 p-6 bg-white rounded-xl border-l-4 border-[#f5b728]">
+                  <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-4" style="font-size:14px;">Incluye</h3>
+                  <ul class="space-y-3">
+                    <li class="flex items-start gap-3"><i data-lucide="layers" style="width:20px;height:20px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><span class="text-[#0d0d0d]" style="font-size:16px;">15 unidades de cada vitola <span class="text-[#0d0d0d]/60">(8 vitolas)</span></span></li>
+                    <li class="flex items-start gap-3"><i data-lucide="wine" style="width:20px;height:20px;color:#0e4f2e;flex-shrink:0;margin-top:2px"></i><span class="text-[#0d0d0d]" style="font-size:16px;">1 botella de vino Arzuaga Ribera del Duero Reserva Especial 2020</span></li>
+                  </ul>
+                </div>
+                <h3 class="text-[#0e4f2e] uppercase tracking-[0.2em] font-semibold mb-3" style="font-size:14px;">Selección de vitolas</h3>
+                <table class="w-full mb-8"><tbody>${filas}</tbody></table>
+                <div class="p-4 bg-[#0e4f2e]/5 rounded-lg flex items-center gap-3">
+                  <i data-lucide="wine" style="width:22px;height:22px;color:#0e4f2e;flex-shrink:0"></i>
+                  <div><p class="text-[#0e4f2e] uppercase tracking-[0.15em] font-semibold" style="font-size:11px;">Vino incluido</p><p class="text-[#0d0d0d]" style="font-size:15px;">Arzuaga Ribera del Duero Reserva Especial 2020</p></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>`;
       showPage('vitola');
