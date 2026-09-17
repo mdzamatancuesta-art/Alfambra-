@@ -1289,10 +1289,10 @@
           : '';
         const c = cigars[b.id] || {};
         const cards = (b.id === 'col1964') ? `
-          <button onclick="showCollection('${b.id}')" class="group text-left col-span-2 md:col-span-3 lg:col-span-4">
-            <div class="aspect-[21/9] overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${b.bodegon || b.img.main}" alt="${b.name}"></div>
-            <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">Ver la Colección 1964</h4>
-            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">Humidor · 8 vitolas + botella Arzuaga</p>
+          <button onclick="showCollection('${b.id}')" class="group text-left">
+            <div class="aspect-square overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${b.bodegon || b.img.main}" alt="${b.name}"></div>
+            <h4 class="font-serif text-[#0d0d0d] mt-3 group-hover:text-[#0e4f2e] transition" style="font-size:22px;">Colección 1964</h4>
+            <p class="text-[#0e4f2e]/80 mt-1" style="font-size:14px;">Humidor · 8 vitolas + Arzuaga</p>
           </button>` : b.vitolas.map((v, i) => `
           <button onclick="showVitola('${b.id}',${i})" class="group text-left">
             <div class="aspect-square overflow-hidden rounded-lg bg-white border border-[#f5b728]/15 group-hover:border-[#f5b728]/50 transition-all"><img class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" loading="lazy" src="${v.img || b.cigarImg || PURO_DEFAULT}" alt="${v.name}"></div>
