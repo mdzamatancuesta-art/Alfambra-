@@ -1411,12 +1411,12 @@
         .concat(orden.map(n => ({src:(byName[n]||{}).img, alt:n})).filter(t => t.src));
       const gallery = thumbs.map((t,i) => `<button type="button" onclick="document.getElementById('col-main').src='${t.src}'" class="aspect-square rounded-lg overflow-hidden bg-white border ${i===0?'border-[#f5b728]/60':'border-[#0d0d0d]/8'} hover:border-[#f5b728] transition"><img class="w-full h-full object-contain p-2" loading="lazy" src="${t.src}" alt="${t.alt}"></button>`).join('');
       const desc = [
-        'Todo gran legado comienza con un Amanecer, con ese primer instante en el que una idea empieza a tomar forma. Durante años hemos dedicado nuestro conocimiento al arte de crear puros, aprendiendo de cada hoja, cada cosecha y cada proceso.',
-        'Una experiencia construida desde la Raíz, con respeto por la tradición y la convicción de que cada gran creación necesita su propio Camino para alcanzar la excelencia.',
+        'Todo gran legado comienza con un <strong class="text-[#0e4f2e]">Amanecer</strong>, con ese primer instante en el que una idea empieza a tomar forma. Durante años hemos dedicado nuestro conocimiento al arte de crear puros, aprendiendo de cada hoja, cada cosecha y cada proceso.',
+        'Una experiencia construida desde la <strong class="text-[#0e4f2e]">Raíz</strong>, con respeto por la tradición y la convicción de que cada gran creación necesita su propio <strong class="text-[#0e4f2e]">Camino</strong> para alcanzar la excelencia.',
         'Hoy nace una marca que representa la evolución natural de nuestra casa: una selección donde el tiempo, la dedicación y la maestría artesanal se unen para crear una experiencia única.',
-        'Cada puro es fruto de un proceso cuidado al detalle, desde la elección de las mejores hojas hasta las manos expertas que le dan forma. Una historia que tiene su Génesis en la naturaleza y que, con paciencia y dedicación, encuentra su Alba en cada nueva creación.',
-        'Porque los grandes tabacos no se hacen con prisa; se crean con pasión, conocimiento y Temple.',
-        'Una expresión nacida de nuestro Linaje, que honra nuestro Legado y celebra el arte de transformar una hoja en una experiencia memorable.',
+        'Cada puro es fruto de un proceso cuidado al detalle, desde la elección de las mejores hojas hasta las manos expertas que le dan forma. Una historia que tiene su <strong class="text-[#0e4f2e]">Génesis</strong> en la naturaleza y que, con paciencia y dedicación, encuentra su <strong class="text-[#0e4f2e]">Alba</strong> en cada nueva creación.',
+        'Porque los grandes tabacos no se hacen con prisa; se crean con pasión, conocimiento y <strong class="text-[#0e4f2e]">Temple</strong>.',
+        'Una expresión nacida de nuestro <strong class="text-[#0e4f2e]">Linaje</strong>, que honra nuestro <strong class="text-[#0e4f2e]">Legado</strong> y celebra el arte de transformar una hoja en una experiencia memorable.',
         'Esta es nuestra manera de elevar una tradición y compartir una nueva dimensión del arte del puro.'
       ].map(p => `<p class="text-[#0d0d0d]/70 leading-[1.85] mb-4" style="font-size:16px;">${p}</p>`).join('');
       document.getElementById('page-vitola').innerHTML = `
